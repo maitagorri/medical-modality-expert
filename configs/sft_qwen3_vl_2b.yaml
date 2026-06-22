@@ -1,0 +1,44 @@
+# ms-swift SFT config for Qwen3-VL-2B-Instruct with QLoRA
+# Run with: swift sft --config configs/sft_qwen3_vl_2b.yaml
+
+model: Qwen/Qwen3-VL-2B-Instruct
+model_type: qwen3_vl
+
+# Dataset (update to your processed dataset path or ms-swift dataset id)
+dataset: data/processed/train.jsonl
+val_dataset: data/processed/val.jsonl
+
+# Output
+output_dir: outputs/checkpoints/qwen3-vl-2b-sft
+
+# Training
+num_train_epochs: 3
+per_device_train_batch_size: 2
+per_device_eval_batch_size: 2
+gradient_accumulation_steps: 8
+learning_rate: 1.0e-4
+lr_scheduler_type: cosine
+warmup_ratio: 0.05
+max_length: 2048
+
+# QLoRA
+quantization_bit: 4
+lora_rank: 16
+lora_alpha: 32
+lora_dropout: 0.05
+target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+
+# Logging
+logging_steps: 10
+eval_steps: 100
+save_steps: 100
+save_total_limit: 3
+report_to: wandb
+run_name: qwen3-vl-2b-medical-sft
+
+# Mixed precision
+bf16: true
