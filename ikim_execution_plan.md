@@ -91,9 +91,13 @@ Aim for about an hour of real reading. You don't need to understand every paper 
 
 **Secondary reference: OpenI / IU-Xray.** 7,470 chest X-rays with 3,955 free-text reports, fully open at `raddar/chest-xrays-indiana-university` on Kaggle. Too small to train on meaningfully, but fast to download (~300MB) and useful for validating your preprocessing pipeline before touching the larger datasets.
 
+**Claude Code prompt for CheXpert Plus EDA:**
+
+> Write a Python script scripts/eda_cxr.py that: loads the CheXpert Plus label CSV, prints class distribution and positive rate for all 14 label columns (they are heavily imbalanced — flag any label with fewer than 5% positives), prints counts of missing/uncertain values per label, displays 4 example images with their label vectors overlaid as a title, and saves the figure to /notebooks/figures/chexpert_examples.png. Also loads 5 random radiology reports and prints them to stdout to verify text format and structure. The script should work whether or not the full image set is downloaded — fall back gracefully to text-only output if images are not yet present.
+
 **Claude Code prompt for data sampling:**
 
-> Write a script scripts/sample_datasets.py that: for CheXpert Plus, samples 400 examples stratified across the 14 label columns (300 train, 50 val, 50 test), saves the splits as CSV files in /data/processed/chexpert/; for PTB-XL, samples 400 examples stratified across the 5 superclass labels (same split), saves to /data/processed/ptbxl/. Ensure no patient appears in more than one split (use the patient_id column where available). Print a summary of class balance in each split.
+> Write a script scripts/sample_datasets.py that: for CheXpert Plus, samples 400 examples stratified across the 14 label columns (300 train, 50 val, 50 test), saves the splits as CSV files in /data/processed/chexpert_plus/; for PTB-XL, samples 400 examples stratified across the 5 superclass labels (same split), saves to /data/processed/ptbxl/. Ensure no patient appears in more than one split (use the patient_id column where available). Print a summary of class balance in each split.
 
 ---
 
@@ -107,7 +111,7 @@ For the "further acquisition strategies" section of your submission, the outline
 
 **JSONL conversion pipeline — Claude Code prompt:**
 
-> Write a script scripts/make_jsonl.py that converts sampled datasets into ms-swift conversation format JSONL. For CXR: each example should be {"messages": [{"role": "user", "content": [{"type": "image", "image": "<path>"}, {"type": "text", "text": "Does this chest X-ray show <finding>?"}]}, {"role": "assistant", "content": "Yes" or "No"}]} for each of the 14 CheXpert labels. For ECG: first convert the waveform to a PNG image using matplotlib (all 12 leads stacked, clean axis labels, no title), then use the same conversation format with the PTB-XL superclass as the answer. Save outputs to /data/processed/chexpert/train.jsonl etc. and /data/processed/ptbxl/train.jsonl etc. Print 2 sample entries from each dataset to stdout for verification.
+> Write a script scripts/make_jsonl.py that converts sampled datasets into ms-swift conversation format JSONL. For CXR: each example should be {"messages": [{"role": "user", "content": [{"type": "image", "image": "<path>"}, {"type": "text", "text": "Does this chest X-ray show <finding>?"}]}, {"role": "assistant", "content": "Yes" or "No"}]} for each of the 14 CheXpert labels. For ECG: first convert the waveform to a PNG image using matplotlib (all 12 leads stacked, clean axis labels, no title), then use the same conversation format with the PTB-XL superclass as the answer. Save outputs to /data/processed/chexpert_plus/train.jsonl etc. and /data/processed/ptbxl/train.jsonl etc. Print 2 sample entries from each dataset to stdout for verification.
 
 The ECG-to-image conversion function in this script is important — it becomes the shared utility used in both training and inference. Write it once, write it well, test it.
 
