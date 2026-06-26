@@ -1,8 +1,13 @@
 # Data — raw files are never committed; processed only text
 data/raw/
-data/processed/
-!data/processed/**/*.csv
-!data/processed/**/*.txt
+data/processed/**/*.png
+data/processed/**/*.jpg
+data/processed/**/*.jpeg
+data/processed/**/*.dcm
+data/processed/**/*.npy
+data/processed/**/*.dat
+data/processed/**/*.hea
+data/processed/**/*.jsonl
 
 # Model checkpoints can be large; store externally
 outputs/checkpoints/
