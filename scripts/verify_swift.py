@@ -11,11 +11,16 @@ Run this before committing training time:
 """
 
 import argparse
+import os
 import resource
 import time
 from pathlib import Path
 
 import psutil
+
+# Force ms-swift to use HuggingFace Hub instead of ModelScope,
+# so the locally cached model is found immediately.
+os.environ.setdefault("USE_MODELSCOPE_HUB", "0")
 
 REPO_ROOT      = Path(__file__).parent.parent
 PRIMARY_MODEL  = "Qwen/Qwen3-VL-2B-Instruct"
@@ -86,9 +91,13 @@ def main() -> None:
             image_path = candidates[0]
             print(f"[i] Using {image_path.name} as test image")
         else:
-            print("[!] No test image found. Run scripts/eda_ecg.py first, "
-                  "or pass --image <path>")
-            return
+            # No real image available — generate a small dummy PNG with PIL
+            import tempfile
+            from PIL import Image
+            tmp = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
+            Image.new("RGB", (224, 224), color=(200, 200, 200)).save(tmp.name)
+            image_path = Path(tmp.name)
+            print(f"[i] No ECG image found — using blank dummy image for smoke test")
 
     print("=" * 60)
     print("  verify_swift — forward-pass check")
