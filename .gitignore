@@ -8,6 +8,7 @@ outputs/checkpoints/
 .env
 .env.*
 !.env.example
+github-access-token
 
 # Python
 __pycache__/
