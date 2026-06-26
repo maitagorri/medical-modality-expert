@@ -15,7 +15,7 @@ def main() -> None:
     args = parse_args()
     if not args.config.exists():
         sys.exit(f"Config not found: {args.config}")
-    cmd = ["swift", "sft", "--config", str(args.config)]
+    cmd = ["swift", "sft", str(args.config)]
     print("Launching:", " ".join(cmd))
     subprocess.run(cmd, check=True)
 
