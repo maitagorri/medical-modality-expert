@@ -35,12 +35,12 @@ print(f"ms-swift:      {swift.__version__}")
 print()
 
 print(f"Loading {MODEL_ID} config (meta device — no weights downloaded)...")
-from transformers import AutoConfig, AutoModelForCausalLM
+from transformers import AutoConfig, AutoModel
 
 config = AutoConfig.from_pretrained(MODEL_ID, trust_remote_code=True)
 
 with torch.device("meta"):
-    model = AutoModelForCausalLM.from_config(config, trust_remote_code=True)
+    model = AutoModel.from_config(config, trust_remote_code=True)
 
 total_params = sum(p.numel() for p in model.parameters())
 print(f"  Total parameters: {total_params:,}  (~{total_params * 4 / 1e9:.1f} GB fp32)")
