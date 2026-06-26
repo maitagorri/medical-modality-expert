@@ -40,7 +40,9 @@ While registrations are processing, navigate to each repository manually: Physio
 
 **Project skeleton — Claude Code prompt:**
 
-> Create a Python project skeleton for a medical AI fine-tuning project. Directory structure: /data (with subdirs /raw and /processed), /scripts (preprocessing, training, eval, inference), /configs (ms-swift YAML files), /outputs (checkpoints, logs, results), /notebooks, /docs. Generate a requirements.txt including: torch, transformers>=4.57, peft, ms-swift, wandb, matplotlib, numpy, pandas, scikit-learn, wfdb, Pillow, qwen_vl_utils>=0.0.14, decord. Also create a .gitignore that excludes /data/raw, /outputs/checkpoints, and .env files. Write a setup.sh that installs requirements and runs a smoke test: loads Qwen3-VL-2B-Instruct in 4-bit quantization and prints the model parameter count.
+> Create a Python project skeleton for a medical AI fine-tuning project. Directory structure: /data (with subdirs /raw and /processed), /scripts (preprocessing, training, eval, inference), /configs (ms-swift YAML files), /outputs (checkpoints, logs, results), /notebooks, /docs. Generate a requirements.txt including: torch, transformers>=4.57, peft, ms-swift, wandb, matplotlib, numpy, pandas, scikit-learn, wfdb, Pillow, qwen_vl_utils>=0.0.14, decord. Create a .gitignore that excludes: /data/raw/, /data/processed/ (all data and images stay off git), /outputs/checkpoints/, .env files, *.png, *.jpg, *.jpeg, *.dcm, *.npy, *.wfdb, *.dat, *.hea (all binary data formats). Create placeholder .gitkeep files in each directory so the folder structure is committed. Create a docs/data_access.md stub explaining that data is not committed to the repo and documenting where to obtain each dataset (to be filled in). Write a setup.sh that installs requirements using uv and runs a smoke test: loads Qwen3-VL-2B-Instruct in 4-bit quantization and prints the model parameter count.
+
+The exception to the data exclusion rule: small text files that record exactly which data was used — `image_list.txt`, sampled split CSVs (which contain only filenames and labels, not images), and PTB-XL record ID lists — should be committed to `/data/processed/` and explicitly un-excluded in `.gitignore` with `!data/processed/**/*.txt` and `!data/processed/**/*.csv`. This makes the experiment reproducible without storing any binary data.
 
 Commit the skeleton to a new GitHub repo immediately. An early commit history looks better than a single dump at the end.
 
@@ -187,12 +189,14 @@ Test this end-to-end with a few examples from your held-out test set. The demo o
 
 **Git repository checklist:**
 - README.md explaining the project, architecture, and how to reproduce training
-- /docs/data_catalog.md
+- /docs/data_catalog.md and /docs/data_access.md (dataset locations and access instructions)
 - All scripts (eda, preprocessing, training configs, evaluation, inference)
-- /outputs/results/ (JSON + Markdown table)
-- Sample ECG-to-image conversion outputs in /notebooks/figures/
-- Requirements and setup script
-- No raw data, no model weights (too large — reference the HuggingFace model ID instead)
+- /configs/ (all ms-swift YAML files)
+- /data/processed/**/*.csv and /**/*.txt (split CSVs and image_list.txt — filenames and labels only, no binary data)
+- /outputs/results/ (JSON + Markdown results table)
+- /notebooks/figures/ (EDA plots — these are generated PNGs from your scripts, not source data)
+- pyproject.toml, setup.sh
+- No raw data, no processed images, no model weights (reference HuggingFace model ID in README instead)
 
 **README — Claude Code prompt:**
 > Write a README.md for this project. Sections: Project Overview (2 sentences), Architecture (describe the modality-expert system with base router + specialist adapters), Repository Structure, Setup Instructions (setup.sh, note that training is designed for CPU and tested on an Intel i7 — no GPU required), Data (reference data_catalog.md, note which datasets require credentialing), Training (how to run each config), Evaluation (how to run evaluate.py and interpret results), Results (embed the results table from outputs/results/), Known Limitations (dataset scale scoped for local CPU training, 3-modality scope), and Roadmap (how to extend to the remaining 7 modalities and scale with GPU). Base model throughout is Qwen3-VL-2B-Instruct; note Qwen2.5-VL-2B as the tested fallback.

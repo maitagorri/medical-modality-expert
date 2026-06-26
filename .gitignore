@@ -1,5 +1,8 @@
-# Data — raw files are never committed
+# Data — raw files are never committed; processed only text
 data/raw/
+data/processed/
+!data/processed/**/*.csv
+!data/processed/**/*.txt
 
 # Model checkpoints can be large; store externally
 outputs/checkpoints/
