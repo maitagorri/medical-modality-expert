@@ -2,17 +2,17 @@
 # Stage 2: starting from cxr_pretrain checkpoint, train on 14-label yes/no QA.
 # CPU-only, fp32 for stability. Run with: swift sft --config configs/sft_cxr.yaml
 
-model: Qwen/Qwen3-VL-2B-Instruct
+model: /home/maita/.cache/huggingface/hub/models--Qwen--Qwen3-VL-2B-Instruct/snapshots/89644892e4d85e24eaac8bacfd4f463576704203
 
 # Resume from pre-training checkpoint
 # Uncomment and set path after pretrain completes:
 # adapter_path: outputs/cxr_pretrain/checkpoint-final
 
 # LoRA — same rank as pretrain to allow checkpoint continuation
-train_type: lora
+tuner_type: lora
 lora_rank: 8
 lora_alpha: 16
-lora_target_modules: all-linear
+target_modules: all-linear
 lora_dropout: 0.05
 
 # Dataset
@@ -32,7 +32,8 @@ gradient_accumulation_steps: 4
 learning_rate: 5.0e-5
 lr_scheduler_type: cosine
 warmup_ratio: 0.1
-max_length: 256
+max_length: 512
+max_pixels: 200704
 
 # CPU / precision — no GPU, fp32 for numerical stability. No quantization —
 # bitsandbytes has no CPU backend.
