@@ -4,7 +4,7 @@
 
 Before the plan begins, these choices are locked:
 
-- **Model:** Qwen3-VL-2B-Instruct (LoRA / QLoRA). ms-swift support confirmed. Qwen2.5-VL-2B as fallback if anything breaks.
+- **Model:** Qwen3-VL-2B-Instruct (LoRA, fp32, no quantization). ms-swift support confirmed. QLoRA/bitsandbytes excluded — no CPU backend. Qwen2.5-VL-2B as fallback if anything breaks.
 - **Primary modalities:** CXR (Röntgen), ECG, Text. Remaining 7 modalities documented as a roadmap, not trained.
 - **ECG representation:** Waveform plotted as a PNG image, fed into the VL model like any other image.
 - **Adapter architecture:** One LoRA adapter per modality (CXR adapter, ECG adapter), trained separately.
@@ -40,9 +40,9 @@ While registrations are processing, navigate to each repository manually: Physio
 
 **Project skeleton — Claude Code prompt:**
 
-> Create a Python project skeleton for a medical AI fine-tuning project. Directory structure: /data (with subdirs /raw and /processed), /scripts (preprocessing, training, eval, inference), /configs (ms-swift YAML files), /outputs (checkpoints, logs, results), /notebooks, /docs. Generate a requirements.txt including: torch, transformers>=4.57, peft, ms-swift, wandb, matplotlib, numpy, pandas, scikit-learn, wfdb, Pillow, qwen_vl_utils>=0.0.14, decord. Create a .gitignore that excludes: /data/raw/, /data/processed/ (all data and images stay off git), /outputs/checkpoints/, .env files, *.png, *.jpg, *.jpeg, *.dcm, *.npy, *.wfdb, *.dat, *.hea (all binary data formats). Create placeholder .gitkeep files in each directory so the folder structure is committed. Create a docs/data_access.md stub explaining that data is not committed to the repo and documenting where to obtain each dataset (to be filled in). Write a setup.sh that installs requirements using uv and runs a smoke test: loads Qwen3-VL-2B-Instruct in 4-bit quantization and prints the model parameter count.
+> Create a Python project skeleton for a medical AI fine-tuning project using uv for dependency management. Directory structure: /data (with subdirs /raw and /processed), /scripts (preprocessing, training, eval, inference), /configs (ms-swift YAML files), /outputs (checkpoints, logs, results), /notebooks, /docs. Generate a pyproject.toml (not requirements.txt) with dependencies: torch, transformers>=4.57, peft, ms-swift, wandb, matplotlib, numpy, pandas, scikit-learn, wfdb, Pillow, qwen_vl_utils>=0.0.14, decord. Create a .gitignore that excludes: /data/raw/, /outputs/checkpoints/, .env files, and binary data formats by extension within /data/processed/: *.png, *.jpg, *.jpeg, *.dcm, *.npy, *.dat, *.hea, *.jsonl — but does NOT exclude /data/processed/ as a directory, so that CSV and TXT files within it are tracked by default. Commit uv.lock. Create placeholder .gitkeep files in each directory so the folder structure is committed. Create a docs/data_access.md stub explaining that data is not committed to the repo and documenting where to obtain each dataset (to be filled in). Write a setup.sh that installs dependencies via `uv sync` and runs a smoke test: loads Qwen3-VL-2B-Instruct in fp32 (no quantization — bitsandbytes has no CPU backend), checks available RAM and warns if below 16GB, runs a forward pass on a dummy image and text prompt, and prints peak memory usage.
 
-The exception to the data exclusion rule: small text files that record exactly which data was used — `image_list.txt`, sampled split CSVs (which contain only filenames and labels, not images), and PTB-XL record ID lists — should be committed to `/data/processed/` and explicitly un-excluded in `.gitignore` with `!data/processed/**/*.txt` and `!data/processed/**/*.csv`. This makes the experiment reproducible without storing any binary data.
+CSVs, TXTs, and other text files in /data/processed/ are tracked by default under this approach — no un-ignore rules needed, no warnings on commit.
 
 Commit the skeleton to a new GitHub repo immediately. An early commit history looks better than a single dump at the end.
 
@@ -119,7 +119,7 @@ For the "further acquisition strategies" section of your submission, the outline
 
 **JSONL conversion pipeline — Claude Code prompt:**
 
-> Write a script scripts/make_jsonl.py that converts sampled datasets into ms-swift conversation format JSONL. For CXR: each example should be {"messages": [{"role": "user", "content": [{"type": "image", "image": "<path>"}, {"type": "text", "text": "Does this chest X-ray show <finding>?"}]}, {"role": "assistant", "content": "Yes" or "No"}]} for each of the 14 CheXpert labels. For ECG: first convert the waveform to a PNG image using matplotlib (all 12 leads stacked, clean axis labels, no title), then use the same conversation format with the PTB-XL superclass as the answer. Save outputs to /data/processed/chexpert_plus/train.jsonl etc. and /data/processed/ptbxl/train.jsonl etc. Print 2 sample entries from each dataset to stdout for verification.
+> Write a script scripts/make_jsonl.py that converts sampled datasets into ms-swift conversation format JSONL. For CXR: each example should be {"messages": [{"role": "user", "content": [{"type": "image", "image": "<path>"}, {"type": "text", "text": "Does this chest X-ray show <finding>?"}]}, {"role": "assistant", "content": "Yes" or "No"}]} for each of the 14 CheXpert labels. For the self-supervised stage, format as report completion: user message contains the image + "Write the radiology report findings for this chest X-ray:", assistant message contains the findings text hard-truncated to 200 words (not tokens — word count is easier to reason about and stays safely within the 256-token limit). For ECG: first convert the waveform to a PNG image using matplotlib (all 12 leads stacked, clean axis labels, no title), then use the same conversation format with the PTB-XL superclass as the answer. All text fields must be hard-truncated at 256 tokens using the Qwen3 tokenizer before writing — raise a warning (not an error) if any field was truncated. Save outputs to /data/processed/chexpert_plus/train.jsonl etc. and /data/processed/ptbxl/train.jsonl etc. Print 2 sample entries from each dataset and a truncation summary to stdout.
 
 The ECG-to-image conversion function in this script is important — it becomes the shared utility used in both training and inference. Write it once, write it well, test it.
 
@@ -129,11 +129,11 @@ The ECG-to-image conversion function in this script is important — it becomes 
 
 ### Day 8 — Environment verification
 
-Run the smoke test from Day 1: confirm Qwen3-VL-2B-Instruct loads in 4-bit quantization on CPU, runs a forward pass, and prints memory usage. This is your go/no-go check before investing training time.
+Run the smoke test from Day 1: confirm Qwen3-VL-2B-Instruct loads in fp32 on CPU, runs a forward pass, and prints peak RAM usage. This is your go/no-go check before investing training time.
 
 **ms-swift verification — Claude Code prompt:**
 
-> Write a script scripts/verify_swift.py that: loads Qwen3-VL-2B-Instruct in 4-bit quantization using ms-swift, runs a forward pass on a test image and text prompt, prints the output, and prints peak memory usage. If this fails, also try loading Qwen2.5-VL-2B as a fallback and report which one works.
+> Write a script scripts/verify_swift.py that: checks available system RAM and prints a warning if below 16GB; loads Qwen3-VL-2B-Instruct in fp32 (no quantization — do not use bitsandbytes or load_in_4bit, these have no CPU backend); runs a forward pass on a test image and text prompt; prints the model output and peak RAM usage; times the forward pass. If loading fails due to memory, try Qwen2.5-VL-2B as a fallback and report which one works.
 
 This is your go/no-go check before investing any training time.
 
@@ -147,7 +147,7 @@ For CXR: use CheXpert Plus reports as the primary text source — sample 75 imag
 
 **ms-swift config — Claude Code prompt:**
 
-> Generate a ms-swift training YAML config file configs/pretrain_cxr.yaml for continual pre-training (next-token prediction on the text, given image) of Qwen3-VL-2B-Instruct with LoRA for CPU-only training. Settings: lora_rank=8, lora_alpha=16, target modules = all linear layers in the language model, learning_rate=2e-4, batch_size=1, gradient_accumulation_steps=4, num_epochs=2, use_cpu=True, fp16=False, bf16=False (use fp32 for CPU stability), max_length=256 (cap sequence length to limit memory), dataset path = data/processed/chexpert_plus/train.jsonl, output_dir=outputs/cxr_pretrain, save_steps=10 (checkpoint frequently in case of interruption). Also generate a corresponding configs/pretrain_ecg.yaml for the ECG dataset.
+> Generate a ms-swift training YAML config file configs/pretrain_cxr.yaml for continual pre-training (next-token prediction on the text, given image) of Qwen3-VL-2B-Instruct with LoRA for CPU-only training. Settings: lora_rank=8, lora_alpha=16, target modules = all linear layers in the language model, learning_rate=2e-4, batch_size=1, gradient_accumulation_steps=4, num_epochs=2, use_cpu=True, fp16=False, bf16=False (fp32 for CPU — bitsandbytes has no CPU backend so no quantization), max_length=256, gradient_checkpointing=True (required to keep activations off RAM during backprop), dataloader_num_workers=0 (prevents subprocesses from each loading the model into memory), dataset path = data/processed/chexpert_plus/train.jsonl, output_dir=outputs/cxr_pretrain, save_steps=10. Also generate a corresponding configs/pretrain_ecg.yaml for the ECG dataset.
 
 Run the CXR pre-training first. Watch the loss for the first 20 steps to confirm it's decreasing before leaving it to run.
 
@@ -159,7 +159,7 @@ Starting from the pre-trained LoRA checkpoint (not from scratch), continue train
 
 **Claude Code prompt:**
 
-> Generate configs/sft_cxr.yaml for supervised fine-tuning on CPU, starting from the checkpoint at outputs/cxr_pretrain/. Same CPU settings as pretrain config (fp32, max_length=256, batch_size=1), but lower learning rate (5e-5), 2 epochs, dataset = data/processed/chexpert_plus/train.jsonl (the labeled split), save_steps=10. Also generate configs/sft_ecg.yaml with the same settings. Both configs should log to Weights & Biases with project name "ikim-assessment".
+> Generate configs/sft_cxr.yaml for supervised fine-tuning on CPU, starting from the checkpoint at outputs/cxr_pretrain/. Same CPU settings as pretrain config (fp32, max_length=256, batch_size=1, gradient_checkpointing=True, dataloader_num_workers=0), but lower learning rate (5e-5), 2 epochs, dataset = data/processed/chexpert_plus/train.jsonl (the labeled split), save_steps=10. Also generate configs/sft_ecg.yaml with the same settings. Both configs should log to Weights & Biases with project name "ikim-assessment".
 
 The output of this stage is your two adapter files: outputs/cxr_sft/adapter_model.bin and outputs/ecg_sft/adapter_model.bin.
 
@@ -169,7 +169,7 @@ The output of this stage is your two adapter files: outputs/cxr_sft/adapter_mode
 
 **Claude Code prompt:**
 
-> Write a script scripts/evaluate.py that: takes a model adapter path and a test JSONL file as arguments, loads Qwen3-VL-2B-Instruct in 4-bit + the specified LoRA adapter, runs inference on each test example, parses yes/no answers for CXR (14 labels) and class names for ECG (5 superclasses), and computes: accuracy, macro F1, and per-class AUC where applicable. Run it twice per modality: once with adapter=None (zero-shot baseline), once with the fine-tuned adapter. Save results as JSON to outputs/results/. Also generate a results summary table in Markdown.
+> Write a script scripts/evaluate.py that: takes a model adapter path and a test JSONL file as arguments, loads Qwen3-VL-2B-Instruct in fp32 (no quantization) with the specified LoRA adapter, runs inference on each test example, parses yes/no answers for CXR (14 labels) and class names for ECG (5 superclasses), and computes: accuracy, macro F1, and per-class AUC where applicable. Run it twice per modality: once with adapter=None (zero-shot baseline), once with the fine-tuned adapter. Save results as JSON to outputs/results/. Also generate a results summary table in Markdown.
 
 This gives you the central result of the project: a before/after table showing what fine-tuning gained. Even a 5–10% improvement on a small test set is a real finding.
 
@@ -228,6 +228,7 @@ Test this end-to-end with a few examples from your held-out test set. The demo o
 |------|-----------|-----------|
 | PhysioNet approval delayed or denied | Medium | Not a blocking risk. CheXpert Plus covers both training stages independently. ReXGradient-160K (open, HuggingFace) is the immediate fallback if CheXpert Plus access is also delayed. Document MIMIC in the catalog as the production-scale upgrade. |
 | ms-swift incompatible with Qwen3-VL-2B-Instruct | Very low (confirmed) | Fall back to Qwen2.5-VL-2B; document the version issue |
-| CPU training takes longer than expected | Medium | Reduce dataset further to 50 examples; reduce max_length to 128; run overnight. Configs save_steps=10 ensures no progress is lost if interrupted. |
+| CPU training takes longer than expected | Medium | Reduce dataset to 50 examples; reduce max_length to 128; run overnight. gradient_checkpointing=True and save_steps=10 are already set. Close browser and heavy apps before starting to maximise available RAM. |
+| RAM OOM during training | Low-medium | gradient_checkpointing=True already set. If still OOM: reduce max_length to 128, then to 64. If still failing, drop to Qwen2.5-VL-0.5B. |
 | Loss doesn't decrease (training is broken) | Low | Verify on 10 examples first; paste error + config into Claude Code |
 | Evaluation shows no improvement over baseline | Low-medium | Report honestly; a flat result on 50 test examples is still a valid finding and shows evaluation rigor |
