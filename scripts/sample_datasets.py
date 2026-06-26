@@ -133,13 +133,13 @@ def sample_ptbxl() -> None:
 
     train_df, valtest_df = train_test_split(
         pool_df,
-        test_size=(PTBXL_N_VAL + PTBXL_N_TEST) * n_classes,
+        test_size=PTBXL_N_VAL + PTBXL_N_TEST,
         stratify=pool_df["label"],
         random_state=SEED,
     )
     val_df, test_df = train_test_split(
         valtest_df,
-        test_size=PTBXL_N_TEST * n_classes,
+        test_size=PTBXL_N_TEST,
         stratify=valtest_df["label"],
         random_state=SEED,
     )
