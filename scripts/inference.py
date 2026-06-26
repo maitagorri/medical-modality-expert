@@ -40,15 +40,15 @@ DEFAULT_QUERIES: dict[str, str] = {
 # ── Engine helpers ────────────────────────────────────────────────────────────
 
 def _make_engine(adapter_path: str | None = None):
-    from swift.llm import PtEngine
+    from swift import TransformersEngine
     kwargs: dict = dict(model=BASE_MODEL, torch_dtype="float32")
     if adapter_path:
         kwargs["adapters"] = [adapter_path]
-    return PtEngine(**kwargs)
+    return TransformersEngine(**kwargs)
 
 
 def _infer(engine, messages: list[dict], max_tokens: int = 64) -> str:
-    from swift.llm import InferRequest, RequestConfig
+    from swift import InferRequest, RequestConfig
     config   = RequestConfig(max_tokens=max_tokens, temperature=0.0)
     response = engine.infer([InferRequest(messages=messages)], request_config=config)[0]
     return response.choices[0].message.content.strip()

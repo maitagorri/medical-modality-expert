@@ -1,6 +1,10 @@
 """
 Convert sampled datasets to ms-swift conversation-format JSONL.
 
+All text fields are hard-truncated at 256 tokens (Qwen3 tokenizer).
+Pretrain report text is additionally truncated to 200 words before
+tokenisation to stay safely within the limit.
+
 Outputs:
   data/processed/ptbxl/{train,val,test}.jsonl          — ECG classification VQA
   data/processed/chexpert_plus/{train,val,test}_pretrain.jsonl — report generation
@@ -8,6 +12,7 @@ Outputs:
 """
 
 import json
+import warnings
 from pathlib import Path
 
 import matplotlib
@@ -25,13 +30,54 @@ CXR_PROC    = REPO_ROOT / "data/processed/chexpert_plus"
 PTBXL_PROC  = REPO_ROOT / "data/processed/ptbxl"
 PTBXL_IMGS  = PTBXL_PROC / "images"
 
-SAMPLING_RATE = 100
+SAMPLING_RATE    = 100
+MAX_TOKENS       = 256
+MAX_REPORT_WORDS = 200
 LEAD_NAMES = ["I", "II", "III", "aVR", "aVL", "aVF", "V1", "V2", "V3", "V4", "V5", "V6"]
 CHEXPERT_14_LABELS = [
     "Enlarged Cardiomediastinum", "Cardiomegaly", "Lung Opacity", "Lung Lesion",
     "Edema", "Consolidation", "Pneumonia", "Atelectasis", "Pneumothorax",
     "Pleural Effusion", "Pleural Other", "Fracture", "Support Devices", "No Finding",
 ]
+
+# Global truncation counter {field_description: n_truncated}
+_truncation_stats: dict[str, int] = {}
+
+
+# ── Tokenizer ──────────────────────────────────────────────────────────────
+
+_tokenizer = None
+
+def get_tokenizer():
+    global _tokenizer
+    if _tokenizer is None:
+        from transformers import AutoTokenizer
+        _tokenizer = AutoTokenizer.from_pretrained(
+            "Qwen/Qwen3-VL-2B-Instruct", trust_remote_code=True
+        )
+    return _tokenizer
+
+
+def truncate_to_words(text: str, max_words: int = MAX_REPORT_WORDS) -> str:
+    words = text.split()
+    if len(words) <= max_words:
+        return text
+    return " ".join(words[:max_words])
+
+
+def truncate_to_tokens(text: str, field: str, max_tokens: int = MAX_TOKENS) -> str:
+    """Hard-truncate text to max_tokens. Warns and records if truncated."""
+    tok = get_tokenizer()
+    ids = tok.encode(text, add_special_tokens=False)
+    if len(ids) <= max_tokens:
+        return text
+    warnings.warn(
+        f"[truncation] '{field}' truncated from {len(ids)} to {max_tokens} tokens",
+        stacklevel=3,
+    )
+    _truncation_stats[field] = _truncation_stats.get(field, 0) + 1
+    truncated = tok.decode(ids[:max_tokens], skip_special_tokens=True)
+    return truncated
 
 
 # ── ECG utilities ──────────────────────────────────────────────────────────
@@ -54,19 +100,20 @@ def ecg_to_image(signal: np.ndarray, out_path: Path) -> None:
 
 def make_ecg_jsonl_entry(signal: np.ndarray, label: str, img_path: Path) -> dict:
     ecg_to_image(signal, img_path)
+    question = (
+        "What is the primary cardiac diagnosis for this 12-lead ECG? "
+        "Answer with exactly one of: NORM, MI, STTC, CD, HYP."
+    )
     return {
         "messages": [
             {
                 "role": "user",
                 "content": [
                     {"type": "image", "image": str(img_path.resolve())},
-                    {"type": "text", "text": (
-                        "What is the primary cardiac diagnosis for this 12-lead ECG? "
-                        "Answer with exactly one of: NORM, MI, STTC, CD, HYP."
-                    )},
+                    {"type": "text", "text": truncate_to_tokens(question, "ecg_question")},
                 ],
             },
-            {"role": "assistant", "content": label},
+            {"role": "assistant", "content": truncate_to_tokens(label, "ecg_label")},
         ]
     }
 
@@ -84,20 +131,33 @@ def resolve_cxr_image(path_to_image: str) -> Path:
 
 
 def make_pretrain_entry(row: pd.Series) -> dict | None:
-    """Report-generation entry: image → impression text."""
-    text = str(row.get("section_impression", "")).strip()
-    if not text or text.lower() in ("nan", "none"):
+    """Report-generation entry: image → findings text (200-word + 256-token limit)."""
+    # Prefer section_findings; fall back to section_impression
+    text = ""
+    for col in ("section_findings", "section_impression"):
+        candidate = str(row.get(col, "")).strip()
+        if candidate and candidate.lower() not in ("nan", "none"):
+            text = candidate
+            break
+    if not text:
         return None
+
     img = resolve_cxr_image(row["path_to_image"])
     if not img.exists():
         return None
+
+    # 200-word cap first (word-level is easy to reason about)
+    text = truncate_to_words(text, MAX_REPORT_WORDS)
+    # Then enforce token limit
+    text = truncate_to_tokens(text, "pretrain_report")
+
     return {
         "messages": [
             {
                 "role": "user",
                 "content": [
                     {"type": "image", "image": str(img)},
-                    {"type": "text", "text": "Describe the findings in this chest X-ray."},
+                    {"type": "text", "text": "Write the radiology report findings for this chest X-ray:"},
                 ],
             },
             {"role": "assistant", "content": text},
@@ -121,14 +181,17 @@ def make_sft_entries(row: pd.Series, labels_by_path: dict) -> list[dict]:
         elif val == 0.0:
             answer = "No"
         else:
-            continue  # null or uncertain
+            continue
+        question = truncate_to_tokens(
+            f"Does this chest X-ray show {lbl}?", f"sft_question_{lbl}"
+        )
         entries.append({
             "messages": [
                 {
                     "role": "user",
                     "content": [
                         {"type": "image", "image": str(img)},
-                        {"type": "text", "text": f"Does this chest X-ray show {lbl}?"},
+                        {"type": "text", "text": question},
                     ],
                 },
                 {"role": "assistant", "content": answer},
@@ -147,6 +210,15 @@ def write_jsonl(path: Path, entries: list[dict]) -> None:
     print(f"  Wrote {len(entries):,} entries -> {path.relative_to(REPO_ROOT)}")
 
 
+def print_truncation_summary() -> None:
+    print("\nTruncation summary:")
+    if not _truncation_stats:
+        print("  No fields were truncated.")
+    else:
+        for field, count in sorted(_truncation_stats.items()):
+            print(f"  {field}: {count} entries truncated")
+
+
 # ── PTB-XL pipeline ────────────────────────────────────────────────────────
 
 def process_ptbxl() -> None:
@@ -162,7 +234,7 @@ def process_ptbxl() -> None:
             img_name = Path(row["filename_lr"]).stem + ".png"
             img_path = PTBXL_IMGS / img_name
             entries.append(make_ecg_jsonl_entry(signal, row["label"], img_path))
-            if len(entries) % 100 == 0:
+            if len(entries) % 50 == 0:
                 print(f"  [{split}] {len(entries)}/{len(df)} ECGs converted")
 
         write_jsonl(PTBXL_PROC / f"{split}.jsonl", entries)
@@ -182,7 +254,6 @@ def process_ptbxl() -> None:
 def process_chexpert() -> None:
     print("\n=== CheXpert Plus ===")
 
-    # Load all binary labels indexed by path_to_image
     labels_by_path: dict[str, dict] = {}
     label_file = CXR_RAW / "CheXpert_Labels" / "findings_fixed.json"
     with open(label_file) as f:
@@ -194,11 +265,9 @@ def process_chexpert() -> None:
     for split in ("train", "val", "test"):
         df = pd.read_csv(CXR_PROC / f"{split}.csv")
 
-        # Pretraining: image → impression report
         pretrain = [e for _, row in df.iterrows() if (e := make_pretrain_entry(row)) is not None]
         write_jsonl(CXR_PROC / f"{split}_pretrain.jsonl", pretrain)
 
-        # SFT: binary-label VQA (multiple entries per image)
         sft = []
         for _, row in df.iterrows():
             sft.extend(make_sft_entries(row, labels_by_path))
@@ -226,3 +295,4 @@ def process_chexpert() -> None:
 if __name__ == "__main__":
     process_ptbxl()
     process_chexpert()
+    print_truncation_summary()

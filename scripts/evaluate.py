@@ -71,14 +71,14 @@ def extract_label_from_question(question: str) -> str:
 # ── Inference ─────────────────────────────────────────────────────────────────
 
 def run_inference(entries: list[dict], adapter_path: Path | None) -> list[dict]:
-    from swift.llm import InferRequest, PtEngine, RequestConfig
+    from swift import InferRequest, RequestConfig, TransformersEngine
 
     kwargs: dict = dict(model=BASE_MODEL, torch_dtype="float32")
     if adapter_path is not None:
         kwargs["adapters"] = [str(adapter_path)]
 
     print(f"Loading model{' + adapter' if adapter_path else ' (zero-shot)'} ...")
-    engine = PtEngine(**kwargs)
+    engine = TransformersEngine(**kwargs)
     config = RequestConfig(max_tokens=16, temperature=0.0)
 
     results = []

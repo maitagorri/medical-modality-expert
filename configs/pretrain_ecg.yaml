@@ -30,9 +30,14 @@ lr_scheduler_type: cosine
 warmup_ratio: 0.1
 max_length: 256
 
-# CPU / precision — no GPU, fp32 for numerical stability
+# CPU / precision — no GPU, fp32 for numerical stability. No quantization —
+# bitsandbytes has no CPU backend.
 fp16: false
 bf16: false
+
+# Memory management for CPU training
+gradient_checkpointing: true
+dataloader_num_workers: 0
 
 # Checkpointing — frequent saves in case of interruption
 save_steps: 10
