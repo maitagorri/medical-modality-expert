@@ -8,6 +8,8 @@ data/processed/**/*.npy
 data/processed/**/*.dat
 data/processed/**/*.hea
 data/processed/**/*.jsonl
+# Enriched CSV is 400MB — regenerate with scripts/join_chexpert_labels.py
+data/processed/chexpert_plus/df_enriched.csv
 
 # Model checkpoints can be large; store externally
 outputs/checkpoints/
