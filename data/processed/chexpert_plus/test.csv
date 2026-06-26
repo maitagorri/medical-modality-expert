@@ -1,4 +1,4 @@
-path_to_image,path_to_dcm,frontal_lateral,ap_pa,deid_patient_id,patient_report_date_order,report,section_narrative,section_clinical_history,section_history,section_comparison,section_technique,section_procedure_comments,section_findings,section_impression,section_end_of_impression,section_summary,section_accession_number,age,sex,race,ethnicity,interpreter_needed,insurance_type,recent_bmi,deceased,split
+path_to_image,path_to_dcm,frontal_lateral,ap_pa,deid_patient_id,patient_report_date_order,report,section_narrative,section_clinical_history,section_history,section_comparison,section_technique,section_procedure_comments,section_findings,section_impression,section_end_of_impression,section_summary,section_accession_number,age,sex,race,ethnicity,interpreter_needed,insurance_type,recent_bmi,deceased,split,Enlarged Cardiomediastinum,Cardiomegaly,Lung Opacity,Lung Lesion,Edema,Consolidation,Pneumonia,Atelectasis,Pneumothorax,Pleural Effusion,Pleural Other,Fracture,Support Devices,No Finding
 valid/patient64545/study1/view1_frontal.jpg,valid/patient64545/study1/view1_frontal.dcm,Frontal,AP,patient64545,1,"NARRATIVE:
 CHEST:
 Single view. 11/24/2007
@@ -43,7 +43,7 @@ By: Lucas, Lewis  on: 11-24-2007
  
 ","
 7953647427
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",55.0,Female,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",55.0,Female,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,No,valid,0.0,,,,1.0,,,1.0,,1.0,,1.0,,
 valid/patient64550/study1/view1_frontal.jpg,valid/patient64550/study1/view1_frontal.dcm,Frontal,AP,patient64550,7,"NARRATIVE:
 CHEST:
 CLINICAL HISTORY: 33 -year-old male with history of lung
@@ -86,7 +86,7 @@ By: Ellie Dante, Mcmillan  on: 5/4/2012
  
 ","
 X3Y1J
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",34.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",34.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64552/study1/view1_frontal.jpg,valid/patient64552/study1/view1_frontal.dcm,Frontal,AP,patient64552,3,"NARRATIVE:
 SINGLE VIEW OF THE CHEST: 7/3/2015 at 1130 hours
 COMPARISON: Two views of the chest 7-3-2015.
@@ -121,7 +121,7 @@ By: MARESH, GRACE  on: 7-3-2015
  
 ","
 7129891
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",84.0,Female,Unknown,Unknown,Unknown,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",84.0,Female,Unknown,Unknown,Unknown,Medicare,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64554/study1/view1_frontal.jpg,valid/patient64554/study1/view1_frontal.dcm,Frontal,AP,patient64554,1,"NARRATIVE:
 CHEST: 9/16/2018 AT 1630.
 COMPARISON: None.
@@ -158,7 +158,7 @@ By: DAVILA, MD  on:  9/16/2018
  
 ","
 #75734465
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",19.0,Female,White,Non-Hispanic/Non-Latino,Unknown,Medicaid,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",19.0,Female,White,Non-Hispanic/Non-Latino,Unknown,Medicaid,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64555/study1/view1_frontal.jpg,valid/patient64555/study1/view1_frontal.dcm,Frontal,AP,patient64555,2,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST:  1-30-2009
  
@@ -215,7 +215,7 @@ with the report transcribed above.
  
 ",,,"
 4_4_4_4_2_8_7_0
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,,No,valid,,,1.0,,,,,,,,1.0,,,
 valid/patient64557/study1/view1_frontal.jpg,valid/patient64557/study1/view1_frontal.dcm,Frontal,AP,patient64557,2,"NARRATIVE:
 PORTABLE CHEST: 12-2-2010.
 COMPARISON: 12/2/2010.
@@ -248,7 +248,7 @@ By: Mcclain Jessica, MD  on: 12/2/2010
  
 ",,"
 00399794
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",48.0,Female,Black,Non-Hispanic/Non-Latino,Unknown,Medicare,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",48.0,Female,Black,Non-Hispanic/Non-Latino,Unknown,Medicare,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64565/study1/view1_frontal.jpg,valid/patient64565/study1/view1_frontal.dcm,Frontal,AP,patient64565,1,"NARRATIVE:
 PORTABLE CHEST, SINGLE VIEW:   8/20
  
@@ -311,7 +311,7 @@ with the report transcribed above.
  
 ","
 4A66CDOB
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",88.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",88.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,,No,valid,,1.0,,,,0.0,,,0.0,0.0,,,,
 valid/patient64568/study1/view1_frontal.jpg,valid/patient64568/study1/view1_frontal.dcm,Frontal,PA,patient64568,1,"NARRATIVE:
 Chest 1 View 2008 18 MARCH
  
@@ -352,7 +352,7 @@ IS CLEAR.  ABSENCE OF PLEURAL EFFUSION.
  
 ","
 12432300058220
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",23.0,Male,Unknown,Unknown,Unknown,Unknown,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",23.0,Male,Unknown,Unknown,Unknown,Unknown,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64577/study1/view1_frontal.jpg,valid/patient64577/study1/view1_frontal.dcm,Frontal,PA,patient64577,1,"NARRATIVE:
 SINGLE VIEW CHEST: 
 THREE VIEWS ABDOMEN: 
@@ -417,7 +417,7 @@ with the report transcribed above.
  
 ","
 S4NS86FAH5BH
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Female,Other,Non-Hispanic/Non-Latino,No,Medicaid,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Female,Other,Non-Hispanic/Non-Latino,No,Medicaid,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64580/study1/view1_frontal.jpg,valid/patient64580/study1/view1_frontal.dcm,Frontal,AP,patient64580,9,"NARRATIVE:
 SINGLE PORTABLE VIEW OF THE CHEST: 3/9/06
 COMPARISON: 3-9-2006
@@ -458,7 +458,7 @@ By: MD Lordina  on: 3/9/2006
  
 ","
 53_57_95_25_75_54
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",84.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",84.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,No,valid,,1.0,,,1.0,,,1.0,,1.0,,,,
 valid/patient64582/study1/view1_frontal.jpg,valid/patient64582/study1/view1_frontal.dcm,Frontal,AP,patient64582,7,"NARRATIVE:
 SINGLE VIEW PORTABLE CHEST: 3-4-2011
 COMPARISON: 3-4-2011
@@ -493,7 +493,7 @@ By: Stone, Blakely  on: 3-4-2011
  
 ","
 73186
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",59.0,Female,White,Non-Hispanic/Non-Latino,No,Medicaid,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",59.0,Female,White,Non-Hispanic/Non-Latino,No,Medicaid,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64583/study1/view1_frontal.jpg,valid/patient64583/study1/view1_frontal.dcm,Frontal,AP,patient64583,1,"NARRATIVE:
 CHEST: AP upright portable to bedside, 15:45.
 FINDINGS:
@@ -532,7 +532,7 @@ NOT AVAILABLE.
  
 ",,"
 #9481759427
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",79.0,Female,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",79.0,Female,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,No,valid,,1.0,1.0,,,1.0,,1.0,,,,,,
 valid/patient64585/study1/view1_frontal.jpg,valid/patient64585/study1/view1_frontal.dcm,Frontal,AP,patient64585,1,"NARRATIVE:
 CHEST AP PORTABLE: 2-3-11
 CLINICAL HISTORY: 87-year-old woman with short of breath. Please
@@ -597,7 +597,7 @@ By: Nocar, Ember  on: 2/3/2011
  
 ","
 390300
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",87.0,Female,White,Non-Hispanic/Non-Latino,Unknown,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",87.0,Female,White,Non-Hispanic/Non-Latino,Unknown,Unknown,,Yes,valid,,,1.0,,,,,1.0,,,,,,
 valid/patient64592/study1/view1_frontal.jpg,valid/patient64592/study1/view1_frontal.dcm,Frontal,AP,patient64592,31,"NARRATIVE:
 PORTABLE CHEST SINGLE VIEW: 4-1-2002
 CLINICAL HISTORY: Status post heart transplant.
@@ -628,7 +628,7 @@ WORSENING LEFT RETROCARDIAC ATELECTASIS AND LEFT PLEURAL EFFUSION.
  
 ","
 8021721
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",48.0,Male,White,Non-Hispanic/Non-Latino,No,Medicaid,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",48.0,Male,White,Non-Hispanic/Non-Latino,No,Medicaid,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64593/study1/view1_frontal.jpg,valid/patient64593/study1/view1_frontal.dcm,Frontal,PA,patient64593,1,"NARRATIVE:
 POST NEEDLE BIOPSY: 06-02-01 AT 1600 HOURS.
 CLINICAL HISTORY: Lung lesion, status post biopsy upright and
@@ -663,7 +663,7 @@ By: Rose, Carson  on: 6-2001
  
 ","
 96968528
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",60.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Private Insurance,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",60.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Private Insurance,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64596/study1/view1_frontal.jpg,valid/patient64596/study1/view1_frontal.dcm,Frontal,AP,patient64596,1,"NARRATIVE:
 COMPARISON: None.
 IMPRESSION:
@@ -696,7 +696,7 @@ By: COLBY, SIMMONS  on: 11/13/2019
  
 ","
 89179342629
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Male,Other,Non-Hispanic/Non-Latino,No,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Male,Other,Non-Hispanic/Non-Latino,No,Medicare,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64599/study1/view1_frontal.jpg,valid/patient64599/study1/view1_frontal.dcm,Frontal,PA,patient64599,1,"NARRATIVE:
 CHEST: January 2020.
 COMPARISON: 1/11/2020.
@@ -735,7 +735,7 @@ By: MD Buchanan  on: 1/11/2020
  
 ","
 U8CAZQN2DH
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",69.0,Male,White,Non-Hispanic/Non-Latino,No,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",69.0,Male,White,Non-Hispanic/Non-Latino,No,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64599/study1/view2_lateral.jpg,valid/patient64599/study1/view2_lateral.dcm,Lateral,,patient64599,2,"NARRATIVE:
 CHEST: 7-18-2014.
 COMPARISON: 7/18/14.
@@ -774,7 +774,7 @@ By: alex md  on: 7/18/14
  
 ","
 996966
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",69.0,Male,White,Non-Hispanic/Non-Latino,No,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",69.0,Male,White,Non-Hispanic/Non-Latino,No,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64601/study1/view1_frontal.jpg,valid/patient64601/study1/view1_frontal.dcm,Frontal,AP,patient64601,3,"NARRATIVE:
 SINGLE PORTABLE VIEW OF THE CHEST: 8/18/04, 06:15
 COMPARISON:
@@ -807,7 +807,7 @@ CONSISTENT WITH ASPIRATION VERSUS ATELECTASIS.
  
 ","
 759778
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",52.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Private Insurance,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",52.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Private Insurance,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64602/study1/view1_frontal.jpg,valid/patient64602/study1/view1_frontal.dcm,Frontal,AP,patient64602,2,"NARRATIVE:
 PORTABLE CHEST, ONE VIEW: 5/27/2002
 COMPARISON: 5/27/2002 at 0048 hours.
@@ -836,7 +836,7 @@ PORTABLE CHEST, ONE VIEW: 5/27/2002
  
 ","
 46803
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",81.0,Male,Pacific Islander,Non-Hispanic/Non-Latino,Unknown,Medicaid,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",81.0,Male,Pacific Islander,Non-Hispanic/Non-Latino,Unknown,Medicaid,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64603/study1/view1_frontal.jpg,valid/patient64603/study1/view1_frontal.dcm,Frontal,AP,patient64603,2,"NARRATIVE:
 PORTABLE CHEST: 8/8/2005
 COMPARISON: One view chest, 8/8/2005
@@ -877,7 +877,7 @@ By: Reema, Hicks  on: 8-8-05
  
 ","
 AZOCYERAA
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",85.0,Female,White,Non-Hispanic/Non-Latino,Unknown,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",85.0,Female,White,Non-Hispanic/Non-Latino,Unknown,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64605/study1/view1_frontal.jpg,valid/patient64605/study1/view1_frontal.dcm,Frontal,AP,patient64605,1,"NARRATIVE:
 PORTABLE CHEST, SINGLE VIEW:   2-11-2011
 CLINICAL HISTORY:   Eighty-nine-year-old male with history of rule
@@ -916,7 +916,7 @@ with the report transcribed above.
  
 ","
 3215
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64608/study1/view1_frontal.jpg,valid/patient64608/study1/view1_frontal.dcm,Frontal,PA,patient64608,1,"NARRATIVE:
 TWO VIEW, CHEST: 6/11/2002
 COMPARISON: 6-11-02
@@ -951,7 +951,7 @@ By: chase, isabella  on: 7/10/2018
  
 ","
 #6111848
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",79.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",79.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64608/study1/view2_lateral.jpg,valid/patient64608/study1/view2_lateral.dcm,Lateral,,patient64608,2,"NARRATIVE:
 TWO VIEW, CHEST: 1-24-2017
 COMPARISON: 1/24/2017
@@ -986,7 +986,7 @@ By: Roy Kyleigh, MD  on: 1/24/2017
  
 ","
 133132390
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",79.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",79.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64611/study1/view1_frontal.jpg,valid/patient64611/study1/view1_frontal.dcm,Frontal,AP,patient64611,1,"NARRATIVE:
 AP VIEW:  1-26-15 AT 2301 HOURS
  COMPARISON:  None.
@@ -1021,7 +1021,7 @@ with the report transcribed above.
  
 ","
 1397014
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",58.0,Female,White,Non-Hispanic/Non-Latino,No,Unknown,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",58.0,Female,White,Non-Hispanic/Non-Latino,No,Unknown,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64620/study1/view1_frontal.jpg,valid/patient64620/study1/view1_frontal.dcm,Frontal,AP,patient64620,3,"NARRATIVE:
 CHEST:
 Single view.
@@ -1068,7 +1068,7 @@ By: Bruce, Titus  on: 1/9/2010
  
 ","
 815013
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",77.0,Female,White,Non-Hispanic/Non-Latino,Unknown,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",77.0,Female,White,Non-Hispanic/Non-Latino,Unknown,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64629/study1/view1_frontal.jpg,valid/patient64629/study1/view1_frontal.dcm,Frontal,AP,patient64629,1,"NARRATIVE:
 LUMBAR SPINE, TWO VIEWS; THORACIC SPINE, TWO VIEWS; SINGLE VIEW
 CHEST: 1/17/2006.
@@ -1113,7 +1113,7 @@ UNREMARKABLE.
  
 ","
 9015892461
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",,Unknown,Unknown,Unknown,Unknown,Unknown,,Unknown,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",,Unknown,Unknown,Unknown,Unknown,Unknown,,Unknown,valid,,,,,,,,,,,,,,1.0
 valid/patient64635/study1/view1_frontal.jpg,valid/patient64635/study1/view1_frontal.dcm,Frontal,AP,patient64635,1,"NARRATIVE:
 SINGLE PORTABLE VIEW OF THE CHEST: 11/8/2018
 COMPARISON: 11/8/18.
@@ -1156,7 +1156,7 @@ By: janelle, fields  on: 11-8-2018
  
 ","
 5165498
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Female,Unknown,Unknown,Unknown,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Female,Unknown,Unknown,Unknown,Medicare,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64639/study1/view1_frontal.jpg,valid/patient64639/study1/view1_frontal.dcm,Frontal,AP,patient64639,9,"NARRATIVE:
 PORTABLE CHEST SINGLE VIEW: 2/18/05
 COMPARISON: 2/18/05.
@@ -1189,7 +1189,7 @@ By: ALAYNA CALDWELL, MD  on: 2005/02/18
  
 ","
 589145
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",74.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",74.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64640/study1/view2_lateral.jpg,valid/patient64640/study1/view2_lateral.dcm,Lateral,,patient64640,12,"NARRATIVE:
 TWO VIEWS OF THE CHEST:  7/8/18 AT 1254 HOURS
 COMPARISON:  18/7/8 at 2320 hours.
@@ -1218,7 +1218,7 @@ with the report transcribed above.
  
 ","
 gs ix bv st
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",85.0,Female,White,Non-Hispanic/Non-Latino,No,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",85.0,Female,White,Non-Hispanic/Non-Latino,No,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64640/study1/view1_frontal.jpg,valid/patient64640/study1/view1_frontal.dcm,Frontal,AP,patient64640,13,"NARRATIVE:
 TWO VIEWS OF THE CHEST:  10-23-2017 AT 1254 HOURS
 COMPARISON:  10-23-2017 at 2320 hours.
@@ -1247,7 +1247,7 @@ with the report transcribed above.
  
 ","
 152
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",85.0,Female,White,Non-Hispanic/Non-Latino,No,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",85.0,Female,White,Non-Hispanic/Non-Latino,No,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64643/study1/view1_frontal.jpg,valid/patient64643/study1/view1_frontal.dcm,Frontal,AP,patient64643,10,"NARRATIVE:
 PORTABLE CHEST, ONE VIEW: 8/2/2012 AT 0500
 CLINICAL DATA: 23-year-old female with liver transplant.
@@ -1282,7 +1282,7 @@ By: Greene, Rose  on: 8/2/2012
  
 ","
 #76296468233
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",23.0,Female,White,Non-Hispanic/Non-Latino,No,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",23.0,Female,White,Non-Hispanic/Non-Latino,No,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64649/study1/view1_frontal.jpg,valid/patient64649/study1/view1_frontal.dcm,Frontal,AP,patient64649,2,"NARRATIVE:
 PORTABLE CHEST 9-6-2014:
 COMPARISON: 9/6/14, 9/6/2014 and 9-6-2014
@@ -1307,7 +1307,7 @@ APPEARANCE WITH NO NEW FOCAL AREAS OF CONSOLIDATION.
  
 ",,"
 #fgu bkc gs
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",56.0,Male,Unknown,Unknown,Unknown,Private Insurance,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",56.0,Male,Unknown,Unknown,Unknown,Private Insurance,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64651/study1/view1_frontal.jpg,valid/patient64651/study1/view1_frontal.dcm,Frontal,AP,patient64651,1,"NARRATIVE:
 COMPARISON: 6-20-2017
 PORTABLE CHEST: 6-20-2017
@@ -1342,7 +1342,7 @@ By: maya zion, sampson.  on: 6/20/2017
  
 ","
 4535695445
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",63.0,Female,White,Non-Hispanic/Non-Latino,Unknown,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",63.0,Female,White,Non-Hispanic/Non-Latino,Unknown,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64653/study1/view1_frontal.jpg,valid/patient64653/study1/view1_frontal.dcm,Frontal,AP,patient64653,7,"NARRATIVE:
 SINGLE PORTABLE SEMI-UPRIGHT VIEW OF THE CHEST: 5/6/2019 AT 0300
 HOURS.
@@ -1377,7 +1377,7 @@ By: Lillyrose, Bridges  on: 5-6-2019
  
 ","
 tmqpmzemtg
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",44.0,Female,Unknown,Unknown,Unknown,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",44.0,Female,Unknown,Unknown,Unknown,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64655/study1/view1_frontal.jpg,valid/patient64655/study1/view1_frontal.dcm,Frontal,AP,patient64655,5,"NARRATIVE:
 PORTABLE CHEST SINGLE VIEW:  9/14/2008
  COMPARISON:  9-14-2008.
@@ -1410,7 +1410,7 @@ with the report transcribed above.
  
 ","
 7889468153
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",46.0,Male,Unknown,Unknown,No,Medicare,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",46.0,Male,Unknown,Unknown,No,Medicare,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64656/study1/view1_frontal.jpg,valid/patient64656/study1/view1_frontal.dcm,Frontal,AP,patient64656,1,"NARRATIVE:
 PORTABLE CHEST: 10/12/20
 CLINICAL DATA: Sepsis. Line placement.
@@ -1445,7 +1445,7 @@ action.
  
 ","
 956081447582
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",80.0,Male,Unknown,Unknown,Unknown,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",80.0,Male,Unknown,Unknown,Unknown,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64665/study1/view1_frontal.jpg,valid/patient64665/study1/view1_frontal.dcm,Frontal,AP,patient64665,1,"NARRATIVE:
 SINGLE VIEW CHEST, 2/4/2004:
 COMPARISON:  2-4-04.
@@ -1480,7 +1480,7 @@ with the report transcribed above.
  
 ","
 216480
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",62.0,Female,Other,Non-Hispanic/Non-Latino,No,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",62.0,Female,Other,Non-Hispanic/Non-Latino,No,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64667/study1/view1_frontal.jpg,valid/patient64667/study1/view1_frontal.dcm,Frontal,AP,patient64667,2,"NARRATIVE:
 PORTABLE CHEST: 11-15-14 AT 8:56 A.M.
 COMPARISON: 11/15/14 at 1423 hours
@@ -1519,7 +1519,7 @@ By: Cordova, Barrett.  on: 11/15/2014
  
 ","
 0-4-2-4-0-3-9-2
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",48.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",48.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64669/study1/view1_frontal.jpg,valid/patient64669/study1/view1_frontal.dcm,Frontal,AP,patient64669,2,"NARRATIVE:
 SINGLE VIEW PORTABLE CHEST: September 21st, 2008 at 0642 hours.
 COMPARISON: One view of the chest, 9/21/2008
@@ -1558,7 +1558,7 @@ By: DR. ZAHLIA YANG      on: September 2008
  
 ","
 #UvSoZezjKBEV
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",55.0,Male,Asian,Non-Hispanic/Non-Latino,Unknown,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",55.0,Male,Asian,Non-Hispanic/Non-Latino,Unknown,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64673/study1/view1_frontal.jpg,valid/patient64673/study1/view1_frontal.dcm,Frontal,AP,patient64673,1,"NARRATIVE:
 PORTABLE CHEST ONE VIEW:
 COMPARISON: 12-22-2000
@@ -1597,7 +1597,7 @@ By: Aaron, Munoz  on: 12/22/2000
  
 ","
 4381602
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",56.0,Male,Unknown,Unknown,Unknown,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",56.0,Male,Unknown,Unknown,Unknown,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64679/study1/view1_frontal.jpg,valid/patient64679/study1/view1_frontal.dcm,Frontal,AP,patient64679,4,"NARRATIVE:
 SINGLE RADIOGRAPH OF THE CHEST: january 22, 2018
 COMPARISON: 1/22/2018.
@@ -1636,7 +1636,7 @@ By: SELAH, MD  on: 1-22-18
  
 ","
 4905774
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",55.0,Female,Black,Non-Hispanic/Non-Latino,No,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",55.0,Female,Black,Non-Hispanic/Non-Latino,No,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64681/study1/view1_frontal.jpg,valid/patient64681/study1/view1_frontal.dcm,Frontal,AP,patient64681,1,"NARRATIVE:
 Addendum Begins
 FINDINGS DISCUSSED WITH THE CLINICAL SERVICE REGARDING THE LOCATION 
@@ -1705,7 +1705,7 @@ Otherwise, there is no change from the prior examination.
  
 ","
 5w154l16j006W
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",85.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",85.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,,Yes,valid,,,1.0,,,,,,,,,,1.0,
 valid/patient64683/study1/view1_frontal.jpg,valid/patient64683/study1/view1_frontal.dcm,Frontal,AP,patient64683,2,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 2003 11th November
  
@@ -1782,7 +1782,7 @@ in the left midlung zone.
  
 ",,,"
 63-3
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",77.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",77.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,,No,valid,,,1.0,,1.0,,,,,1.0,,,,
 valid/patient64685/study1/view1_frontal.jpg,valid/patient64685/study1/view1_frontal.dcm,Frontal,AP,patient64685,1,"NARRATIVE:
 AP UPRIGHT PORTABLE CHEST: 1/30/2002
 CLINICAL DATA: 25-year-old man status post trauma.
@@ -1813,7 +1813,7 @@ By: Johnathan, Berger  on: 01-30-02
  
 ","
 04240392
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",25.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Medicaid,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",25.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Medicaid,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64687/study1/view1_frontal.jpg,valid/patient64687/study1/view1_frontal.dcm,Frontal,AP,patient64687,1,"NARRATIVE:
 COMPARISON:
 3-13-2013
@@ -1854,7 +1854,7 @@ By: Anirah E Roberson, MD  on: 3/13/13
  
 ","
 482465830288
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",59.0,Male,Unknown,Unknown,Unknown,Private Insurance,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",59.0,Male,Unknown,Unknown,Unknown,Private Insurance,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64689/study1/view1_frontal.jpg,valid/patient64689/study1/view1_frontal.dcm,Frontal,AP,patient64689,2,"NARRATIVE:
 FRONTAL VIEW OF THE CHEST:  6-1-2015 at 0403 hours
  
@@ -1905,7 +1905,7 @@ with the report transcribed above.
  
 ","
 551262188961
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",66.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",66.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64692/study1/view1_frontal.jpg,valid/patient64692/study1/view1_frontal.dcm,Frontal,AP,patient64692,2,"NARRATIVE:
 PORTABLE CHEST. 6-25-2000 VASOPREP SURGICAL 0849 HOURS AND 4-17-2004 HOURS:
 CLINICAL HISTORY: 42 year-old male with history of cystic hematoma
@@ -1966,7 +1966,7 @@ By: Dr. Liu Francis  on: 4/17/2004
  
 ","
 #5107346617x
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",42.0,Male,Other,Hispanic/Latino,Unknown,Medicaid,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",42.0,Male,Other,Hispanic/Latino,Unknown,Medicaid,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64695/study1/view1_frontal.jpg,valid/patient64695/study1/view1_frontal.dcm,Frontal,AP,patient64695,1,"NARRATIVE:
 ONE VIEW CHEST:  7/31/2014
  
@@ -2013,7 +2013,7 @@ with the report transcribed above.
  
 ","
 XJQ-AWC-QZZ-GL
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",63.0,Male,Other,Hispanic/Latino,Yes,Medicaid,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",63.0,Male,Other,Hispanic/Latino,Yes,Medicaid,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64698/study1/view1_frontal.jpg,valid/patient64698/study1/view1_frontal.dcm,Frontal,AP,patient64698,1,"NARRATIVE:
 PORTABLE CHEST AP VIEW
 COMPARISON:
@@ -2062,7 +2062,7 @@ By: Dr. Reid Jude  on: 2-8-2017
  
 ","
 #mwa  umh so
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",35.0,Male,Unknown,Unknown,Unknown,Private Insurance,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",35.0,Male,Unknown,Unknown,Unknown,Private Insurance,,No,valid,1.0,,1.0,,1.0,,,,,,,,,
 valid/patient64701/study1/view1_frontal.jpg,valid/patient64701/study1/view1_frontal.dcm,Frontal,AP,patient64701,1,"NARRATIVE:
 SINGLE VIEW CHEST, 12/12:
 CLINICAL HISTORY:
@@ -2111,7 +2111,7 @@ By: Willa, Scott  on: 12/12/11
  
 ","
 9T87121
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",51.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",51.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64702/study1/view1_frontal.jpg,valid/patient64702/study1/view1_frontal.dcm,Frontal,AP,patient64702,1,"NARRATIVE:
 SINGLE AP PORTABLE VIEW OF THE CHEST: MARCH 2020.
 COMPARISON: 3-28-2020.
@@ -2150,7 +2150,7 @@ By: MD Leah Mccormick.  on: 3-28
  
 ","
 372718991
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",87.0,Female,Black,Non-Hispanic/Non-Latino,Unknown,Medicare,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",87.0,Female,Black,Non-Hispanic/Non-Latino,Unknown,Medicare,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64705/study1/view1_frontal.jpg,valid/patient64705/study1/view1_frontal.dcm,Frontal,AP,patient64705,2,"NARRATIVE:
 CHEST, FRONTAL AND LATERAL VIEW: 11/18/2002 AT 1625 HOURS
 COMPARISON: 11-18-2002.
@@ -2187,7 +2187,7 @@ By: Rice, Rosemary  on: 11/18/2002
  
 ","
 76907973
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Female,Unknown,Unknown,No,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Female,Unknown,Unknown,No,Medicare,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64705/study1/view2_lateral.jpg,valid/patient64705/study1/view2_lateral.dcm,Lateral,,patient64705,1,"NARRATIVE:
 CHEST, FRONTAL AND LATERAL VIEW: 12-17-2010 AT 1625 HOURS
 COMPARISON: 12/17/2010.
@@ -2224,7 +2224,7 @@ By: glenn desmond akira, md  on: 12/17/10
  
 ","
 5851643010
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Female,Unknown,Unknown,No,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Female,Unknown,Unknown,No,Medicare,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64707/study1/view1_frontal.jpg,valid/patient64707/study1/view1_frontal.dcm,Frontal,AP,patient64707,1,"NARRATIVE:
 AP PORTABLE CHEST RADIOGRAPH: 3/30/2013.
 COMPARISON:
@@ -2265,7 +2265,7 @@ By: Yeckley, Johnny  on: 3-30-2013
  
 ","
 237025
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",47.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Private Insurance,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",47.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Private Insurance,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64708/study1/view1_frontal.jpg,valid/patient64708/study1/view1_frontal.dcm,Frontal,AP,patient64708,2,"NARRATIVE:
 SINGLE VIEW PORTABLE CHEST: 6/5/2017 AT 0945 HOURS.
 COMPARISON: 2017 June 5.
@@ -2286,7 +2286,7 @@ NO INTERVAL CHANGE. NO EVIDENCE OF PNEUMONIA.
  
 ","
 377503309025
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,Asian,Non-Hispanic/Non-Latino,Yes,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,Asian,Non-Hispanic/Non-Latino,Yes,Medicare,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64710/study1/view1_frontal.jpg,valid/patient64710/study1/view1_frontal.dcm,Frontal,AP,patient64710,1,"NARRATIVE:
 SINGLE VIEW CHEST:  4-9-2017 AT 1102 HOURS
 CLINICAL HISTORY: This is a 58-year old male with alcoholic
@@ -2319,7 +2319,7 @@ By: Journee Monroe  on: 4/9/2017
  
 ","
 179
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",58.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",58.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64712/study1/view1_frontal.jpg,valid/patient64712/study1/view1_frontal.dcm,Frontal,AP,patient64712,1,"NARRATIVE:
 CHEST PORTABLE:
 COMPARISON: 8/4/12
@@ -2348,7 +2348,7 @@ Addended to edit PBC.
  
 ",,"
 292760
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",75.0,Female,Unknown,Unknown,Unknown,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",75.0,Female,Unknown,Unknown,Unknown,Medicare,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64714/study1/view1_frontal.jpg,valid/patient64714/study1/view1_frontal.dcm,Frontal,AP,patient64714,1,"NARRATIVE:
 CHEST SINGLE VIEW: 09/18/17
 COMPARISON: 9/18/2017
@@ -2377,7 +2377,7 @@ PULMONARY EDEMA/FLUID OVERLOAD.
  
 ","
 6184498
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",63.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Private Insurance,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",63.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Private Insurance,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64722/study1/view1_frontal.jpg,valid/patient64722/study1/view1_frontal.dcm,Frontal,AP,patient64722,1,"NARRATIVE:
 PORTABLE CHEST, SINGLE VIEW: 11/14/2011 VASOPREP SURGICAL 18:20 HOURS.
 COMPARISON:
@@ -2416,7 +2416,7 @@ ACTION.
  
 ","
 6184498
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",81.0,Female,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",81.0,Female,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64723/study1/view1_frontal.jpg,valid/patient64723/study1/view1_frontal.dcm,Frontal,AP,patient64723,5,"NARRATIVE:
 CHEST SINGLE VIEW PORTABLE: 1/12/2018.
 CLINICAL DATA: Chest pain, rule out infiltrate.
@@ -2459,7 +2459,7 @@ By: Kash Tiffany, MD  on: 1-12-2018
  
 ",,"
 #54338679061362
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",76.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",76.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,No,valid,0.0,,,,1.0,0.0,,,,0.0,,,1.0,
 valid/patient64724/study1/view1_frontal.jpg,valid/patient64724/study1/view1_frontal.dcm,Frontal,AP,patient64724,2,"NARRATIVE:
 CHEST: One view 10/11/2016
 CLINICAL HISTORY: 54 -year-old woman with aplastic anemia,
@@ -2498,7 +2498,7 @@ By: josue, moore  on: 10-11-2016
  
 ","
 05
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",54.0,Female,Other,Hispanic/Latino,Unknown,Medicaid,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",54.0,Female,Other,Hispanic/Latino,Unknown,Medicaid,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64725/study1/view1_frontal.jpg,valid/patient64725/study1/view1_frontal.dcm,Frontal,AP,patient64725,1,"NARRATIVE:
 SINGLE VIEW OF THE CHEST, 1-25-2003
 COMPARISON:
@@ -2547,7 +2547,7 @@ By: AVERY, JOYCE  on: 1/25/2003
  
 ","
 #8-3-1-3-0-1-0
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",75.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",75.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Medicare,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64726/study1/view1_frontal.jpg,valid/patient64726/study1/view1_frontal.dcm,Frontal,AP,patient64726,2,"NARRATIVE:
 CHEST, 1/7/2007
 COMPARISON: 1/7/2007.
@@ -2580,7 +2580,7 @@ By: Bullock, Jeremiah.  on: 2007-01-07
  
 ","
 5851643010
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",60.0,Male,Unknown,Unknown,No,Unknown,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",60.0,Male,Unknown,Unknown,No,Unknown,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64727/study1/view1_frontal.jpg,valid/patient64727/study1/view1_frontal.dcm,Frontal,AP,patient64727,1,"NARRATIVE:
 PORTABLE CHEST: 2006 JANUARY
 COMPARISON: 1-13-06 at 0604 hours.
@@ -2611,7 +2611,7 @@ CONFLUENCE OF VASCULAR SHADOWS.
  
 ","
 011-933-690-13
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",59.0,Female,Unknown,Unknown,Unknown,Private Insurance,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",59.0,Female,Unknown,Unknown,Unknown,Private Insurance,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64731/study1/view1_frontal.jpg,valid/patient64731/study1/view1_frontal.dcm,Frontal,AP,patient64731,1,"NARRATIVE:
 CHEST: 10/21/2021
 COMPARISON: 10-21-2021
@@ -2656,7 +2656,7 @@ By: KYRA, COWAN  on: 10-2021
  
 ","
 2269296527
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",60.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Private Insurance,,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",60.0,Male,White,Non-Hispanic/Non-Latino,Unknown,Private Insurance,,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64737/study1/view1_frontal.jpg,valid/patient64737/study1/view1_frontal.dcm,Frontal,AP,patient64737,1,"NARRATIVE:
 PORTABLE CHEST RADIOGRAPH 1 VIEW: 2/1/2021 at 0630 hours
 CLINICAL HISTORY: A 65 year old male who presents with chest
@@ -2697,7 +2697,7 @@ with the report transcribed above.
  
 ","
 27653401885
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",,Unknown,Unknown,Unknown,Unknown,Unknown,,Unknown,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",,Unknown,Unknown,Unknown,Unknown,Unknown,,Unknown,valid,,,,,,,,,,,,,,1.0
 valid/patient64740/study1/view1_frontal.jpg,valid/patient64740/study1/view1_frontal.dcm,Frontal,AP,patient64740,1,"NARRATIVE:
  SINGLE VIEW OF CHEST:  7/9/2017
  COMPARISON:  7/9/2017
@@ -2734,7 +2734,7 @@ with the report transcribed above.
  
 ","
 0127547
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,White,Non-Hispanic/Non-Latino,No,Unknown,,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,White,Non-Hispanic/Non-Latino,No,Unknown,,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64543/study1/view1_frontal.jpg,valid/patient64543/study1/view1_frontal.dcm,Frontal,AP,patient64543,1,"NARRATIVE:
 SINGLE VIEW OF THE CHEST: 12-6-2001.
  
@@ -2779,7 +2779,7 @@ with the report transcribed above.
  
 ","
 6340977630
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",85.0,Male,Asian,Non-Hispanic/Non-Latino,No,Medicare,8.7,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",85.0,Male,Asian,Non-Hispanic/Non-Latino,No,Medicare,8.7,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64644/study1/view1_frontal.jpg,valid/patient64644/study1/view1_frontal.dcm,Frontal,AP,patient64644,3,"NARRATIVE:
 Chest 1 View, 3/15/2016
  
@@ -2820,7 +2820,7 @@ with the report transcribed above.
  
 ","
 22084577
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",81.0,Female,Asian,Non-Hispanic/Non-Latino,Yes,Unknown,14.1,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",81.0,Female,Asian,Non-Hispanic/Non-Latino,Yes,Unknown,14.1,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64570/study1/view2_lateral.jpg,valid/patient64570/study1/view2_lateral.dcm,Lateral,,patient64570,3,"NARRATIVE:
 TWO VIEW CHEST:  11/6/2010
 CLINICAL DATA:  26-year-old female status-post left lung transplant.
@@ -2859,7 +2859,7 @@ with the report transcribed above.
  
 ","
 007421451852
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",24.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,14.2,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",24.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,14.2,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64570/study1/view1_frontal.jpg,valid/patient64570/study1/view1_frontal.dcm,Frontal,PA,patient64570,4,"NARRATIVE:
 TWO VIEW CHEST:  09/24/2007
 CLINICAL DATA:  26-year-old female status-post left lung transplant.
@@ -2898,7 +2898,7 @@ with the report transcribed above.
  
 ","
 #5590
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",24.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,14.2,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",24.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,14.2,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64704/study1/view1_frontal.jpg,valid/patient64704/study1/view1_frontal.dcm,Frontal,AP,patient64704,2,"NARRATIVE:
 EXAM: Chest 1 View, 5/17/2017 .
  
@@ -2957,7 +2957,7 @@ ABDOMEN COMPATIBLE WITH LARGE VOLUME PNEUMOPERITONEUM.
  
 ","
 98862
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",77.0,Female,Asian,Non-Hispanic/Non-Latino,No,Medicare,14.4,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",77.0,Female,Asian,Non-Hispanic/Non-Latino,No,Medicare,14.4,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64713/study1/view1_frontal.jpg,valid/patient64713/study1/view1_frontal.dcm,Frontal,AP,patient64713,1,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 2014/11
  
@@ -3012,7 +3012,7 @@ with the report transcribed above.
  
 ",,,"
 728884030
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",76.0,Female,Other,Hispanic/Latino,Yes,Medicare,18.0,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",76.0,Female,Other,Hispanic/Latino,Yes,Medicare,18.0,Yes,valid,0.0,,,,0.0,,,,0.0,0.0,,,1.0,1.0
 valid/patient64584/study1/view2_lateral.jpg,valid/patient64584/study1/view2_lateral.dcm,Lateral,,patient64584,1,"NARRATIVE:
 PA AND LATERAL CHEST: 5-26-07
 CLINICAL HISTORY: Chronic kidney disease.
@@ -3041,7 +3041,7 @@ SEEN.
  
 ","
 65200430
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",54.0,Male,Asian,Non-Hispanic/Non-Latino,No,Medicare,18.4,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",54.0,Male,Asian,Non-Hispanic/Non-Latino,No,Medicare,18.4,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64584/study1/view1_frontal.jpg,valid/patient64584/study1/view1_frontal.dcm,Frontal,PA,patient64584,2,"NARRATIVE:
 PA AND LATERAL CHEST: 12/1/04
 CLINICAL HISTORY: Chronic kidney disease.
@@ -3070,7 +3070,7 @@ SEEN.
  
 ","
 hw00ckx609443
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",54.0,Male,Asian,Non-Hispanic/Non-Latino,No,Medicare,18.4,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",54.0,Male,Asian,Non-Hispanic/Non-Latino,No,Medicare,18.4,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64642/study1/view1_frontal.jpg,valid/patient64642/study1/view1_frontal.dcm,Frontal,AP,patient64642,2,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST POST NEEDLE BIOPSY: 10-3-2014
  
@@ -3137,7 +3137,7 @@ with the report transcribed above.
  
 ",,,"
 990492789
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",67.0,Female,Asian,Non-Hispanic/Non-Latino,Yes,Medicare,18.4,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",67.0,Female,Asian,Non-Hispanic/Non-Latino,Yes,Medicare,18.4,Yes,valid,,1.0,1.0,,,,,,0.0,1.0,,,1.0,
 valid/patient64575/study1/view2_lateral.jpg,valid/patient64575/study1/view2_lateral.dcm,Lateral,,patient64575,2,"NARRATIVE:
 EXAM: Chest 2 Views 11/7/200
  
@@ -3226,7 +3226,7 @@ LEFT PLEURAL EFFUSION OR THICKENING.
  
 ","
 7122T22P2V
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",80.0,Male,Asian,Non-Hispanic/Non-Latino,Yes,Medicaid,19.5,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",80.0,Male,Asian,Non-Hispanic/Non-Latino,Yes,Medicaid,19.5,No,valid,0.0,,,1.0,0.0,0.0,,,,,1.0,,,
 valid/patient64575/study1/view1_frontal.jpg,valid/patient64575/study1/view1_frontal.dcm,Frontal,PA,patient64575,1,"NARRATIVE:
 EXAM: Chest 2 Views 6/4/2001
  
@@ -3315,7 +3315,7 @@ LEFT PLEURAL EFFUSION OR THICKENING.
  
 ","
 EUFLIUS
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",80.0,Male,Asian,Non-Hispanic/Non-Latino,Yes,Medicaid,19.5,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",80.0,Male,Asian,Non-Hispanic/Non-Latino,Yes,Medicaid,19.5,No,valid,0.0,,,1.0,0.0,0.0,,,,,1.0,,,
 valid/patient64624/study1/view1_frontal.jpg,valid/patient64624/study1/view1_frontal.dcm,Frontal,AP,patient64624,1,"NARRATIVE:
 CHEST, ONE VIEW:  4-13-2016.
  
@@ -3372,7 +3372,7 @@ with the report transcribed above.
  
 ","
 768412q81363p
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",37.0,Female,Asian,Patient Refused,No,Unknown,19.7,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",37.0,Female,Asian,Patient Refused,No,Unknown,19.7,No,valid,,1.0,1.0,,,,,,,,,,,
 valid/patient64676/study1/view1_frontal.jpg,valid/patient64676/study1/view1_frontal.dcm,Frontal,AP,patient64676,2,"NARRATIVE:
 EXAM: Chest 2 Views, 7-2-12
  
@@ -3419,7 +3419,7 @@ with the report transcribed above.
  
 ","
 1Hww
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",88.0,Female,White,Non-Hispanic/Non-Latino,Yes,Medicare,20.2,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",88.0,Female,White,Non-Hispanic/Non-Latino,Yes,Medicare,20.2,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64676/study1/view2_lateral.jpg,valid/patient64676/study1/view2_lateral.dcm,Lateral,,patient64676,1,"NARRATIVE:
 EXAM: Chest 2 Views, 5-3-2016
  
@@ -3466,7 +3466,7 @@ with the report transcribed above.
  
 ","
 0-F-7-7-O-J-4-S-N-4-D-7
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",88.0,Female,White,Non-Hispanic/Non-Latino,Yes,Medicare,20.2,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",88.0,Female,White,Non-Hispanic/Non-Latino,Yes,Medicare,20.2,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64709/study1/view1_frontal.jpg,valid/patient64709/study1/view1_frontal.dcm,Frontal,AP,patient64709,4,"NARRATIVE:
 Exam: Chest 1 View, 7/22/2010
  
@@ -3515,7 +3515,7 @@ with the report transcribed above.
  
 ","
 56-22-32-46
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",65.0,Female,Asian,Non-Hispanic/Non-Latino,No,Medicare,20.2,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",65.0,Female,Asian,Non-Hispanic/Non-Latino,No,Medicare,20.2,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64717/study1/view1_frontal.jpg,valid/patient64717/study1/view1_frontal.dcm,Frontal,AP,patient64717,1,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE ABDOMEN: 1/22/2002, 11:43 PM; 
 1/22/2002
@@ -3614,7 +3614,7 @@ lobe is better seen on CT.
  
 ",,,"
 474759276
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,20.2,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,20.2,No,valid,,1.0,,,1.0,,,,,1.0,,,1.0,
 valid/patient64719/study1/view1_frontal.jpg,valid/patient64719/study1/view1_frontal.dcm,Frontal,AP,patient64719,1,"NARRATIVE:
 EXAM: Chest 1 View, 12 24 OCTOBER
  
@@ -3683,7 +3683,7 @@ with the report transcribed above.
  
 ","
 2 F F
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",68.0,Male,Pacific Islander,Non-Hispanic/Non-Latino,Yes,Medicare,20.2,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",68.0,Male,Pacific Islander,Non-Hispanic/Non-Latino,Yes,Medicare,20.2,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64721/study1/view1_frontal.jpg,valid/patient64721/study1/view1_frontal.dcm,Frontal,AP,patient64721,1,"NARRATIVE:
 EXAM: Chest 1 View 9-2-18
  
@@ -3734,7 +3734,7 @@ with the report transcribed above.
  
 ","
 466481479
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",67.0,Male,Asian,Non-Hispanic/Non-Latino,No,Medicare,20.2,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",67.0,Male,Asian,Non-Hispanic/Non-Latino,No,Medicare,20.2,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64677/study1/view1_frontal.jpg,valid/patient64677/study1/view1_frontal.dcm,Frontal,AP,patient64677,1,"NARRATIVE:
 SINGLE-VIEW CHEST: 9/27/2021 at 21:00.
 COMPARISON: No priors.
@@ -3775,7 +3775,7 @@ By: Nancarrow, Mario  on: 9-27-21
  
 ","
 877904536
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",64.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,20.6,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",64.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,20.6,No,valid,0.0,,,,,,,1.0,,,,,1.0,
 valid/patient64609/study1/view1_frontal.jpg,valid/patient64609/study1/view1_frontal.dcm,Frontal,AP,patient64609,2,"NARRATIVE:
 Chest 1 View 5/5/15 
  
@@ -3824,7 +3824,7 @@ with the report transcribed above.
  
 ","
 69136508
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,20.7,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,20.7,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64715/study1/view1_frontal.jpg,valid/patient64715/study1/view1_frontal.dcm,Frontal,AP,patient64715,4,"NARRATIVE:
 PORTABLE CHEST, SINGLE VIEW: 2-1-21
 COMPARISON: 2-1-2021.
@@ -3861,7 +3861,7 @@ By: BRYNLEI MD  on: 2-1-2021
  
 ","
 0-6-5-6-4-0-9-2-0-8
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",81.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,20.7,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",81.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,20.7,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64619/study1/view1_frontal.jpg,valid/patient64619/study1/view1_frontal.dcm,Frontal,PA,patient64619,1,"NARRATIVE:
 Exam: Chest 1 View, 4-22-2004
  
@@ -3900,7 +3900,7 @@ Exam: Chest 1 View, 4-22-2004
  
 ","
 1158166625
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",83.0,Female,Asian,Non-Hispanic/Non-Latino,No,Medicare,20.8,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",83.0,Female,Asian,Non-Hispanic/Non-Latino,No,Medicare,20.8,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64680/study1/view1_frontal.jpg,valid/patient64680/study1/view1_frontal.dcm,Frontal,AP,patient64680,2,"NARRATIVE:
 AP PORTABLE CHEST, 11/16/2008 AT 1121 HOURS:
 COMPARISON: Comparison is made with AP portable chest x-rays
@@ -3939,7 +3939,7 @@ By: Angelo, Sharp  on: 11/16/2008
  
 ","
 7567752
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",19.0,Male,Black,Non-Hispanic/Non-Latino,No,Medicaid,21.1,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",19.0,Male,Black,Non-Hispanic/Non-Latino,No,Medicaid,21.1,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64735/study1/view1_frontal.jpg,valid/patient64735/study1/view1_frontal.dcm,Frontal,AP,patient64735,1,"NARRATIVE:
 AP PORTABLE SEMIUPRIGHT CHEST:  6/22/2009 at 0845 hours.  
  
@@ -3980,7 +3980,7 @@ EVIDENT.
  
 ","
 29631992
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",63.0,Female,White,Non-Hispanic/Non-Latino,No,Other,21.2,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",63.0,Female,White,Non-Hispanic/Non-Latino,No,Other,21.2,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64682/study1/view1_frontal.jpg,valid/patient64682/study1/view1_frontal.dcm,Frontal,AP,patient64682,1,"NARRATIVE:
 Chest 1 View 12/14/2008
  
@@ -4033,7 +4033,7 @@ THESE ARE UNCHANGED DESPITE EXTUBATION.
  
 ","
 QSFKZINe
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",62.0,Male,Asian,Non-Hispanic/Non-Latino,No,Unknown,21.5,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",62.0,Male,Asian,Non-Hispanic/Non-Latino,No,Unknown,21.5,Yes,valid,,,,,,,,1.0,,1.0,,,0.0,
 valid/patient64579/study1/view1_frontal.jpg,valid/patient64579/study1/view1_frontal.dcm,Frontal,AP,patient64579,1,"NARRATIVE:
 Chest 1 View 6/3/2017
  
@@ -4078,7 +4078,7 @@ with the report transcribed above.
  
 ","
 71-38-83-7
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",66.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,22.1,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",66.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,22.1,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64633/study1/view1_frontal.jpg,valid/patient64633/study1/view1_frontal.dcm,Frontal,AP,patient64633,4,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 12-24-01
  
@@ -4135,7 +4135,7 @@ bibasilar opacities compatible with consolidation and/or atelectasis.
  
 ",,,"
 7314536
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",61.0,Female,Asian,Non-Hispanic/Non-Latino,No,Private Insurance,22.3,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",61.0,Female,Asian,Non-Hispanic/Non-Latino,No,Private Insurance,22.3,Yes,valid,,1.0,1.0,,,,,,,,,,1.0,
 valid/patient64650/study1/view1_frontal.jpg,valid/patient64650/study1/view1_frontal.dcm,Frontal,AP,patient64650,1,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 11/7/13
 CLINICAL HISTORY: 85 years of age, Female, history of palpitation.
@@ -4170,7 +4170,7 @@ Signed
  
 ",,,"
 17567
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",86.0,Female,Other,Non-Hispanic/Non-Latino,No,Medicare,22.4,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",86.0,Female,Other,Non-Hispanic/Non-Latino,No,Medicare,22.4,Yes,valid,,1.0,1.0,,1.0,,,,0.0,1.0,,,,
 valid/patient64562/study1/view1_frontal.jpg,valid/patient64562/study1/view1_frontal.dcm,Frontal,AP,patient64562,1,"NARRATIVE:
 Exam: Chest 1 View, 2010/2/17
  
@@ -4213,7 +4213,7 @@ SILHOUETTE IS WITHIN NORMAL LIMITS.
  
 ","
 0431065921
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",25.0,Male,White,Non-Hispanic/Non-Latino,No,Medicaid,22.5,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",25.0,Male,White,Non-Hispanic/Non-Latino,No,Medicaid,22.5,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64728/study1/view1_frontal.jpg,valid/patient64728/study1/view1_frontal.dcm,Frontal,AP,patient64728,1,"NARRATIVE:
 Chest 1 View 2-6-2011
  
@@ -4258,7 +4258,7 @@ VISUALIZED PORTION OF THE EXAMINATION.  NO PNEUMOTHORAX.
  
 ","
 937
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",76.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,22.5,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",76.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,22.5,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64631/study1/view1_frontal.jpg,valid/patient64631/study1/view1_frontal.dcm,Frontal,AP,patient64631,2,"NARRATIVE:
 CHEST ONE VIEW: 11/24/2009
 CLINICAL HISTORY: An 83-year-old woman with rapid atrial
@@ -4303,7 +4303,7 @@ By: Wilkinson Tava MD  on: 11-24-2009
  
 ",,"
 X3XW-HU89-PHT
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",84.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,22.7,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",84.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,22.7,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64597/study1/view2_lateral.jpg,valid/patient64597/study1/view2_lateral.dcm,Lateral,,patient64597,2,"NARRATIVE:
 CHEST TWO VIEW:  2000 30TH JUNE.
  
@@ -4348,7 +4348,7 @@ NO FOCAL PULMONARY OPACITIES ARE SEEN.  PLEURAL EFFUSIONS ARE ABSENT.
  
 ","
 #7266310295
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",47.0,Female,Other,Hispanic/Latino,No,Medicaid,22.9,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",47.0,Female,Other,Hispanic/Latino,No,Medicaid,22.9,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64597/study1/view1_frontal.jpg,valid/patient64597/study1/view1_frontal.dcm,Frontal,PA,patient64597,1,"NARRATIVE:
 CHEST TWO VIEW:  11-27-2014.
  
@@ -4393,7 +4393,7 @@ NO FOCAL PULMONARY OPACITIES ARE SEEN.  PLEURAL EFFUSIONS ARE ABSENT.
  
 ","
 588555090
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",47.0,Female,Other,Hispanic/Latino,No,Medicaid,22.9,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",47.0,Female,Other,Hispanic/Latino,No,Medicaid,22.9,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64547/study1/view3_lateral.jpg,valid/patient64547/study1/view3_lateral.dcm,Lateral,,patient64547,2,"NARRATIVE:
 Exam: Chest 2 Views, 3-26-2010
  
@@ -4460,7 +4460,7 @@ APPEAR UNREMARKABLE.
  
 ","
 #MPTTMX
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",61.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,23.0,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",61.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,23.0,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64547/study1/view2_frontal.jpg,valid/patient64547/study1/view2_frontal.dcm,Frontal,PA,patient64547,1,"NARRATIVE:
 Exam: Chest 2 Views, 1-28-2016
  
@@ -4527,7 +4527,7 @@ APPEAR UNREMARKABLE.
  
 ","
 5381
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",61.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,23.0,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",61.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,23.0,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64547/study1/view1_frontal.jpg,valid/patient64547/study1/view1_frontal.dcm,Frontal,PA,patient64547,3,"NARRATIVE:
 Exam: Chest 2 Views, 2018-11
  
@@ -4594,7 +4594,7 @@ APPEAR UNREMARKABLE.
  
 ","
 #418208591
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",61.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,23.0,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",61.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,23.0,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64736/study1/view1_frontal.jpg,valid/patient64736/study1/view1_frontal.dcm,Frontal,AP,patient64736,1,"NARRATIVE:
 Chest 1 View: 9/6/2003
  
@@ -4647,7 +4647,7 @@ with the report transcribed above.
  
 ","
 41241460
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",57.0,Female,Other,Hispanic/Latino,No,Medicare,23.0,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",57.0,Female,Other,Hispanic/Latino,No,Medicare,23.0,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64581/study1/view2_frontal.jpg,valid/patient64581/study1/view2_frontal.dcm,Frontal,PA,patient64581,3,"NARRATIVE:
 COMPARISON:  AP portable chest dated 12-17-2003
  
@@ -4678,7 +4678,7 @@ REQUEST.
  
 ","
 PBt
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",80.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,23.1,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",80.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,23.1,No,valid,,1.0,,,,,,,,,,,,
 valid/patient64581/study1/view3_lateral.jpg,valid/patient64581/study1/view3_lateral.dcm,Lateral,,patient64581,2,"NARRATIVE:
 COMPARISON:  AP portable chest dated 12/21/2006
  
@@ -4709,7 +4709,7 @@ REQUEST.
  
 ","
 200076001758
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",80.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,23.1,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",80.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,23.1,No,valid,,1.0,,,,,,,,,,,,
 valid/patient64581/study1/view1_frontal.jpg,valid/patient64581/study1/view1_frontal.dcm,Frontal,PA,patient64581,1,"NARRATIVE:
 COMPARISON:  AP portable chest dated august 31st 2007
  
@@ -4740,7 +4740,7 @@ REQUEST.
  
 ","
 02137277
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",80.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,23.1,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",80.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,23.1,No,valid,,1.0,,,,,,,,,,,,
 valid/patient64630/study1/view1_frontal.jpg,valid/patient64630/study1/view1_frontal.dcm,Frontal,AP,patient64630,18,"NARRATIVE:
 PORTABLE CHEST SINGLE VIEW:  3-31-18  1725 hours  
 COMPARISON:  3-31-2018  
@@ -4777,7 +4777,7 @@ with the report transcribed above.
  
 ","
 #116918
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",60.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,23.1,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",60.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,23.1,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64691/study1/view1_frontal.jpg,valid/patient64691/study1/view1_frontal.dcm,Frontal,AP,patient64691,2,"NARRATIVE:
 Chest 1 View: 7/26/01
  
@@ -4826,7 +4826,7 @@ with the report transcribed above.
  
 ","
 6184498
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,23.2,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,23.2,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64591/study1/view1_frontal.jpg,valid/patient64591/study1/view1_frontal.dcm,Frontal,AP,patient64591,1,"NARRATIVE:
 EXAM: Chest 1 View 10-30-15
  
@@ -4875,7 +4875,7 @@ with the report transcribed above.
  
 ","
 EA.A9.1
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",23.0,Female,Other,Hispanic/Latino,No,Private Insurance,23.3,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",23.0,Female,Other,Hispanic/Latino,No,Private Insurance,23.3,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64627/study1/view1_frontal.jpg,valid/patient64627/study1/view1_frontal.dcm,Frontal,AP,patient64627,1,"NARRATIVE:
 Chest 1 View: 10/13/2006
  
@@ -4922,7 +4922,7 @@ with the report transcribed above.
  
 ","
 577-933-584-74
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",29.0,Female,Asian,Non-Hispanic/Non-Latino,No,Private Insurance,23.5,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",29.0,Female,Asian,Non-Hispanic/Non-Latino,No,Private Insurance,23.5,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64636/study1/view1_frontal.jpg,valid/patient64636/study1/view1_frontal.dcm,Frontal,AP,patient64636,5,"NARRATIVE:
 EXAM: Chest 1 View, february 4, 2003
  
@@ -4979,7 +4979,7 @@ with the report transcribed above.
  
 ","
 21615021279
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,23.5,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,23.5,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64711/study1/view1_frontal.jpg,valid/patient64711/study1/view1_frontal.dcm,Frontal,AP,patient64711,1,"NARRATIVE:
 EXAMINATION: PORTABLE Chest 1 View 10-26-2018 and 8:48 AM
  
@@ -5044,7 +5044,7 @@ with the report transcribed above.
  
 ","
 ZTPUNQZOQEIEH
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",80.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,23.5,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",80.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,23.5,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64567/study1/view2_lateral.jpg,valid/patient64567/study1/view2_lateral.dcm,Lateral,,patient64567,3,"NARRATIVE:
 TWO VIEW CHEST:  2/10/2020 AT 1040 HOURS
  
@@ -5103,7 +5103,7 @@ LIMITS.  NO ACUTE OSSEOUS ABNORMALITIES ARE IDENTIFIED.
  
 ","
 2940839494
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",57.0,Male,Unknown,Unknown,No,Unknown,23.6,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",57.0,Male,Unknown,Unknown,No,Unknown,23.6,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64567/study1/view1_frontal.jpg,valid/patient64567/study1/view1_frontal.dcm,Frontal,PA,patient64567,4,"NARRATIVE:
 TWO VIEW CHEST:  7-25-2010 AT 1040 HOURS
  
@@ -5162,7 +5162,7 @@ LIMITS.  NO ACUTE OSSEOUS ABNORMALITIES ARE IDENTIFIED.
  
 ","
 tdlywkxp
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",57.0,Male,Unknown,Unknown,No,Unknown,23.6,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",57.0,Male,Unknown,Unknown,No,Unknown,23.6,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64600/study1/view2_lateral.jpg,valid/patient64600/study1/view2_lateral.dcm,Lateral,,patient64600,2,"NARRATIVE:
 CLINICAL HISTORY: 61-year-old male with shortness of breath and
 possible pneumonia.
@@ -5205,7 +5205,7 @@ By: Journey Arellano, APNP  on: 6/21/2013
  
 ","
 3784739
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",62.0,Male,Black,Non-Hispanic/Non-Latino,No,Other,24.0,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",62.0,Male,Black,Non-Hispanic/Non-Latino,No,Other,24.0,No,valid,0.0,0.0,,,,,,,,0.0,,,1.0,
 valid/patient64600/study1/view1_frontal.jpg,valid/patient64600/study1/view1_frontal.dcm,Frontal,PA,patient64600,1,"NARRATIVE:
 CLINICAL HISTORY: 61-year-old male with shortness of breath and
 possible pneumonia.
@@ -5248,7 +5248,7 @@ By: mcgrath kyler l, md  on: 1/13/2011
  
 ","
 7697751479
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",62.0,Male,Black,Non-Hispanic/Non-Latino,No,Other,24.0,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",62.0,Male,Black,Non-Hispanic/Non-Latino,No,Other,24.0,No,valid,0.0,0.0,,,,,,,,0.0,,,1.0,
 valid/patient64694/study1/view1_frontal.jpg,valid/patient64694/study1/view1_frontal.dcm,Frontal,AP,patient64694,1,"NARRATIVE:
 EXAM: Chest 1 View, 7/9/2011.
  
@@ -5291,7 +5291,7 @@ with the report transcribed above.
  
 ","
 pnrlfbj
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",79.0,Female,Asian,Non-Hispanic/Non-Latino,Yes,Medicare,24.0,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",79.0,Female,Asian,Non-Hispanic/Non-Latino,Yes,Medicare,24.0,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64544/study1/view1_frontal.jpg,valid/patient64544/study1/view1_frontal.dcm,Frontal,AP,patient64544,1,"NARRATIVE:
 Single view of the CHEST: 11-13-2016 at 1827
  
@@ -5342,7 +5342,7 @@ with the report transcribed above.
  
 ","
 242553422
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",42.0,Female,Other,Hispanic/Latino,Yes,Unknown,24.2,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",42.0,Female,Other,Hispanic/Latino,Yes,Unknown,24.2,No,valid,0.0,,1.0,,,,,,,,,0.0,,
 valid/patient64637/study1/view1_frontal.jpg,valid/patient64637/study1/view1_frontal.dcm,Frontal,AP,patient64637,1,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 7/5/2014
  
@@ -5401,7 +5401,7 @@ with the report transcribed above.
  
 ",,,"
 #0358559753
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",60.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,24.2,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",60.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,24.2,No,valid,,0.0,,1.0,,,,,0.0,0.0,,,1.0,
 valid/patient64700/study1/view1_frontal.jpg,valid/patient64700/study1/view1_frontal.dcm,Frontal,AP,patient64700,1,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 11-30-2000
  
@@ -5472,7 +5472,7 @@ with the report transcribed above.
  
 ",,,"
 4-6-1-9-3-8-8-3-9-2
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",79.0,Male,White,Non-Hispanic/Non-Latino,No,Unknown,24.3,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",79.0,Male,White,Non-Hispanic/Non-Latino,No,Unknown,24.3,Yes,valid,,1.0,1.0,,,,,,0.0,0.0,,,1.0,
 valid/patient64625/study1/view1_frontal.jpg,valid/patient64625/study1/view1_frontal.dcm,Frontal,PA,patient64625,2,"NARRATIVE:
 CHEST: 12 FEBRUARY.
 CLINICAL HISTORY: 74-year-old man with left knee pain.
@@ -5509,7 +5509,7 @@ PNEUMOTHORAX.
  
 ",,"
 629523
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",75.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,24.4,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",75.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,24.4,No,valid,,0.0,0.0,,,,,,,0.0,,,,
 valid/patient64625/study1/view2_lateral.jpg,valid/patient64625/study1/view2_lateral.dcm,Lateral,,patient64625,1,"NARRATIVE:
 CHEST: 8/30/2011.
 CLINICAL HISTORY: 74-year-old man with left knee pain.
@@ -5546,7 +5546,7 @@ PNEUMOTHORAX.
  
 ",,"
 57793358474
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",75.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,24.4,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",75.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,24.4,No,valid,,0.0,0.0,,,,,,,0.0,,,,
 valid/patient64652/study1/view1_frontal.jpg,valid/patient64652/study1/view1_frontal.dcm,Frontal,AP,patient64652,4,"NARRATIVE:
 Chest 1 View, 01/25/13
  
@@ -5585,7 +5585,7 @@ with the report transcribed above.
  
 ","
 199904958
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",45.0,Male,Asian,Non-Hispanic/Non-Latino,No,Medicaid,24.5,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",45.0,Male,Asian,Non-Hispanic/Non-Latino,No,Medicaid,24.5,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64716/study1/view1_frontal.jpg,valid/patient64716/study1/view1_frontal.dcm,Frontal,AP,patient64716,1,"NARRATIVE:
 CHEST ONE VIEW:  5-25-20
  
@@ -5636,7 +5636,7 @@ with the report transcribed above.
  
 ","
 YMBFOWZANYK
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",68.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,24.5,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",68.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,24.5,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64587/study1/view1_frontal.jpg,valid/patient64587/study1/view1_frontal.dcm,Frontal,AP,patient64587,3,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 9/5/2011
  
@@ -5721,7 +5721,7 @@ and neck, increased as compared with the prior study.
  
 ",,,"
 242-571-15
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",70.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,24.6,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",70.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,24.6,No,valid,,0.0,1.0,,,,,1.0,1.0,,,,1.0,
 valid/patient64638/study1/view1_frontal.jpg,valid/patient64638/study1/view1_frontal.dcm,Frontal,AP,patient64638,1,"NARRATIVE:
 Exam: Chest 1 View, 4-3-2004 
  
@@ -5780,7 +5780,7 @@ OBVIOUS PNEUMOTHORAX OR PLEURAL EFFUSION ON THE RIGHT.
  
 ","
 #F339V-473I
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",58.0,Female,White,Hispanic/Latino,No,Private Insurance,24.6,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",58.0,Female,White,Hispanic/Latino,No,Private Insurance,24.6,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64672/study1/view1_frontal.jpg,valid/patient64672/study1/view1_frontal.dcm,Frontal,AP,patient64672,1,"NARRATIVE:
 Chest 1 View 6/13/2017
  
@@ -5825,7 +5825,7 @@ with the report transcribed above.
  
 ","
 8649316
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",71.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,24.6,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",71.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,24.6,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64684/study1/view1_frontal.jpg,valid/patient64684/study1/view1_frontal.dcm,Frontal,AP,patient64684,1,"NARRATIVE:
 Chest 1 View 3/13/13.m.
  
@@ -5868,7 +5868,7 @@ PLEURAL EFFUSION.
  
 ","
 27252
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",52.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,24.6,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",52.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,24.6,No,valid,,,,,,1.0,,,,1.0,,,,
 valid/patient64613/study1/view2_lateral.jpg,valid/patient64613/study1/view2_lateral.dcm,Lateral,,patient64613,10,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 9-7-04
  
@@ -5919,7 +5919,7 @@ base.
  
 ",,,"
 6384729
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",30.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,24.7,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",30.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,24.7,No,valid,,0.0,,,,,,,0.0,1.0,,,1.0,
 valid/patient64613/study1/view1_frontal.jpg,valid/patient64613/study1/view1_frontal.dcm,Frontal,PA,patient64613,11,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 11-27-2002
  
@@ -5970,7 +5970,7 @@ base.
  
 ",,,"
 0FKL_1HS5_VOZ
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",30.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,24.7,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",30.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,24.7,No,valid,,0.0,,,,,,,0.0,1.0,,,1.0,
 valid/patient64688/study1/view1_frontal.jpg,valid/patient64688/study1/view1_frontal.dcm,Frontal,AP,patient64688,3,"NARRATIVE:
 SINGLE FRONTAL CHEST RADIOGRAPH:  12/10/12 at 0444 hours 
  
@@ -6021,7 +6021,7 @@ with the report transcribed above.
  
 ","
 22T6-OPDM
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",31.0,Female,Asian,Non-Hispanic/Non-Latino,No,Private Insurance,24.7,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",31.0,Female,Asian,Non-Hispanic/Non-Latino,No,Private Insurance,24.7,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64670/study1/view1_frontal.jpg,valid/patient64670/study1/view1_frontal.dcm,Frontal,AP,patient64670,1,"NARRATIVE:
 AP CHEST:  10-30-2015 AT 1620
  
@@ -6074,7 +6074,7 @@ DESCRIBED.
  
 ","
 lrjagpkisthmz
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",73.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,25.2,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",73.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,25.2,No,valid,,0.0,1.0,,,,,,,,,,1.0,
 valid/patient64718/study1/view1_frontal.jpg,valid/patient64718/study1/view1_frontal.dcm,Frontal,AP,patient64718,1,"NARRATIVE:
 CHEST, ONE VIEW:  JUNE 3RD, 2010 
  
@@ -6131,7 +6131,7 @@ with the report transcribed above.
  
 ","
 380 215 27
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",83.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,25.2,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",83.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,25.2,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64733/study1/view1_frontal.jpg,valid/patient64733/study1/view1_frontal.dcm,Frontal,AP,patient64733,1,"NARRATIVE:
 EXAM: Chest 1 View, 5/12/03
  
@@ -6178,7 +6178,7 @@ with the report transcribed above.
  
 ","
 #1275522598
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",87.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,25.3,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",87.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,25.3,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64589/study1/view1_frontal.jpg,valid/patient64589/study1/view1_frontal.dcm,Frontal,AP,patient64589,1,"NARRATIVE:
 Chest 2 Views 5/7/2001
  
@@ -6225,7 +6225,7 @@ with the report transcribed above.
  
 ","
 15-49-58-87-28-y
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",67.0,Female,Other,Hispanic/Latino,Yes,Medicare,25.4,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",67.0,Female,Other,Hispanic/Latino,Yes,Medicare,25.4,Yes,valid,1.0,,,,,,,,,,,,,
 valid/patient64589/study1/view2_lateral.jpg,valid/patient64589/study1/view2_lateral.dcm,Lateral,,patient64589,2,"NARRATIVE:
 Chest 2 Views 11-29-2002
  
@@ -6272,7 +6272,7 @@ with the report transcribed above.
  
 ","
 327414205
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",67.0,Female,Other,Hispanic/Latino,Yes,Medicare,25.4,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",67.0,Female,Other,Hispanic/Latino,Yes,Medicare,25.4,Yes,valid,1.0,,,,,,,,,,,,,
 valid/patient64645/study1/view1_frontal.jpg,valid/patient64645/study1/view1_frontal.dcm,Frontal,AP,patient64645,1,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 8-22-2006
  
@@ -6337,7 +6337,7 @@ moderate-sized left-sided pleural effusion.
  
 ",,,"
 mebhbsybc
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",55.0,Female,Asian,Non-Hispanic/Non-Latino,No,Private Insurance,25.4,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",55.0,Female,Asian,Non-Hispanic/Non-Latino,No,Private Insurance,25.4,No,valid,,,,,,1.0,,,1.0,1.0,,,1.0,
 valid/patient64661/study1/view1_frontal.jpg,valid/patient64661/study1/view1_frontal.dcm,Frontal,AP,patient64661,1,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 2002 january 26th
 CLINICAL HISTORY: 53 years of age, Female, postop.
@@ -6372,7 +6372,7 @@ Signed
  
 ",,,"
 04240392
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",54.0,Female,Pacific Islander,Non-Hispanic/Non-Latino,No,Medicare,25.4,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",54.0,Female,Pacific Islander,Non-Hispanic/Non-Latino,No,Medicare,25.4,No,valid,,1.0,,,1.0,,,,0.0,,,0.0,1.0,
 valid/patient64558/study1/view1_frontal.jpg,valid/patient64558/study1/view1_frontal.dcm,Frontal,PA,patient64558,2,"NARRATIVE:
 CHEST RADIOGRAPH: 4-25-2021
 COMPARISON: 2021/25
@@ -6409,7 +6409,7 @@ By: Tomas Valentina, Watson  on: 4/25/2021
  
 ","
 15-10-51-1
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",44.0,Female,Other,Hispanic/Latino,Yes,Private Insurance,25.5,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",44.0,Female,Other,Hispanic/Latino,Yes,Private Insurance,25.5,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64558/study1/view2_lateral.jpg,valid/patient64558/study1/view2_lateral.dcm,Lateral,,patient64558,1,"NARRATIVE:
 CHEST RADIOGRAPH: 2/17/15
 COMPARISON: 2-17-2015
@@ -6446,7 +6446,7 @@ By: NOLAN KLEIN, MD  on: 2/17/15
  
 ","
 #12432300058220
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",44.0,Female,Other,Hispanic/Latino,Yes,Private Insurance,25.5,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",44.0,Female,Other,Hispanic/Latino,Yes,Private Insurance,25.5,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64617/study1/view1_frontal.jpg,valid/patient64617/study1/view1_frontal.dcm,Frontal,AP,patient64617,1,"NARRATIVE:
 PORTABLE CHEST, SINGLE VIEW: 2/18/2017.
 COMPARISON:
@@ -6491,7 +6491,7 @@ By: Ibarra, Lumi  on: 2-18-2017
  
 ","
 407368
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",56.0,Female,White,Hispanic/Latino,Yes,Medicare,25.6,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",56.0,Female,White,Hispanic/Latino,Yes,Medicare,25.6,No,valid,,1.0,,,0.0,0.0,,1.0,0.0,,,,,
 valid/patient64647/study1/view1_frontal.jpg,valid/patient64647/study1/view1_frontal.dcm,Frontal,AP,patient64647,1,"NARRATIVE:
 EXAM: Chest 1 View, 10 February
  
@@ -6546,7 +6546,7 @@ with the report transcribed above.
  
 ","
 31227
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",23.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,25.7,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",23.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,25.7,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64551/study1/view2_lateral.jpg,valid/patient64551/study1/view2_lateral.dcm,Lateral,,patient64551,1,"NARRATIVE:
 Chest 2 Views: 11/23/15
  
@@ -6583,7 +6583,7 @@ pattern suggestive of DISH.
  
 ","
 23
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",63.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,25.8,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",63.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,25.8,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64551/study1/view1_frontal.jpg,valid/patient64551/study1/view1_frontal.dcm,Frontal,PA,patient64551,2,"NARRATIVE:
 Chest 2 Views: 12/3/09
  
@@ -6620,7 +6620,7 @@ pattern suggestive of DISH.
  
 ","
 23
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",63.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,25.8,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",63.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,25.8,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64658/study1/view1_frontal.jpg,valid/patient64658/study1/view1_frontal.dcm,Frontal,AP,patient64658,1,"NARRATIVE:
 PORTABLE CHEST, SINGLE VIEW: AUGUST 10.
 COMPARISON:
@@ -6661,7 +6661,7 @@ By: JOHNSON, LEAH  on: 8-10-2000
  
 ","
 239828127319
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",55.0,Male,Asian,Non-Hispanic/Non-Latino,No,Unknown,25.8,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",55.0,Male,Asian,Non-Hispanic/Non-Latino,No,Unknown,25.8,No,valid,,0.0,1.0,,0.0,,,1.0,,,1.0,,,
 valid/patient64690/study1/view1_frontal.jpg,valid/patient64690/study1/view1_frontal.dcm,Frontal,AP,patient64690,4,"NARRATIVE:
 Chest 1 View: 3/28/20
  
@@ -6728,7 +6728,7 @@ ASPIRATION OR INFECTION CAN BE OBSCURED
  
 ","
 9461064
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",84.0,Female,Other,Non-Hispanic/Non-Latino,Yes,Medicare,25.8,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",84.0,Female,Other,Non-Hispanic/Non-Latino,Yes,Medicare,25.8,Yes,valid,,1.0,1.0,1.0,,,,,,1.0,,,,
 valid/patient64615/study1/view2_lateral.jpg,valid/patient64615/study1/view2_lateral.dcm,Lateral,,patient64615,2,"NARRATIVE:
 TWO VIEWS OF THE CHEST: 08-21
 CLINICAL DATA: Pain in chest. Check for infiltrates.
@@ -6791,7 +6791,7 @@ By: Garrett, Chan  on: 8-21-04
  
 ","
 22-98-71
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",66.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,25.9,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",66.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,25.9,No,valid,0.0,,,,,0.0,,,,,,,,
 valid/patient64615/study1/view1_frontal.jpg,valid/patient64615/study1/view1_frontal.dcm,Frontal,PA,patient64615,1,"NARRATIVE:
 TWO VIEWS OF THE CHEST: 4/17/2015
 CLINICAL DATA: Pain in chest. Check for infiltrates.
@@ -6854,7 +6854,7 @@ By: KALI HATFIELD, MD  on: 4/17/2015
  
 ","
 #LMXfzB
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",66.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,25.9,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",66.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,25.9,No,valid,0.0,,,,,0.0,,,,,,,,
 valid/patient64616/study1/view1_frontal.jpg,valid/patient64616/study1/view1_frontal.dcm,Frontal,PA,patient64616,1,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 4/19/20
  
@@ -6923,7 +6923,7 @@ nonspecific. May represent atelectasis versus airspace disease.
  
 ",,,"
 #771468986
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,Other,Non-Hispanic/Non-Latino,No,Medicare,26.0,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,Other,Non-Hispanic/Non-Latino,No,Medicare,26.0,No,valid,0.0,,,,0.0,1.0,,,0.0,0.0,,,,
 valid/patient64616/study1/view2_lateral.jpg,valid/patient64616/study1/view2_lateral.dcm,Lateral,,patient64616,2,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 12/5/2005
  
@@ -6992,7 +6992,7 @@ nonspecific. May represent atelectasis versus airspace disease.
  
 ",,,"
 rfukbmrkjnd
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,Other,Non-Hispanic/Non-Latino,No,Medicare,26.0,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,Other,Non-Hispanic/Non-Latino,No,Medicare,26.0,No,valid,0.0,,,,0.0,1.0,,,0.0,0.0,,,,
 valid/patient64616/study1/view3_lateral.jpg,valid/patient64616/study1/view3_lateral.dcm,Lateral,,patient64616,3,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 1/15/2021
  
@@ -7061,7 +7061,7 @@ nonspecific. May represent atelectasis versus airspace disease.
  
 ",,,"
 948.5
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,Other,Non-Hispanic/Non-Latino,No,Medicare,26.0,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Male,Other,Non-Hispanic/Non-Latino,No,Medicare,26.0,No,valid,0.0,,,,0.0,1.0,,,0.0,0.0,,,,
 valid/patient64634/study1/view1_frontal.jpg,valid/patient64634/study1/view1_frontal.dcm,Frontal,AP,patient64634,2,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 09-15
  
@@ -7124,7 +7124,7 @@ with the report transcribed above.
  
 ",,,"
 81645997
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",39.0,Male,White,Non-Hispanic/Non-Latino,No,Medicaid,26.0,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",39.0,Male,White,Non-Hispanic/Non-Latino,No,Medicaid,26.0,No,valid,,,1.0,,,,,,,,,,1.0,
 valid/patient64614/study1/view1_frontal.jpg,valid/patient64614/study1/view1_frontal.dcm,Frontal,AP,patient64614,1,"NARRATIVE:
 SINGLE VIEW OF THE CHEST:   4-23-2001
  
@@ -7177,7 +7177,7 @@ with the report transcribed above.
  
 ","
 382891S1
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",74.0,Male,Pacific Islander,Non-Hispanic/Non-Latino,No,Medicare,26.1,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",74.0,Male,Pacific Islander,Non-Hispanic/Non-Latino,No,Medicare,26.1,No,valid,0.0,,,,,,,,,1.0,,,1.0,
 valid/patient64574/study1/view1_frontal.jpg,valid/patient64574/study1/view1_frontal.dcm,Frontal,AP,patient64574,2,"NARRATIVE:
 EXAMINATION: PORTABLE Chest 1 View 9-30-2019
  
@@ -7222,7 +7222,7 @@ with the report transcribed above.
  
 ","
 434633
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",51.0,Female,Other,Hispanic/Latino,Yes,Medicare,26.2,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",51.0,Female,Other,Hispanic/Latino,Yes,Medicare,26.2,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64598/study1/view1_frontal.jpg,valid/patient64598/study1/view1_frontal.dcm,Frontal,AP,patient64598,1,"NARRATIVE:
 CHEST, SINGLE VIEW:  12/2004
  
@@ -7265,7 +7265,7 @@ INCREASING ATELECTASIS VERSUS AREAS OF AIR SPACE DISEASE.
  
 ","
 7.5.5.7.8.4.0
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,26.2,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,26.2,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64666/study1/view1_frontal.jpg,valid/patient64666/study1/view1_frontal.dcm,Frontal,AP,patient64666,3,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 4/1/2010
  
@@ -7318,7 +7318,7 @@ lung base as well.
  
 ",,,"
 651873865261
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",22.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,26.2,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",22.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,26.2,Yes,valid,,,1.0,,,,,,,1.0,,,1.0,
 valid/patient64706/study1/view1_frontal.jpg,valid/patient64706/study1/view1_frontal.dcm,Frontal,AP,patient64706,1,"NARRATIVE:
 Chest 1 View january 2001
  
@@ -7383,7 +7383,7 @@ with the report transcribed above.
  
 ","
 4-4-5-2-5-7-9-2
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",63.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,26.3,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",63.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,26.3,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64559/study1/view2_lateral.jpg,valid/patient64559/study1/view2_lateral.dcm,Lateral,,patient64559,2,"NARRATIVE:
 Chest 2 Views: 20/7/9
  
@@ -7418,7 +7418,7 @@ Remote healed fractures of the right 5th and 6th posterolateral ribs.
  
 ","
 XAGL
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",52.0,Male,Other,Hispanic/Latino,Yes,Unknown,26.5,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",52.0,Male,Other,Hispanic/Latino,Yes,Unknown,26.5,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64559/study1/view1_frontal.jpg,valid/patient64559/study1/view1_frontal.dcm,Frontal,PA,patient64559,1,"NARRATIVE:
 Chest 2 Views: 4-5-08
  
@@ -7453,7 +7453,7 @@ Remote healed fractures of the right 5th and 6th posterolateral ribs.
  
 ","
 073136
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",52.0,Male,Other,Hispanic/Latino,Yes,Unknown,26.5,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",52.0,Male,Other,Hispanic/Latino,Yes,Unknown,26.5,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64569/study1/view1_frontal.jpg,valid/patient64569/study1/view1_frontal.dcm,Frontal,AP,patient64569,9,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 4-5-2011
  
@@ -7522,7 +7522,7 @@ left base.
  
 ",,,"
 #849038
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",67.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,26.5,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",67.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,26.5,No,valid,,,1.0,,,,,,1.0,1.0,,,1.0,
 valid/patient64578/study1/view1_frontal.jpg,valid/patient64578/study1/view1_frontal.dcm,Frontal,AP,patient64578,1,"NARRATIVE:
 SINGLE VIEW OF THE CHEST:  11-4-2000
  
@@ -7579,7 +7579,7 @@ PNEUMOTHORAX.
  
 ","
 1549588728Y
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",65.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,26.5,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",65.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,26.5,Yes,valid,0.0,,,,,,,,0.0,,,,,1.0
 valid/patient64572/study1/view1_frontal.jpg,valid/patient64572/study1/view1_frontal.dcm,Frontal,AP,patient64572,1,"NARRATIVE:
 Exam: Chest 1 View, 10-22
  
@@ -7630,7 +7630,7 @@ RIB FRACTURES PNEUMOTHORAX.
  
 ","
 iy2g9t
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",38.0,Male,Asian,Non-Hispanic/Non-Latino,No,Unknown,26.6,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",38.0,Male,Asian,Non-Hispanic/Non-Latino,No,Unknown,26.6,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64612/study1/view1_frontal.jpg,valid/patient64612/study1/view1_frontal.dcm,Frontal,AP,patient64612,3,"NARRATIVE:
 3/11/2021
 COMPARISON: 3-11-2021
@@ -7675,7 +7675,7 @@ By: JOSE CAIDEN, MD  on: 3-11-2021
  
 ","
 8410220
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",64.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,26.6,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",64.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,26.6,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64699/study1/view1_frontal.jpg,valid/patient64699/study1/view1_frontal.dcm,Frontal,AP,patient64699,1,"NARRATIVE:
 Chest 1 View 8-28-2006
  
@@ -7732,7 +7732,7 @@ NO INTRA-MEDIASTINAL AIR IDENTIFIED.
  
 ","
 899917
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",79.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,26.6,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",79.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,26.6,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64561/study1/view1_frontal.jpg,valid/patient64561/study1/view1_frontal.dcm,Frontal,AP,patient64561,1,"NARRATIVE:
 EXAM: Chest 1 View, 4/2/2000
  
@@ -7779,7 +7779,7 @@ with the report transcribed above.
  
 ","
 #xtdjkasue
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",59.0,Male,Other,Non-Hispanic/Non-Latino,No,Medicare,26.7,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",59.0,Male,Other,Non-Hispanic/Non-Latino,No,Medicare,26.7,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64628/study1/view1_frontal.jpg,valid/patient64628/study1/view1_frontal.dcm,Frontal,AP,patient64628,1,"NARRATIVE:
 EXAM: Chest 1 View, 12-15-2000.
  
@@ -7830,7 +7830,7 @@ with the report transcribed above.
  
 ","
 #385323194
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",65.0,Male,Pacific Islander,Non-Hispanic/Non-Latino,Yes,Medicare,26.8,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",65.0,Male,Pacific Islander,Non-Hispanic/Non-Latino,Yes,Medicare,26.8,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64654/study1/view1_frontal.jpg,valid/patient64654/study1/view1_frontal.dcm,Frontal,AP,patient64654,1,"NARRATIVE:
 SINGLE VIEW OF THE CHEST:  5/16/2002 
  
@@ -7873,7 +7873,7 @@ with the report transcribed above.
  
 ","
 171IhRrus2
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",45.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,26.8,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",45.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,26.8,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64594/study1/view1_frontal.jpg,valid/patient64594/study1/view1_frontal.dcm,Frontal,PA,patient64594,1,"NARRATIVE:
 Exam: Chest 2 Views, 8-7-2002
  
@@ -7918,7 +7918,7 @@ NORMAL.
  
 ","
 516066202206
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",30.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,26.9,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",30.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,26.9,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64594/study1/view2_lateral.jpg,valid/patient64594/study1/view2_lateral.dcm,Lateral,,patient64594,2,"NARRATIVE:
 Exam: Chest 2 Views, 9-21-06
  
@@ -7963,7 +7963,7 @@ NORMAL.
  
 ","
 hgnifbapliyh
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",30.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,26.9,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",30.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,26.9,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64542/study1/view1_frontal.jpg,valid/patient64542/study1/view1_frontal.dcm,Frontal,PA,patient64542,8,"NARRATIVE:
 Chest 2 Views: 10-6-4
  
@@ -8002,7 +8002,7 @@ Bones are unremarkable.
  
 ","
 #ape
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",70.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,27.1,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",70.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,27.1,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64542/study1/view2_lateral.jpg,valid/patient64542/study1/view2_lateral.dcm,Lateral,,patient64542,7,"NARRATIVE:
 Chest 2 Views: MARCH 3, 2007
  
@@ -8041,7 +8041,7 @@ Bones are unremarkable.
  
 ","
 apieechdszgp
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",70.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,27.1,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",70.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,27.1,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64618/study1/view2_lateral.jpg,valid/patient64618/study1/view2_lateral.dcm,Lateral,,patient64618,2,"NARRATIVE:
 EXAM: June 2000.
  
@@ -8086,7 +8086,7 @@ EFFUSION. STABLE OVERALL AERATION AND VOLUME
  
 ","
 2397925358
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",55.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,27.1,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",55.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,27.1,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64618/study1/view1_frontal.jpg,valid/patient64618/study1/view1_frontal.dcm,Frontal,PA,patient64618,1,"NARRATIVE:
 EXAM: 12-3-2012.
  
@@ -8131,7 +8131,7 @@ EFFUSION. STABLE OVERALL AERATION AND VOLUME
  
 ","
 4-9-2-0-0-9-3-5
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",55.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,27.1,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",55.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,27.1,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64626/study1/view1_frontal.jpg,valid/patient64626/study1/view1_frontal.dcm,Frontal,AP,patient64626,1,"NARRATIVE:
 SINGLE PORTABLE SEMI-UPRIGHT VIEW OF THE CHEST: 9/23/2002
 CLINICAL HISTORY:
@@ -8182,7 +8182,7 @@ By: KAMRYN, PALMER  on: 2002, September 23
  
 ","
 9421200152
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",74.0,Male,Asian,Non-Hispanic/Non-Latino,Yes,Medicare,27.1,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",74.0,Male,Asian,Non-Hispanic/Non-Latino,Yes,Medicare,27.1,No,valid,0.0,,0.0,,,,,,0.0,,,,,
 valid/patient64586/study1/view1_frontal.jpg,valid/patient64586/study1/view1_frontal.dcm,Frontal,AP,patient64586,1,"NARRATIVE:
 PORTABLE CHEST:   7/18/2002 
  
@@ -8245,7 +8245,7 @@ with the report transcribed above.
  
 ","
 815
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",68.0,Male,White,Hispanic/Latino,Yes,Medicare,27.2,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",68.0,Male,White,Hispanic/Latino,Yes,Medicare,27.2,Yes,valid,0.0,0.0,1.0,,0.0,,,1.0,,0.0,,,,
 valid/patient64607/study1/view1_frontal.jpg,valid/patient64607/study1/view1_frontal.dcm,Frontal,AP,patient64607,4,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 11/23/2012
  
@@ -8316,7 +8316,7 @@ tiny pneumothorax along the left lateral chest wall.
  
 ",,,"
 28.41.35.2
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",57.0,Male,White,Non-Hispanic/Non-Latino,No,Unknown,27.6,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",57.0,Male,White,Non-Hispanic/Non-Latino,No,Unknown,27.6,No,valid,,,,,,,,1.0,1.0,,,,1.0,
 valid/patient64606/study1/view2_lateral.jpg,valid/patient64606/study1/view2_lateral.dcm,Lateral,,patient64606,2,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 9-1-2016
  
@@ -8363,7 +8363,7 @@ with the report transcribed above.
  
 ",,,"
 h4-bw-3
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",85.0,Male,White,Hispanic/Latino,No,Medicare,27.8,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",85.0,Male,White,Hispanic/Latino,No,Medicare,27.8,No,valid,,,,,,,,,,1.0,,,1.0,
 valid/patient64606/study1/view1_frontal.jpg,valid/patient64606/study1/view1_frontal.dcm,Frontal,PA,patient64606,1,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 8/1/2019
  
@@ -8410,7 +8410,7 @@ with the report transcribed above.
  
 ",,,"
 1834507
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",85.0,Male,White,Hispanic/Latino,No,Medicare,27.8,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",85.0,Male,White,Hispanic/Latino,No,Medicare,27.8,No,valid,,,,,,,,,,1.0,,,1.0,
 valid/patient64546/study1/view1_frontal.jpg,valid/patient64546/study1/view1_frontal.dcm,Frontal,AP,patient64546,2,"NARRATIVE:
 SINGLE VIEW OF THE CHEST:   5/6/2007 
  
@@ -8457,7 +8457,7 @@ with the report transcribed above.
  
 ","
 6340977630
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",56.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,28.0,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",56.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,28.0,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64662/study1/view1_frontal.jpg,valid/patient64662/study1/view1_frontal.dcm,Frontal,AP,patient64662,1,"NARRATIVE:
 CHEST AP PORTABLE: 8/27/2012
 COMPARISON: 8/27/2012.
@@ -8480,7 +8480,7 @@ OF PREVIOUSLY NOTED RIGHT UPPER LOBE CONSOLIDATION.
  
 ",,"
 FKIHGMFJMVU
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",45.0,Female,Other,Hispanic/Latino,No,Unknown,28.2,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",45.0,Female,Other,Hispanic/Latino,No,Unknown,28.2,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64646/study1/view1_frontal.jpg,valid/patient64646/study1/view1_frontal.dcm,Frontal,AP,patient64646,1,"NARRATIVE:
 EXAM: Chest 1 View, 01/07.
  
@@ -8533,7 +8533,7 @@ with the report transcribed above.
  
 ","
 #smbblymbgxpba
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",44.0,Female,Native American,Hispanic/Latino,No,Medicare,28.6,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",44.0,Female,Native American,Hispanic/Latino,No,Medicare,28.6,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64664/study1/view1_frontal.jpg,valid/patient64664/study1/view1_frontal.dcm,Frontal,AP,patient64664,2,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 9-14-05
  
@@ -8654,7 +8654,7 @@ atelectasis, infection, or aspiration.
  
 ",,,"
 mSFEbMfedzuQ
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",60.0,Male,White,Non-Hispanic/Non-Latino,No,Other,28.7,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",60.0,Male,White,Non-Hispanic/Non-Latino,No,Other,28.7,Yes,valid,,1.0,1.0,,1.0,,,,0.0,1.0,,,1.0,
 valid/patient64686/study1/view1_frontal.jpg,valid/patient64686/study1/view1_frontal.dcm,Frontal,AP,patient64686,2,"NARRATIVE:
 SINGLE VIEW CHEST:  5-22-11 
  
@@ -8695,7 +8695,7 @@ with the report transcribed above.
  
 ","
 RASBRTCLVUB
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",78.0,Female,Black,Non-Hispanic/Non-Latino,No,Medicare,28.7,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",78.0,Female,Black,Non-Hispanic/Non-Latino,No,Medicare,28.7,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64641/study1/view1_frontal.jpg,valid/patient64641/study1/view1_frontal.dcm,Frontal,AP,patient64641,3,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 7-11-2011
  
@@ -8746,7 +8746,7 @@ effusion.
  
 ",,,"
 7866608167
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",50.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,28.9,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",50.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,28.9,No,valid,,,,,,1.0,,,0.0,1.0,,,1.0,
 valid/patient64576/study1/view1_frontal.jpg,valid/patient64576/study1/view1_frontal.dcm,Frontal,AP,patient64576,2,"NARRATIVE:
 SINGLE SEMI-UPRIGHT VIEW CHEST X-RAY: 6-6-2009 at 0639 hours
  
@@ -8829,7 +8829,7 @@ DISCUSSED WITH dr. beard AT PAGER #(976) 646-2563 ON THE MORNING OF
  
 ","
 8q15m919
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",23.0,Male,Other,Hispanic/Latino,No,Private Insurance,29.3,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",23.0,Male,Other,Hispanic/Latino,No,Private Insurance,29.3,No,valid,,0.0,,,,,,,0.0,,,,1.0,
 valid/patient64541/study1/view1_frontal.jpg,valid/patient64541/study1/view1_frontal.dcm,Frontal,AP,patient64541,2,"NARRATIVE:
 SINGLE VIEW OF THE CHEST:  4/28/2000
 COMPARISON:  4-28-2000.
@@ -8866,7 +8866,7 @@ with the report transcribed above.
  
 ","
 5440112581
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",73.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,29.4,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",73.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,29.4,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64648/study1/view1_frontal.jpg,valid/patient64648/study1/view1_frontal.dcm,Frontal,AP,patient64648,1,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 7-18-2015
  
@@ -8951,7 +8951,7 @@ with the report transcribed above.
  
 ",,,"
 53756960
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",67.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,29.5,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",67.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,29.5,No,valid,0.0,,1.0,,1.0,,,,0.0,1.0,,,1.0,
 valid/patient64621/study1/view1_frontal.jpg,valid/patient64621/study1/view1_frontal.dcm,Frontal,AP,patient64621,2,"NARRATIVE:
 HISTORY:
 64 -year-old male with interstitial lung disease with a
@@ -9014,7 +9014,7 @@ action.
  
 ","
 55651136
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",65.0,Male,Unknown,Unknown,No,Medicare,29.9,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",65.0,Male,Unknown,Unknown,No,Medicare,29.9,No,valid,,,,,,,,1.0,1.0,0.0,,,1.0,
 valid/patient64622/study1/view1_frontal.jpg,valid/patient64622/study1/view1_frontal.dcm,Frontal,AP,patient64622,1,"NARRATIVE:
 EXAM: Chest 1 View, 5/11/2003
  
@@ -9053,7 +9053,7 @@ SPACE OPACITY OR PLEURAL EFFUSION.
  
 ","
 430 875 585
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",22.0,Male,Black,Non-Hispanic/Non-Latino,No,Medicaid,30.5,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",22.0,Male,Black,Non-Hispanic/Non-Latino,No,Medicaid,30.5,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64604/study1/view1_frontal.jpg,valid/patient64604/study1/view1_frontal.dcm,Frontal,AP,patient64604,11,"NARRATIVE:
 CHEST: 12/18/14
 COMPARISON: 12-18-2014 AT 0847 HOURS
@@ -9110,7 +9110,7 @@ By: EVANGELINE, MD  on: 12-18-2014
  
 ","
 #49342
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",35.0,Female,White,Non-Hispanic/Non-Latino,Yes,Private Insurance,30.7,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",35.0,Female,White,Non-Hispanic/Non-Latino,Yes,Private Insurance,30.7,No,valid,,,1.0,,,,,,1.0,,,,1.0,
 valid/patient64720/study1/view1_frontal.jpg,valid/patient64720/study1/view1_frontal.dcm,Frontal,AP,patient64720,1,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 6/10/2016
  
@@ -9181,7 +9181,7 @@ with the report transcribed above.
  
 ",,,"
 VMDWMPS
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",77.0,Female,Other,Hispanic/Latino,Yes,Medicaid,31.2,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",77.0,Female,Other,Hispanic/Latino,Yes,Medicaid,31.2,Yes,valid,,,,,,,,1.0,0.0,,,,1.0,
 valid/patient64703/study1/view1_frontal.jpg,valid/patient64703/study1/view1_frontal.dcm,Frontal,AP,patient64703,1,"NARRATIVE:
 PORTABLE CHEST: 3-11-2021.
 IMPRESSION:
@@ -9204,7 +9204,7 @@ VENA CAVA AND UNCHANGED FROM 3/11/2021 AT 0510 HOURS.
  
 ","
 XCXIVRAOTF
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Female,White,Non-Hispanic/Non-Latino,No,Unknown,31.3,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",89.0,Female,White,Non-Hispanic/Non-Latino,No,Unknown,31.3,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64564/study1/view1_frontal.jpg,valid/patient64564/study1/view1_frontal.dcm,Frontal,AP,patient64564,1,"NARRATIVE:
 CHEST, ONE VIEW:  2-28-2001 
  
@@ -9255,7 +9255,7 @@ with the report transcribed above.
  
 ","
 3-6-3-7-3-7-3-9
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",71.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,31.8,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",71.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,31.8,No,valid,0.0,0.0,1.0,,0.0,,,,,0.0,,0.0,,
 valid/patient64660/study1/view1_frontal.jpg,valid/patient64660/study1/view1_frontal.dcm,Frontal,AP,patient64660,5,"NARRATIVE:
 SINGLE VIEW OF THE CHEST:  10-15
  
@@ -9284,7 +9284,7 @@ EDEMA.  NO NEW OPACITY OR PNEUMOTHORAX.
  
 ","
 P3B5p6v8N
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Female,Other,Non-Hispanic/Non-Latino,No,Medicare,31.9,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Female,Other,Non-Hispanic/Non-Latino,No,Medicare,31.9,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64678/study1/view1_frontal.jpg,valid/patient64678/study1/view1_frontal.dcm,Frontal,AP,patient64678,7,"NARRATIVE:
 CHEST: 2/9/2020
 COMPARISON: 2-9-2020
@@ -9317,7 +9317,7 @@ By: JESSE, CONNER  on: February 20
  
 ","
 8382067077848
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",49.0,Female,Unknown,Unknown,No,Medicaid,32.2,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",49.0,Female,Unknown,Unknown,No,Medicaid,32.2,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64671/study1/view1_frontal.jpg,valid/patient64671/study1/view1_frontal.dcm,Frontal,AP,patient64671,1,"NARRATIVE:
 Exam: Chest 1 View, 11/19/2017
  
@@ -9366,7 +9366,7 @@ with the report transcribed above.
  
 ","
 1375
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",47.0,Female,Asian,Non-Hispanic/Non-Latino,No,Unknown,32.3,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",47.0,Female,Asian,Non-Hispanic/Non-Latino,No,Unknown,32.3,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64571/study1/view1_frontal.jpg,valid/patient64571/study1/view1_frontal.dcm,Frontal,AP,patient64571,3,"NARRATIVE:
 EXAM: Chest 1 View, 8/21/15
  
@@ -9421,7 +9421,7 @@ with the report transcribed above.
  
 ","
 EFZHCJJIBUDUY
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",61.0,Male,Other,Hispanic/Latino,No,Private Insurance,32.5,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",61.0,Male,Other,Hispanic/Latino,No,Private Insurance,32.5,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64563/study1/view1_frontal.jpg,valid/patient64563/study1/view1_frontal.dcm,Frontal,AP,patient64563,1,"NARRATIVE:
 Exam: Chest 1 View, 3/23/2020
  
@@ -9464,7 +9464,7 @@ with the report transcribed above.
  
 ","
 12432300058220
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",47.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,32.6,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",47.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,32.6,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64573/study1/view1_frontal.jpg,valid/patient64573/study1/view1_frontal.dcm,Frontal,AP,patient64573,2,"NARRATIVE:
 Chest 1 View: 9-8-05
  
@@ -9517,7 +9517,7 @@ with the report transcribed above.
  
 ","
 790649
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",68.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,32.7,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",68.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,32.7,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64566/study1/view1_frontal.jpg,valid/patient64566/study1/view1_frontal.dcm,Frontal,PA,patient64566,10,"NARRATIVE:
 Exam: Chest 2 Views, 2-4-17
  
@@ -9560,7 +9560,7 @@ LYMPH NODES.  NO EVIDENCE OF CONSOLIDATION OR PLEURAL EFFUSION.
  
 ","
 7717931765
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",58.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,32.8,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",58.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,32.8,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64566/study1/view2_lateral.jpg,valid/patient64566/study1/view2_lateral.dcm,Lateral,,patient64566,9,"NARRATIVE:
 Exam: Chest 2 Views, 6/2/2016
  
@@ -9603,7 +9603,7 @@ LYMPH NODES.  NO EVIDENCE OF CONSOLIDATION OR PLEURAL EFFUSION.
  
 ","
 51249157955
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",58.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,32.8,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",58.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,32.8,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64697/study1/view1_frontal.jpg,valid/patient64697/study1/view1_frontal.dcm,Frontal,AP,patient64697,4,"NARRATIVE:
 Chest 1 View: 3/19/05
  
@@ -9688,7 +9688,7 @@ with the report transcribed above.
  
 ","
 #4906898293
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,32.9,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,32.9,Yes,valid,,1.0,1.0,,1.0,,,,,1.0,,,1.0,
 valid/patient64734/study1/view1_frontal.jpg,valid/patient64734/study1/view1_frontal.dcm,Frontal,AP,patient64734,1,"NARRATIVE:
 CHEST RADIOGRAPH:  2017/10/9  
  
@@ -9727,7 +9727,7 @@ with the report transcribed above.
  
 ","
 #5-8-5-9-0-6
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",45.0,Male,White,Non-Hispanic/Non-Latino,No,Medicaid,33.0,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",45.0,Male,White,Non-Hispanic/Non-Latino,No,Medicaid,33.0,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64657/study1/view1_frontal.jpg,valid/patient64657/study1/view1_frontal.dcm,Frontal,AP,patient64657,3,"NARRATIVE:
 PORTABLE CHEST, 11-28 Kratikal  0734 HOURS:
 COMPARISON:
@@ -9774,7 +9774,7 @@ By: Elliott Maryan, MD.  on: 11/28/2017
  
 ","
 1419
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",39.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,33.2,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",39.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,33.2,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64610/study1/view1_frontal.jpg,valid/patient64610/study1/view1_frontal.dcm,Frontal,AP,patient64610,11,"NARRATIVE:
 Chest 1 View 6/1/2008 
  
@@ -9819,7 +9819,7 @@ with the report transcribed above.
  
 ","
 #ZHQ
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",47.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,33.8,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",47.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,33.8,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64738/study1/view1_frontal.jpg,valid/patient64738/study1/view1_frontal.dcm,Frontal,AP,patient64738,1,"NARRATIVE:
 Chest 1 View, april 21
  
@@ -9860,7 +9860,7 @@ with the report transcribed above.
  
 ","
 223449063407
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",71.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,34.4,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",71.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,34.4,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64668/study1/view1_frontal.jpg,valid/patient64668/study1/view1_frontal.dcm,Frontal,AP,patient64668,2,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 2/24/2011
  
@@ -9927,7 +9927,7 @@ with the report transcribed above.
  
 ",,,"
 8198310540048
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",50.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,34.5,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",50.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,34.5,No,valid,,,1.0,,,,,,1.0,1.0,,,1.0,
 valid/patient64548/study1/view1_frontal.jpg,valid/patient64548/study1/view1_frontal.dcm,Frontal,AP,patient64548,6,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 6-28-08
  
@@ -9982,7 +9982,7 @@ with the report transcribed above.
  
 ",,,"
 76621119
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",52.0,Female,Other,Hispanic/Latino,No,Medicaid,34.8,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",52.0,Female,Other,Hispanic/Latino,No,Medicaid,34.8,Yes,valid,,,1.0,,0.0,,,,0.0,,,,,
 valid/patient64732/study1/view1_frontal.jpg,valid/patient64732/study1/view1_frontal.dcm,Frontal,AP,patient64732,1,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 3/21/2020
  
@@ -10045,7 +10045,7 @@ with the report transcribed above.
  
 ",,,"
 899
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",49.0,Female,Black,Non-Hispanic/Non-Latino,No,Medicare,34.8,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",49.0,Female,Black,Non-Hispanic/Non-Latino,No,Medicare,34.8,No,valid,,,,,,0.0,,,,,,,,
 valid/patient64595/study1/view1_frontal.jpg,valid/patient64595/study1/view1_frontal.dcm,Frontal,PA,patient64595,1,"NARRATIVE:
 TWO VIEWS OF THE CHEST: 2017/6/3
 CLINICAL HISTORY: Radiation therapy.
@@ -10074,7 +10074,7 @@ IDENTIFIED.
  
 ","
 7352Pu7C94
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",21.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,35.3,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",21.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,35.3,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64595/study1/view2_lateral.jpg,valid/patient64595/study1/view2_lateral.dcm,Lateral,,patient64595,2,"NARRATIVE:
 TWO VIEWS OF THE CHEST: 2007/5/11
 CLINICAL HISTORY: Radiation therapy.
@@ -10103,7 +10103,7 @@ IDENTIFIED.
  
 ","
 918916937
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",21.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,35.3,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",21.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,35.3,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64729/study1/view1_frontal.jpg,valid/patient64729/study1/view1_frontal.dcm,Frontal,AP,patient64729,2,"NARRATIVE:
 EXAM: Chest 1 View, Abdomen 1 View, 1/8/01
  
@@ -10150,7 +10150,7 @@ PLACEMENT DEMONSTRATES TIP IN STOMACH.
  
 ","
 031989000
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,35.5,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",72.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,35.5,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64556/study1/view1_frontal.jpg,valid/patient64556/study1/view1_frontal.dcm,Frontal,PA,patient64556,2,"NARRATIVE:
 Chest 2 Views   7/30/2007
  
@@ -10195,7 +10195,7 @@ with the report transcribed above.
  
 ","
 12432300058220
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",47.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,36.2,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",47.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,36.2,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64556/study1/view2_lateral.jpg,valid/patient64556/study1/view2_lateral.dcm,Lateral,,patient64556,1,"NARRATIVE:
 Chest 2 Views   3-1-21
  
@@ -10240,7 +10240,7 @@ with the report transcribed above.
  
 ","
 EFZHCJJIBUDUY
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",47.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,36.2,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",47.0,Male,White,Non-Hispanic/Non-Latino,No,Private Insurance,36.2,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64674/study1/view1_frontal.jpg,valid/patient64674/study1/view1_frontal.dcm,Frontal,AP,patient64674,6,"NARRATIVE:
 SINGLE VIEW CHEST:   11-16-2001 
  
@@ -10289,7 +10289,7 @@ with the report transcribed above.
  
 ","
 #QQCDKGIX
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",73.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,36.8,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",73.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,36.8,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64623/study1/view1_frontal.jpg,valid/patient64623/study1/view1_frontal.dcm,Frontal,AP,patient64623,2,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 1-18-2001
  
@@ -10342,7 +10342,7 @@ degenerative change of the right acromioclavicular joint.
  
 ",,,"
 4216501195
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",74.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,37.1,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",74.0,Male,White,Non-Hispanic/Non-Latino,No,Medicare,37.1,Yes,valid,1.0,1.0,1.0,,,,,,,1.0,,,1.0,
 valid/patient64632/study1/view1_frontal.jpg,valid/patient64632/study1/view1_frontal.dcm,Frontal,AP,patient64632,3,"NARRATIVE:
 Chest 1 View: 6/3/04
  
@@ -10387,7 +10387,7 @@ with the report transcribed above.
  
 ","
 #97804775704
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",41.0,Female,Other,Hispanic/Latino,No,Private Insurance,38.2,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",41.0,Female,Other,Hispanic/Latino,No,Private Insurance,38.2,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64560/study1/view2_lateral.jpg,valid/patient64560/study1/view2_lateral.dcm,Lateral,,patient64560,1,"NARRATIVE:
 TWO VIEWS OF THE CHEST:  2007 9 January
  
@@ -10436,7 +10436,7 @@ RECOMMEND CLINICAL CORRELATION.
  
 ","
 kQPynGCvNoL
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",64.0,Female,Unknown,Unknown,No,Medicare,38.4,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",64.0,Female,Unknown,Unknown,No,Medicare,38.4,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64560/study1/view1_frontal.jpg,valid/patient64560/study1/view1_frontal.dcm,Frontal,PA,patient64560,2,"NARRATIVE:
 TWO VIEWS OF THE CHEST:  12/19/13
  
@@ -10485,7 +10485,7 @@ RECOMMEND CLINICAL CORRELATION.
  
 ","
 5 0 0 9 3 4 3 7 8 6
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",64.0,Female,Unknown,Unknown,No,Medicare,38.4,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",64.0,Female,Unknown,Unknown,No,Medicare,38.4,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64549/study1/view1_frontal.jpg,valid/patient64549/study1/view1_frontal.dcm,Frontal,AP,patient64549,2,"NARRATIVE:
 CHEST RADIOGRAPH:  1-5-2012 
  
@@ -10532,7 +10532,7 @@ with the report transcribed above.
  
 ","
 #hprsbjsra
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",32.0,Female,White,Hispanic/Latino,No,Medicaid,38.7,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",32.0,Female,White,Hispanic/Latino,No,Medicaid,38.7,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64590/study1/view1_frontal.jpg,valid/patient64590/study1/view1_frontal.dcm,Frontal,PA,patient64590,2,"NARRATIVE:
 TWO VIEWS OF THE CHEST: 6-20-2000
 COMPARISON: 6/20/2000
@@ -10567,7 +10567,7 @@ By: GIDEON CLAY, CRNP  on: 6/20/2000
  
 ","
 vawb
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",18.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,38.9,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",18.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,38.9,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64590/study1/view2_lateral.jpg,valid/patient64590/study1/view2_lateral.dcm,Lateral,,patient64590,1,"NARRATIVE:
 TWO VIEWS OF THE CHEST: 01/26
 COMPARISON: 1/26/2015
@@ -10602,7 +10602,7 @@ By: fitzpatrick, kiara s  on: 1/26/15
  
 ","
 778224015
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",18.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,38.9,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",18.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,38.9,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64553/study1/view1_frontal.jpg,valid/patient64553/study1/view1_frontal.dcm,Frontal,AP,patient64553,3,"NARRATIVE:
 Chest 1 View 1-31-2001
  
@@ -10649,7 +10649,7 @@ TIP AT THE ATRIAL CAVAL JUNCTION.  NO EVIDENCE OF PNEUMOTHORAX.
  
 ","
 976-02
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",61.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,39.2,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",61.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,39.2,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64693/study1/view1_frontal.jpg,valid/patient64693/study1/view1_frontal.dcm,Frontal,AP,patient64693,1,"NARRATIVE:
 RADIOGRAPHIC EXAMINATION OF THE CHEST: 4/2/18
  
@@ -10728,7 +10728,7 @@ with the report transcribed above.
  
 ",,,"
 MFVWUBDYWREJ
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",67.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,39.6,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",67.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,39.6,Yes,valid,0.0,,1.0,,,,,,0.0,,,,1.0,
 valid/patient64663/study1/view1_frontal.jpg,valid/patient64663/study1/view1_frontal.dcm,Frontal,AP,patient64663,2,"NARRATIVE:
 CHEST ONE VIEW:  11-8-2018 AT 0449 HOURS.
  
@@ -10769,7 +10769,7 @@ with the report transcribed above.
  
 ","
 19-64-99
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",32.0,Female,Other,Non-Hispanic/Non-Latino,No,Medicaid,40.3,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",32.0,Female,Other,Non-Hispanic/Non-Latino,No,Medicaid,40.3,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64696/study1/view1_frontal.jpg,valid/patient64696/study1/view1_frontal.dcm,Frontal,AP,patient64696,1,"NARRATIVE:
 CHEST AP PORTABLE: 5/17/2016
 COMPARISON: 5/17/16.
@@ -10804,7 +10804,7 @@ By: Vargas Princeton, DNP  on: 5-17-2016
  
 ","
 #7396917472
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",31.0,Female,Unknown,Unknown,Unknown,Private Insurance,40.4,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",31.0,Female,Unknown,Unknown,Unknown,Private Insurance,40.4,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64588/study1/view1_frontal.jpg,valid/patient64588/study1/view1_frontal.dcm,Frontal,PA,patient64588,2,"NARRATIVE:
 TWO VIEW CHEST X-RAY: 12-2-2000 AT 1157 HOURS
 CLINICAL HISTORY: 56-year-old woman with chest pain.
@@ -10835,7 +10835,7 @@ WHICH COULD BE RELATED TO TENDINOSIS.
  
 ","
 #865-599-340-948
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",57.0,Female,Other,Hispanic/Latino,No,Private Insurance,40.7,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",57.0,Female,Other,Hispanic/Latino,No,Private Insurance,40.7,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64588/study1/view2_lateral.jpg,valid/patient64588/study1/view2_lateral.dcm,Lateral,,patient64588,1,"NARRATIVE:
 TWO VIEW CHEST X-RAY: 12-1-2012 AT 1157 HOURS
 CLINICAL HISTORY: 56-year-old woman with chest pain.
@@ -10866,7 +10866,7 @@ WHICH COULD BE RELATED TO TENDINOSIS.
  
 ","
 yxw-jzt-ie
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",57.0,Female,Other,Hispanic/Latino,No,Private Insurance,40.7,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",57.0,Female,Other,Hispanic/Latino,No,Private Insurance,40.7,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64730/study1/view1_frontal.jpg,valid/patient64730/study1/view1_frontal.dcm,Frontal,AP,patient64730,1,"NARRATIVE:
 EXAMINATION:
 PORTABLE CHEST  6/15/2009
@@ -10919,7 +10919,7 @@ Otherwise, there is no change from the prior examination.
  
 ","
 #3246402944010
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",36.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,42.9,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",36.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,42.9,No,valid,,0.0,,,,,,,,,,,1.0,1.0
 valid/patient64675/study1/view1_frontal.jpg,valid/patient64675/study1/view1_frontal.dcm,Frontal,AP,patient64675,2,"NARRATIVE:
 Chest 1 View: 2-8-08
  
@@ -10962,7 +10962,7 @@ No pleural effusion or pneumothorax.
  
 ","
 85x65c4sp
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",68.0,Male,Asian,Non-Hispanic/Non-Latino,No,Medicare,43.0,Yes,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",68.0,Male,Asian,Non-Hispanic/Non-Latino,No,Medicare,43.0,Yes,valid,,,,,,,,,,,,,,1.0
 valid/patient64659/study1/view1_frontal.jpg,valid/patient64659/study1/view1_frontal.dcm,Frontal,AP,patient64659,2,"NARRATIVE:
 EXAM: 9/30/2021 
  
@@ -11011,7 +11011,7 @@ with the report transcribed above.
  
 ","
 6560-2870-2036-31
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",62.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,47.7,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",62.0,Female,White,Non-Hispanic/Non-Latino,No,Medicare,47.7,No,valid,,,,,,,,,,,,,,1.0
 valid/patient64739/study1/view1_frontal.jpg,valid/patient64739/study1/view1_frontal.dcm,Frontal,AP,patient64739,1,"NARRATIVE:
 COMPARISON: 7-21-2005
  
@@ -11036,4 +11036,4 @@ RIGHT-SIDED RIB FRACTURE IS STABLE.
  
 ","
 64558813
-This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",45.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,50.0,No,valid
+This report has been anonymized. All dates are offset from the actual dates by a fixed interval associated with the patient.",45.0,Female,White,Non-Hispanic/Non-Latino,No,Private Insurance,50.0,No,valid,,,,,,,,,,,,,,1.0

@@ -1,7 +1,7 @@
 """
-EDA for CheXpert Plus (df_chexpert_plus_240401.csv).
+EDA for CheXpert Plus — reads from df_enriched.csv (run join_chexpert_labels.py first).
 
-Works with the actual CSV contents — no assumptions about what columns exist.
+Falls back to raw df_chexpert_plus_240401.csv if enriched file is not yet available.
 Images are loaded from PNG_valid/ if present; falls back to text-only output.
 """
 
@@ -13,16 +13,17 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-CHEXPERT_PLUS_CSV = Path("data/raw/chexpert-plus/df_chexpert_plus_240401.csv")
-PNG_VALID_DIR = Path("data/raw/chexpert-plus/PNG_valid")
-FIGURES_DIR = Path("notebooks/figures")
+REPO_ROOT         = Path(__file__).parent.parent
+ENRICHED_CSV      = REPO_ROOT / "data/processed/chexpert_plus/df_enriched.csv"
+RAW_CSV           = REPO_ROOT / "data/raw/chexpert-plus/df_chexpert_plus_240401.csv"
+PNG_VALID_DIR     = REPO_ROOT / "data/raw/chexpert-plus/PNG_valid"
+FIGURES_DIR       = REPO_ROOT / "notebooks/figures"
 SEED = 42
 
 CHEXPERT_14_LABELS = [
-    "Atelectasis", "Cardiomegaly", "Consolidation", "Edema",
-    "Enlarged Cardiomediastinum", "Fracture", "Lung Lesion", "Lung Opacity",
-    "No Finding", "Pleural Effusion", "Pleural Other", "Pneumonia",
-    "Pneumothorax", "Support Devices",
+    "Enlarged Cardiomediastinum", "Cardiomegaly", "Lung Opacity", "Lung Lesion",
+    "Edema", "Consolidation", "Pneumonia", "Atelectasis", "Pneumothorax",
+    "Pleural Effusion", "Pleural Other", "Fracture", "Support Devices", "No Finding",
 ]
 
 DEMOGRAPHIC_COLS = ["sex", "age", "race", "ethnicity", "insurance_type",
@@ -38,8 +39,9 @@ def sep(title: str) -> None:
 
 
 def main() -> None:
-    print(f"Loading {CHEXPERT_PLUS_CSV} ...")
-    df = pd.read_csv(CHEXPERT_PLUS_CSV)
+    csv_path = ENRICHED_CSV if ENRICHED_CSV.exists() else RAW_CSV
+    print(f"Loading {csv_path.relative_to(REPO_ROOT)} ...")
+    df = pd.read_csv(csv_path)
 
     # 1. Schema
     sep("All columns and dtypes")
@@ -58,21 +60,22 @@ def main() -> None:
         print("\n  Split distribution:")
         print(df["split"].value_counts().to_string())
 
-    # 3. Binary label check
+    # 3. Binary label distributions
     sep("14 CheXpert binary label columns")
     present_labels = [c for c in CHEXPERT_14_LABELS if c in df.columns]
     absent_labels  = [c for c in CHEXPERT_14_LABELS if c not in df.columns]
     if absent_labels:
-        print(f"\n  [!] {len(absent_labels)} binary label columns are ABSENT from this CSV.")
-        print(f"      They must be joined from the separate CheXpert labeler output")
-        print(f"      (chexpert_labeler.csv / findings_fixed.json from Redivis)")
-        print(f"      via path_to_image as the join key.")
+        print(f"\n  [!] {len(absent_labels)} label columns absent — run join_chexpert_labels.py first.")
     if present_labels:
-        print(f"\n  Present ({len(present_labels)}):")
+        print(f"\n  {'Label':<35} {'Pos':>7}  {'Neg':>7}  {'NaN':>7}  {'Pos rate':>9}")
+        print("  " + "-" * 70)
         for col in present_labels:
-            pos = df[col].eq(1).mean()
-            flag = "  [< 5% positives]" if pos < 0.05 else ""
-            print(f"    {col:<35} pos={pos:.1%}{flag}")
+            pos = (df[col] == 1).sum()
+            neg = (df[col] == 0).sum()
+            nan = df[col].isna().sum()
+            rate = pos / (pos + neg) * 100 if (pos + neg) > 0 else 0
+            flag = "  [< 5%]" if rate < 5 else ""
+            print(f"  {col:<35} {pos:>7,}  {neg:>7,}  {nan:>7,}  {rate:>8.1f}%{flag}")
 
     # 4. Report section analysis
     section_cols_present = [c for c in SECTION_COLS if c in df.columns]

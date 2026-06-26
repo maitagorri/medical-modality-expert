@@ -96,8 +96,8 @@ def download_train_selective(list_path: Path) -> None:
     skipped = 0
     for i, rel_path in enumerate(wanted, 1):
         # path_to_image looks like "train/patient00003/study1/view1_frontal.jpg"
-        # Strip leading "train/" since Redivis stores files without that prefix
-        file_key = rel_path.removeprefix("train/")
+        # Redivis stores files without the "train/" prefix and as .png not .jpg
+        file_key = Path(rel_path.removeprefix("train/")).with_suffix(".png").as_posix()
         dest_dir = OUT_PNG_TRAIN / Path(file_key).parent
         dest_file = dest_dir / Path(file_key).name
         if dest_file.exists():
