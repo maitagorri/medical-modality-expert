@@ -46,4 +46,4 @@ eval_steps: 25
 save_total_limit: 3
 
 # Logging
-report_to: wandb
+report_to: none
