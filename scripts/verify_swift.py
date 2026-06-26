@@ -18,9 +18,9 @@ from pathlib import Path
 
 import psutil
 
-# Force ms-swift to use HuggingFace Hub instead of ModelScope,
-# so the locally cached model is found immediately.
-os.environ.setdefault("USE_MODELSCOPE_HUB", "0")
+# Prevent ms-swift from routing through ModelScope Hub.
+# Must be set before importing swift.
+os.environ["USE_MODELSCOPE_HUB"] = "False"
 
 REPO_ROOT      = Path(__file__).parent.parent
 PRIMARY_MODEL  = "Qwen/Qwen3-VL-2B-Instruct"
@@ -45,15 +45,36 @@ def check_ram() -> None:
     print()
 
 
-def run_forward_pass(model_name: str, image_path: Path) -> str:
-    from swift import InferRequest, RequestConfig, TransformersEngine
+def resolve_local_model(model_name: str) -> str:
+    """Return local HF snapshot path, downloading any missing files if needed."""
+    from huggingface_hub import snapshot_download
+    return snapshot_download(model_name)
 
-    print(f"Loading {model_name} in fp32 ...")
+
+def check_swift_imports() -> None:
+    """Verify ms-swift inference classes are importable — cheap, no model load."""
+    from swift import InferRequest, RequestConfig, TransformersEngine  # noqa: F401
+    print("  ms-swift TransformersEngine / InferRequest / RequestConfig: OK")
+
+
+def run_forward_pass(model_name: str, image_path: Path) -> str:
+    """Load model via plain HuggingFace transformers and run a forward pass."""
+    import torch
+    from PIL import Image
+    from transformers import AutoProcessor, Qwen3VLForConditionalGeneration
+
+    local_path = resolve_local_model(model_name)
+    print(f"  Loading {model_name} in fp32 ...")
     t0 = time.time()
-    engine = TransformersEngine(
-        model_name,
-        torch_dtype="float32",
+
+    processor = AutoProcessor.from_pretrained(local_path, trust_remote_code=True)
+    model = Qwen3VLForConditionalGeneration.from_pretrained(
+        local_path,
+        torch_dtype=torch.float32,
+        device_map="cpu",
+        trust_remote_code=True,
     )
+    model.eval()
     load_time = time.time() - t0
     print(f"  Loaded in {load_time:.1f}s  |  peak RAM: {peak_ram_gb():.1f} GB")
 
@@ -66,15 +87,19 @@ def run_forward_pass(model_name: str, image_path: Path) -> str:
             ],
         }
     ]
-    config   = RequestConfig(max_tokens=64, temperature=0.0)
-    request  = InferRequest(messages=messages)
+    text = processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+    image = Image.open(image_path).convert("RGB")
+    inputs = processor(text=[text], images=[image], return_tensors="pt")
 
     print("  Running forward pass ...")
     t1 = time.time()
-    response  = engine.infer([request], request_config=config)[0]
+    with torch.no_grad():
+        output_ids = model.generate(**inputs, max_new_tokens=64, do_sample=False)
     infer_time = time.time() - t1
 
-    output = response.choices[0].message.content.strip()
+    input_len = inputs["input_ids"].shape[1]
+    new_tokens = output_ids[0][input_len:]
+    output = processor.decode(new_tokens, skip_special_tokens=True).strip()
     print(f"  Inference: {infer_time:.1f}s  |  peak RAM: {peak_ram_gb():.1f} GB")
     return output
 
@@ -107,6 +132,10 @@ def main() -> None:
     print()
 
     check_ram()
+
+    print("Checking ms-swift imports ...")
+    check_swift_imports()
+    print()
 
     model_used = None
     output     = None

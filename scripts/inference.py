@@ -41,7 +41,7 @@ DEFAULT_QUERIES: dict[str, str] = {
 
 def _make_engine(adapter_path: str | None = None):
     from swift import TransformersEngine
-    kwargs: dict = dict(model=BASE_MODEL, torch_dtype="float32")
+    kwargs: dict = dict(model=BASE_MODEL, dtype="float32")
     if adapter_path:
         kwargs["adapters"] = [adapter_path]
     return TransformersEngine(**kwargs)

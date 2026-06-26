@@ -73,7 +73,7 @@ def extract_label_from_question(question: str) -> str:
 def run_inference(entries: list[dict], adapter_path: Path | None) -> list[dict]:
     from swift import InferRequest, RequestConfig, TransformersEngine
 
-    kwargs: dict = dict(model=BASE_MODEL, torch_dtype="float32")
+    kwargs: dict = dict(model=BASE_MODEL, dtype="float32")
     if adapter_path is not None:
         kwargs["adapters"] = [str(adapter_path)]
 
