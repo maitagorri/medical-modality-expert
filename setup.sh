@@ -14,37 +14,38 @@ echo "uv $(uv --version)"
 # ── Sync dependencies ──────────────────────────────────────────────────────────
 uv sync
 
-# ── Smoke test: load Qwen3-VL-2B-Instruct in 4-bit and print param count ──────
+# ── Smoke test: verify packages and count Qwen3-VL-2B params (CPU-safe) ───────
+# Uses PyTorch meta device — loads model structure without downloading weights,
+# so this runs in seconds with no RAM cost. The real go/no-go forward-pass test
+# is scripts/verify_swift.py, run separately before training.
 echo ""
 echo "Running smoke test..."
 uv run python - <<'EOF'
+import sys
 import torch
-from transformers import AutoModelForImageTextToText, BitsAndBytesConfig
+import transformers
+import swift
 
 MODEL_ID = "Qwen/Qwen3-VL-2B-Instruct"
 
-bnb_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_compute_dtype=torch.float16,
-    bnb_4bit_use_double_quant=True,
-    bnb_4bit_quant_type="nf4",
-)
+print(f"Python:        {sys.version.split()[0]}")
+print(f"PyTorch:       {torch.__version__}")
+print(f"Transformers:  {transformers.__version__}")
+print(f"ms-swift:      {swift.__version__}")
+print()
 
-print(f"Loading {MODEL_ID} in 4-bit quantization...")
-model = AutoModelForImageTextToText.from_pretrained(
-    MODEL_ID,
-    quantization_config=bnb_config,
-    device_map="auto",
-    trust_remote_code=True,
-)
+print(f"Loading {MODEL_ID} config (meta device — no weights downloaded)...")
+from transformers import AutoConfig, AutoModelForCausalLM
+
+config = AutoConfig.from_pretrained(MODEL_ID, trust_remote_code=True)
+
+with torch.device("meta"):
+    model = AutoModelForCausalLM.from_config(config, trust_remote_code=True)
 
 total_params = sum(p.numel() for p in model.parameters())
-trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
-
-print(f"Model loaded successfully.")
-print(f"  Total parameters:     {total_params:,}")
-print(f"  Trainable parameters: {trainable_params:,}")
-print(f"  Device map: {model.hf_device_map if hasattr(model, 'hf_device_map') else 'N/A'}")
+print(f"  Total parameters: {total_params:,}  (~{total_params * 4 / 1e9:.1f} GB fp32)")
+print()
+print("Smoke test passed. Run scripts/verify_swift.py for a full forward-pass check.")
 EOF
 
 echo ""
