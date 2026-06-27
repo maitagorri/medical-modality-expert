@@ -151,6 +151,26 @@ For CXR: use CheXpert Plus reports as the primary text source — sample 75 imag
 
 Run the CXR pre-training first. Watch the loss for the first 20 steps to confirm it's decreasing before leaving it to run.
 
+**✓ COMPLETED** — both CXR and ECG pretraining runs finished with decreasing training and eval loss. CXR eval loss continued decreasing through 4 epochs (model had not converged — note this in research_log.md and the submission roadmap). ECG tapered off around 2 epochs.
+
+---
+
+### Between pretraining and SFT — Preserve checkpoints and capture generation examples
+
+Before starting supervised fine-tuning, do two things. SFT will push the model toward classification outputs and may reduce the generative capability trained in the pretraining stage, so both steps need to happen while the pretrained checkpoints are current.
+
+**Step 1 — Preserve pretrained checkpoints:**
+
+Copy outputs/cxr_pretrain/ and outputs/ecg_pretrain/ to outputs/cxr_pretrain_preserved/ and outputs/ecg_pretrain_preserved/ before running SFT. This gives you three comparison points for the submission: zero-shot baseline → pretrained → SFT fine-tuned.
+
+**Step 2 — Generate report examples from pretrained CXR checkpoint:**
+
+**Claude Code prompt:**
+
+> Write a script scripts/generate_examples.py that: loads the pretrained CXR LoRA checkpoint from outputs/cxr_pretrain/ in fp32; runs inference on 5 images from the CXR test set (PNG_valid) using the report completion prompt "Write the radiology report findings for this chest X-ray:"; saves a markdown file to outputs/results/generation_examples.md showing for each example: the image filename, the ground truth findings from df_enriched.csv, and the model's generated output side by side. Also run the same 5 images through the base model with no adapter and include that output as a third column, so the effect of pretraining is directly visible.
+
+This output becomes the qualitative section of the submission alongside the quantitative results table.
+
 ---
 
 ### Days 10–11 — Supervised fine-tuning stage
@@ -169,9 +189,9 @@ The output of this stage is your two adapter files: outputs/cxr_sft/adapter_mode
 
 **Claude Code prompt:**
 
-> Write a script scripts/evaluate.py that: takes a model adapter path and a test JSONL file as arguments, loads Qwen3-VL-2B-Instruct in fp32 (no quantization) with the specified LoRA adapter, runs inference on each test example, parses yes/no answers for CXR (14 labels) and class names for ECG (5 superclasses), and computes: accuracy, macro F1, and per-class AUC where applicable. Run it twice per modality: once with adapter=None (zero-shot baseline), once with the fine-tuned adapter. Save results as JSON to outputs/results/. Also generate a results summary table in Markdown.
+> Write a script scripts/evaluate.py that: takes a model adapter path and a test JSONL file as arguments, loads Qwen3-VL-2B-Instruct in fp32 (no quantization) with the specified LoRA adapter, runs inference on each test example, parses yes/no answers for CXR (14 labels) and class names for ECG (5 superclasses), and computes: accuracy, macro F1, and per-class AUC where applicable. Run it three times per modality: adapter=None (zero-shot baseline), the pretrained checkpoint from outputs/cxr_pretrain_preserved/ (domain-adapted, pre-SFT), and the SFT checkpoint (task fine-tuned). Save all three result sets as JSON to outputs/results/ and generate a three-column results summary table in Markdown showing what each training stage contributed.
 
-This gives you the central result of the project: a before/after table showing what fine-tuning gained. Even a 5–10% improvement on a small test set is a real finding.
+This gives you the central quantitative result: a three-stage table showing zero-shot → pretrained → SFT. Even modest gains at each stage tell a coherent story about what the training pipeline did.
 
 ---
 
