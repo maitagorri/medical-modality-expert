@@ -11,8 +11,8 @@ data/processed/**/*.jsonl
 # Enriched CSV is 400MB — regenerate with scripts/join_chexpert_labels.py
 data/processed/chexpert_plus/df_enriched.csv
 
-# Model checkpoints can be large; store externally
-outputs/checkpoints/
+# Training outputs — volatile, never versioned; copy final adapters into models/
+outputs/
 
 # Secrets
 .env
@@ -54,6 +54,10 @@ Thumbs.db
 *.swp
 *.swo
 
-# Logs and outputs that shouldn't be versioned
-outputs/logs/
+# Experiment trackers
 wandb/
+
+# Final trained adapters live in models/ and ARE versioned, except large optimizer artifacts
+models/**/*.pt
+models/**/rng_state.pth
+models/**/training_args.bin
