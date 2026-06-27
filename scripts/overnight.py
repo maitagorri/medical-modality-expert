@@ -121,11 +121,13 @@ def is_complete(run_dir: Path) -> bool:
         entries = read_logging(run_dir)
         if not entries:
             return False
-        last = entries[-1]
-        step_str = last.get("global_step/max_steps", "")
-        if "/" in step_str:
-            cur, total = step_str.split("/")
-            return cur.strip() == total.strip()
+        # The final JSONL entry is a metadata summary with no step info;
+        # scan backwards for the last entry that has global_step/max_steps.
+        for entry in reversed(entries):
+            step_str = entry.get("global_step/max_steps", "")
+            if "/" in step_str:
+                cur, total = step_str.split("/")
+                return cur.strip() == total.strip()
         return False
     try:
         data = json.loads(state.read_text())
@@ -193,15 +195,26 @@ def wait_for_running_cxr_pretrain(poll_sec: int = 60) -> None:
         entries = read_logging(run_dir)
         if entries:
             last = entries[-1]
-            log(f"  step {last.get('global_step/max_steps','?')} | "
-                f"loss {last.get('loss', last.get('eval_loss','?')):.4f}")
+            loss_val = last.get('loss', last.get('eval_loss', '?'))
+            try:
+                loss_str = f"{float(loss_val):.4f}"
+            except (TypeError, ValueError):
+                loss_str = str(loss_val)
+            log(f"  step {last.get('global_step/max_steps','?')} | loss {loss_str}")
         time.sleep(poll_sec)
     log("CXR pretrain finished.")
 
 
 def main() -> None:
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--pretrain-only", action="store_true",
+                    help="Stop after ECG pretrain (skip SFT stages)")
+    args = ap.parse_args()
+
+    stages = ("ecg_pretrain",) if args.pretrain_only else ("ecg_pretrain", "cxr_sft", "ecg_sft")
     log("Overnight runner started.")
-    log(f"Stages: cxr_pretrain (wait) → ecg_pretrain → cxr_sft → ecg_sft")
+    log(f"Stages: cxr_pretrain (wait) → {' → '.join(stages)}")
     print()
 
     # Stage 1: wait for already-running CXR pretrain, then maybe extend
@@ -216,8 +229,7 @@ def main() -> None:
     else:
         log("CXR pretrain converged. Moving on.")
 
-    # Stages 2-4: run fresh
-    for stage in ("ecg_pretrain", "cxr_sft", "ecg_sft"):
+    for stage in stages:
         run_stage(stage)
 
     log("="*60)
