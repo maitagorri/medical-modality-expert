@@ -68,6 +68,22 @@ In ms-swift 4.x, `swift sft --config file.yaml` does **not** load the YAML — `
 
 ---
 
+## CXR pretrain stopping criterion
+
+Stopped at 4 epochs (76 steps, resumed from the 2-epoch checkpoint) with eval loss still decreasing:
+
+| Checkpoint | Eval loss |
+|---|---|
+| Epoch 2 (v5 final) | 1.999 |
+| Epoch ~3 (v8 step 50) | 1.940 |
+| Epoch 4 (v8 final) | 1.898 |
+
+**Normal practice** would be to keep training until eval loss turns upward (overfitting onset), then use the checkpoint just before the turn. No overfitting was observed here — loss was still improving at the point training was stopped.
+
+**Why stopped early:** Time constraint. The model was still learning at epoch 4 on 75 training samples, so the final checkpoint slightly underperforms what a full run would achieve. For an assessment this is acceptable; in production you would run to convergence.
+
+---
+
 ## Training time estimates (CPU, Intel i7, 8 threads)
 
 | Stage | Samples | Steps (÷4 grad_accum) | Time/step | Total |
