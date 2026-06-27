@@ -22,7 +22,7 @@ output_dir: outputs/cxr_pretrain
 run_name: cxr-pretrain
 
 # Hyperparameters
-num_train_epochs: 2
+num_train_epochs: 4
 per_device_train_batch_size: 1
 gradient_accumulation_steps: 4
 learning_rate: 2.0e-4
