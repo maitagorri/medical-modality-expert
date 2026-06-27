@@ -6,6 +6,7 @@ still improving at the end of a stage. Designed to be left running in a terminal
 
 Usage:
   uv run python scripts/overnight.py
+  uv run python scripts/overnight.py --pretrain-only   # stop after ECG pretrain
 
 Stages run in order:
   1. CXR pretrain  (waits for already-running job to finish)
@@ -64,6 +65,15 @@ def latest_run_dir(output_dir: Path) -> Path | None:
     return runs[-1] if runs else None
 
 
+def latest_checkpoint(run_dir: Path) -> Path | None:
+    """Return the highest-numbered checkpoint-N directory in a run dir."""
+    checkpoints = sorted(
+        (p for p in run_dir.glob("checkpoint-*") if p.is_dir()),
+        key=lambda p: int(p.name.split("-")[-1]),
+    )
+    return checkpoints[-1] if checkpoints else None
+
+
 def read_logging(run_dir: Path) -> list[dict]:
     log_file = run_dir / "logging.jsonl"
     if not log_file.exists():
@@ -117,12 +127,10 @@ def is_complete(run_dir: Path) -> bool:
     """Heuristic: training finished if trainer_state.json exists and contains train_runtime."""
     state = run_dir / "trainer_state.json"
     if not state.exists():
-        # Check logging.jsonl for a 100%-complete marker
-        entries = read_logging(run_dir)
-        if not entries:
-            return False
+        # Check logging.jsonl for a 100%-complete marker.
         # The final JSONL entry is a metadata summary with no step info;
         # scan backwards for the last entry that has global_step/max_steps.
+        entries = read_logging(run_dir)
         for entry in reversed(entries):
             step_str = entry.get("global_step/max_steps", "")
             if "/" in step_str:
@@ -136,45 +144,51 @@ def is_complete(run_dir: Path) -> bool:
         return False
 
 
-def wait_for_stage(stage: str, run_dir: Path, poll_sec: int = 60) -> None:
-    log(f"Waiting for {stage} to finish (checking {run_dir.name}) ...")
-    while not is_complete(run_dir):
-        time.sleep(poll_sec)
-    log(f"{stage} complete.")
+def swift_run(config: Path, checkpoint: Path | None = None) -> int:
+    """Run swift sft, temporarily injecting resume_from_checkpoint into the YAML if given."""
+    original = config.read_text()
+    try:
+        if checkpoint:
+            config.write_text(original + f"\nresume_from_checkpoint: {checkpoint}\n")
+            log(f"  Resuming from {checkpoint.parent.name}/{checkpoint.name}")
+        r = subprocess.run(["swift", "sft", str(config)], env=env(), cwd=str(REPO))
+        return r.returncode
+    finally:
+        config.write_text(original)
 
 
-def run_stage(stage: str, poll_sec: int = 60) -> None:
+def run_stage(stage: str, resume_from: Path | None = None) -> None:
     config = CONFIGS[stage]
     output_dir = OUTPUT_DIRS[stage]
+    checkpoint = resume_from
 
     log(f"{'='*60}")
     log(f"Starting {stage}")
     log(f"{'='*60}")
 
     while True:
-        proc = subprocess.Popen(
-            ["swift", "sft", str(config)],
-            env=env(),
-            cwd=str(REPO),
-        )
-        proc.wait()
+        returncode = swift_run(config, checkpoint)
 
         run_dir = latest_run_dir(output_dir)
         if run_dir is None:
             log(f"[ERROR] No output directory found for {stage}. Aborting.")
             sys.exit(1)
 
-        if proc.returncode != 0:
-            log(f"[ERROR] {stage} exited with code {proc.returncode}. Check logs in {run_dir}.")
+        if returncode != 0:
+            log(f"[ERROR] {stage} exited with code {returncode}. Check logs in {run_dir}.")
             sys.exit(1)
 
         entries = read_logging(run_dir)
-        log(f"Checking whether val loss is still improving ...")
+        log("Checking whether val loss is still improving ...")
 
         if is_still_improving(entries):
+            checkpoint = latest_checkpoint(run_dir)
             log(f"Still improving — extending training by {EXTRA_EPOCHS} epochs.")
+            if checkpoint:
+                log(f"  Next run will resume from {run_dir.name}/{checkpoint.name}.")
+            else:
+                log("  [WARN] No checkpoint found — next run will start from scratch.")
             bump_epochs(config, EXTRA_EPOCHS)
-            # ms-swift will resume from the latest checkpoint automatically
         else:
             log(f"Val loss plateaued — {stage} done.")
             break
@@ -195,7 +209,7 @@ def wait_for_running_cxr_pretrain(poll_sec: int = 60) -> None:
         entries = read_logging(run_dir)
         if entries:
             last = entries[-1]
-            loss_val = last.get('loss', last.get('eval_loss', '?'))
+            loss_val = last.get("loss", last.get("eval_loss", "?"))
             try:
                 loss_str = f"{float(loss_val):.4f}"
             except (TypeError, ValueError):
@@ -223,9 +237,10 @@ def main() -> None:
     entries = read_logging(run_dir)
     log("Checking CXR pretrain val loss ...")
     if is_still_improving(entries):
+        ckpt = latest_checkpoint(run_dir)
         log(f"Still improving — extending CXR pretrain by {EXTRA_EPOCHS} epochs.")
         bump_epochs(CONFIGS["cxr_pretrain"], EXTRA_EPOCHS)
-        run_stage("cxr_pretrain")
+        run_stage("cxr_pretrain", resume_from=ckpt)
     else:
         log("CXR pretrain converged. Moving on.")
 
