@@ -4,11 +4,11 @@
 
 model: /home/maita/.cache/huggingface/hub/models--Qwen--Qwen3-VL-2B-Instruct/snapshots/89644892e4d85e24eaac8bacfd4f463576704203
 
-# Resume from pre-training checkpoint
-# Uncomment and set path after pretrain completes:
-# adapter_path: outputs/cxr_pretrain/checkpoint-final
+# Initialise from pretrained CXR LoRA weights (fresh optimizer — new task/LR)
+adapters:
+  - outputs/cxr_pretrain_preserved/checkpoint-76
 
-# LoRA — same rank as pretrain to allow checkpoint continuation
+# LoRA — same rank as pretrain to allow weight loading
 tuner_type: lora
 lora_rank: 8
 lora_alpha: 16
@@ -44,11 +44,13 @@ bf16: false
 gradient_checkpointing: true
 dataloader_num_workers: 0
 
-# Checkpointing — frequent saves in case of interruption
+# Checkpointing — eval_steps matches save_steps so best checkpoint is never pruned before eval
 save_steps: 10
 logging_steps: 5
-eval_steps: 25
-save_total_limit: 3
+eval_steps: 10
+save_total_limit: 5
+load_best_model_at_end: true
+metric_for_best_model: eval_loss
 
 # Logging
 report_to: none
