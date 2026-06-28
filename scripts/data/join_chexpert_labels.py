@@ -20,7 +20,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-REPO_ROOT    = Path(__file__).parent.parent
+REPO_ROOT    = Path(__file__).parent.parent.parent
 CSV_PATH     = REPO_ROOT / "data/raw/chexpert-plus/df_chexpert_plus_240401.csv"
 LABELS_PATH  = REPO_ROOT / "data/raw/chexpert-plus/CheXpert_Labels/findings_fixed.json"
 OUT_PATH     = REPO_ROOT / "data/processed/chexpert_plus/df_enriched.csv"

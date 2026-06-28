@@ -23,7 +23,7 @@ import pandas as pd
 import wfdb
 
 # ── Paths ──────────────────────────────────────────────────────────────────
-REPO_ROOT   = Path(__file__).parent.parent
+REPO_ROOT   = Path(__file__).parent.parent.parent
 PTBXL_DIR   = REPO_ROOT / "data/raw/ptb-xl-a-large-publicly-available-electrocardiography-dataset-1.0.3"
 CXR_RAW     = REPO_ROOT / "data/raw/chexpert-plus"
 CXR_PROC    = REPO_ROOT / "data/processed/chexpert_plus"

@@ -21,7 +21,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-REPO_ROOT      = Path(__file__).parent.parent
+REPO_ROOT      = Path(__file__).parent.parent.parent
 PTBXL_DIR      = REPO_ROOT / "data/raw/ptb-xl-a-large-publicly-available-electrocardiography-dataset-1.0.3"
 ENRICHED_CSV   = REPO_ROOT / "data/processed/chexpert_plus/df_enriched.csv"
 

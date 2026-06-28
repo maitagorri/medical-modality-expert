@@ -18,7 +18,7 @@ from pathlib import Path
 
 os.environ["USE_MODELSCOPE_HUB"] = "False"
 
-REPO = Path(__file__).parent.parent
+REPO = Path(__file__).parent.parent.parent
 BASE_MODEL = (
     "/home/maita/.cache/huggingface/hub"
     "/models--Qwen--Qwen3-VL-2B-Instruct"

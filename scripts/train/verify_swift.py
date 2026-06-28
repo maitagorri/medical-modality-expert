@@ -22,7 +22,7 @@ import psutil
 # Must be set before importing swift.
 os.environ["USE_MODELSCOPE_HUB"] = "False"
 
-REPO_ROOT      = Path(__file__).parent.parent
+REPO_ROOT      = Path(__file__).parent.parent.parent
 PRIMARY_MODEL  = "Qwen/Qwen3-VL-2B-Instruct"
 FALLBACK_MODEL = "Qwen/Qwen2.5-VL-2B-Instruct"
 RAM_WARN_GB    = 16

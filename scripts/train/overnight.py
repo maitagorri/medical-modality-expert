@@ -22,7 +22,7 @@ import sys
 import time
 from pathlib import Path
 
-REPO = Path(__file__).parent.parent
+REPO = Path(__file__).parent.parent.parent
 CONFIGS = {
     "cxr_pretrain": REPO / "configs/pretrain_cxr.yaml",
     "ecg_pretrain": REPO / "configs/pretrain_ecg.yaml",

@@ -10,7 +10,7 @@ def load_env() -> dict:
     """Load .env from repo root; returns env dict with HF_TOKEN and USE_MODELSCOPE_HUB set."""
     env = os.environ.copy()
     env["USE_MODELSCOPE_HUB"] = "False"
-    env_file = Path(__file__).parent.parent / ".env"
+    env_file = Path(__file__).parent.parent.parent / ".env"
     if env_file.exists():
         for line in env_file.read_text().splitlines():
             line = line.strip()

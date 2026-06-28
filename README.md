@@ -37,18 +37,18 @@ docs/
 notebooks/figures/           EDA output plots (CXR + ECG examples)
 outputs/                     checkpoints, training logs, results (gitignored)
 scripts/
-  Data preparation
+  data/
     download_redivis.py      download CheXpert Plus images + labels from Redivis
     join_chexpert_labels.py  merge raw CSV with binary-label JSON → df_enriched.csv
     eda_cxr.py               CheXpert Plus exploratory analysis
     eda_ecg.py               PTB-XL exploratory analysis + ECG-to-image rendering
     sample_datasets.py       stratified train/val/test splits per modality
     make_jsonl.py            convert sampled splits into ms-swift JSONL format
-  Training
+  train/
     verify_swift.py          smoke test: load model in fp32, run a forward pass
     train.py                 thin wrapper around `swift sft <config>`
     overnight.py             chain all 4 training stages with auto epoch extension
-  Inference & evaluation
+  eval/
     inference.py             end-to-end pipeline: route, then answer with adapter
     evaluate.py              zero-shot baseline + assembled metrics table
     generate_examples.py     qualitative examples over a mixed-modality stream
@@ -70,7 +70,7 @@ All commands below assume `uv run` to use the synced environment.
 
 Training configs point at a **local** HuggingFace snapshot path rather than a model ID, to force offline loading and avoid ms-swift's default ModelScope download (see [docs/engineering_decisions.md](docs/engineering_decisions.md)). On a fresh machine:
 
-1. Run `uv run python scripts/verify_swift.py` once — this populates the local HF cache via `snapshot_download`.
+1. Run `uv run python scripts/train/verify_swift.py` once — this populates the local HF cache via `snapshot_download`.
 2. Update the `model:` field in the four `configs/*.yaml` files to match your own snapshot hash.
 
 ## Data
@@ -87,9 +87,9 @@ See [docs/data_catalog.md](docs/data_catalog.md) for full details. Primary datas
 ### Preparing data
 
 ```bash
-uv run python scripts/join_chexpert_labels.py   # merge labels → df_enriched.csv
-uv run python scripts/sample_datasets.py        # stratified train/val/test splits
-uv run python scripts/make_jsonl.py             # → ms-swift JSONL (pretrain + SFT)
+uv run python scripts/data/join_chexpert_labels.py   # merge labels → df_enriched.csv
+uv run python scripts/data/sample_datasets.py        # stratified train/val/test splits
+uv run python scripts/data/make_jsonl.py             # → ms-swift JSONL (pretrain + SFT)
 ```
 
 This produces:
@@ -120,7 +120,7 @@ Key settings (full rationale in [docs/engineering_decisions.md](docs/engineering
 
 To chain all four stages unattended (with automatic epoch extension while val loss is still improving):
 ```bash
-uv run python scripts/overnight.py
+uv run python scripts/train/overnight.py
 ```
 
 ## Inference
@@ -128,18 +128,18 @@ uv run python scripts/overnight.py
 Run the full routing pipeline on a single image — the base model detects the modality, then the matching specialist adapter answers:
 
 ```bash
-uv run python scripts/inference.py --image path/to/image.png
-uv run python scripts/inference.py --image path/to/image.png --query "Is there a pleural effusion?"
-uv run python scripts/inference.py --demo     # runs one CXR + one ECG example
+uv run python scripts/eval/inference.py --image path/to/image.png
+uv run python scripts/eval/inference.py --image path/to/image.png --query "Is there a pleural effusion?"
+uv run python scripts/eval/inference.py --demo     # runs one CXR + one ECG example
 ```
 
-Adapter checkpoint paths are registered in `ADAPTERS` at the top of [scripts/inference.py](scripts/inference.py).
+Adapter checkpoint paths are registered in `ADAPTERS` at the top of [scripts/eval/inference.py](scripts/eval/inference.py).
 
 ## Evaluation
 
 ```bash
-uv run python scripts/evaluate.py            # zero-shot baseline + metrics table
-uv run python scripts/generate_examples.py   # qualitative mixed-modality examples
+uv run python scripts/eval/evaluate.py            # zero-shot baseline + metrics table
+uv run python scripts/eval/generate_examples.py   # qualitative mixed-modality examples
 ```
 
 - **`evaluate.py`** runs the base model (no adapter) on the validation sets to produce a **zero-shot baseline**, then assembles a zero-shot → pretrain → SFT comparison by reading the best checkpoint metrics from each stage's training log. Writes `outputs/results/metrics.{json,md}`.
@@ -178,7 +178,7 @@ Qualitative end-to-end examples (router decision + specialist answer over a mixe
 
 ## Roadmap
 
-- **More modalities.** The router is zero-shot, so adding a modality needs **no router retraining**: add a JSONL conversion in `make_jsonl.py`, add a pretrain + SFT config pair in `configs/`, train the two stages, and register the new adapter path in `inference.py`. The same recipe extends to the remaining target modalities.
+- **More modalities.** The router is zero-shot, so adding a modality needs **no router retraining**: add a JSONL conversion in `scripts/data/make_jsonl.py`, add a pretrain + SFT config pair in `configs/`, train the two stages, and register the new adapter path in `scripts/eval/inference.py`. The same recipe extends to the remaining target modalities.
 - **Scale with GPU.** Move from fp32 LoRA to QLoRA (`quantization_bit: 4`) on a GPU, increase dataset size, and raise `max_length` — removing the CPU/RAM constraints that currently cap scale and context length.
 
 ## Further Documentation

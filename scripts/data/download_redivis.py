@@ -30,7 +30,7 @@ OUT_CSV            = OUT_ROOT / "df_chexpert_plus_240401.csv"
 
 
 def load_env() -> None:
-    env_path = Path(__file__).parent.parent / ".env"
+    env_path = Path(__file__).parent.parent.parent / ".env"
     if env_path.exists():
         from dotenv import load_dotenv
         load_dotenv(env_path)
