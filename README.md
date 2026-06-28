@@ -155,10 +155,10 @@ Token accuracy on the held-out **validation** set (CXR: 42 examples from CheXper
 
 | Modality | Stage | Token Accuracy | Eval Loss |
 |----------|-------|----------------|-----------|
-| CXR | Zero-shot (base model) | _pending — `evaluate.py`_ | — |
+| CXR | Zero-shot (base model) | 21.4% | — |
 | CXR | Pretrain | 59.1% | 1.898 |
 | CXR | **SFT** | **97.6%** | **0.061** |
-| ECG | Zero-shot (base model) | _pending — `evaluate.py`_ | — |
+| ECG | Zero-shot (base model) | 20.0% | — |
 | ECG | Pretrain | 77.8% | 0.459 |
 | ECG | **SFT** | **80.0%** | **0.462** |
 
