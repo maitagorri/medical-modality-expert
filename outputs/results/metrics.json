@@ -1,0 +1,34 @@
+{
+  "cxr": {
+    "zeroshot": {
+      "free_gen_acc": 0.21428571428571427
+    },
+    "pretrain": {
+      "eval_loss": 1.8984,
+      "eval_token_acc": 0.5908,
+      "step": "76/76"
+    },
+    "sft": {
+      "eval_loss": 0.0612,
+      "eval_token_acc": 0.9762,
+      "step": "20/78",
+      "free_gen_acc": 0.9285714285714286
+    }
+  },
+  "ecg": {
+    "zeroshot": {
+      "free_gen_acc": 0.2
+    },
+    "pretrain": {
+      "eval_loss": 0.4594,
+      "eval_token_acc": 0.7778,
+      "step": "25/38"
+    },
+    "sft": {
+      "eval_loss": 0.4615,
+      "eval_token_acc": 0.8,
+      "step": "30/38",
+      "free_gen_acc": 0.28
+    }
+  }
+}
