@@ -6,7 +6,8 @@ from docx import Document
 from docx.shared import Pt, Cm
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
-md_lines = Path("docs/zusammenfassung.md").read_text().splitlines()
+REPO = Path(__file__).parent.parent
+md_lines = (REPO / "docs/zusammenfassung.md").read_text().splitlines()
 
 doc = Document()
 
@@ -61,5 +62,6 @@ for line in md_lines:
         p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
         add_runs(p, line)
 
-doc.save("zusammenfassung.docx")
-print("Saved zusammenfassung.docx")
+out_path = REPO / "zusammenfassung.docx"
+doc.save(str(out_path))
+print(f"Saved {out_path}")

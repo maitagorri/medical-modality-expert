@@ -12,10 +12,10 @@ data/processed/**/*.jsonl
 data/processed/chexpert_plus/df_enriched.csv
 
 # Training outputs — volatile, never versioned; copy final adapters into models/
-outputs/
+# (use outputs/* not outputs/ so git still descends and the negation below works)
+outputs/*
 # ...except final evaluation artifacts
 !outputs/results/
-!outputs/results/**
 
 # Secrets
 .env
