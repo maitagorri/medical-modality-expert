@@ -89,8 +89,21 @@ def sample_ecg(entries: list[dict]) -> list[dict]:
 
 MAX_PIXELS = 200704  # match training configs — limits CXR images to ~250 tokens
 
+def _add_pixel_limits(messages: list[dict]) -> list[dict]:
+    """Inject max_pixels into image content dicts so fetch_image resizes correctly."""
+    out = []
+    for msg in messages:
+        new_content = [
+            dict(c, max_pixels=MAX_PIXELS) if c.get("type") == "image" else c
+            for c in msg["content"]
+        ]
+        out.append(dict(msg, content=new_content))
+    return out
+
+
 def _generate(messages: list[dict], model, processor, max_new_tokens: int = 16) -> str:
     from qwen_vl_utils import process_vision_info
+    messages = _add_pixel_limits(messages)
     text = processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
     image_inputs, video_inputs = process_vision_info(messages)
     inputs = processor(
