@@ -88,7 +88,7 @@ def token_acc_cxr(entries: list[dict], model, processor) -> float:
         if pred.startswith(gt[:3]):
             correct += 1
         if (i + 1) % 10 == 0:
-            print(f"  CXR {i+1}/{len(entries)}")
+            print(f"  CXR {i+1}/{len(entries)}", flush=True)
     return correct / len(entries)
 
 
@@ -103,7 +103,7 @@ def token_acc_ecg(entries: list[dict], model, processor) -> float:
         if gt in pred:
             correct += 1
         if (i + 1) % 10 == 0:
-            print(f"  ECG {i+1}/{len(entries)}")
+            print(f"  ECG {i+1}/{len(entries)}", flush=True)
     return correct / len(entries)
 
 
