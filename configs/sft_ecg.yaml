@@ -1,6 +1,6 @@
 # ms-swift supervised fine-tuning config — ECG
 # Stage 2: starting from ecg_pretrain checkpoint, continue on PTB-XL superclass labels.
-# CPU-only, fp32 for stability. Run with: swift sft --config configs/sft_ecg.yaml
+# CPU-only, fp32 for stability. Run with: swift sft configs/sft_ecg.yaml
 
 model: /home/maita/.cache/huggingface/hub/models--Qwen--Qwen3-VL-2B-Instruct/snapshots/89644892e4d85e24eaac8bacfd4f463576704203
 

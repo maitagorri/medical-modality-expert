@@ -1,6 +1,6 @@
 # ms-swift continual pre-training config — ECG
 # Stage 1: train the model to classify ECG waveform images by diagnostic superclass.
-# CPU-only, fp32 for stability. Run with: swift sft --config configs/pretrain_ecg.yaml
+# CPU-only, fp32 for stability. Run with: swift sft configs/pretrain_ecg.yaml
 
 model: /home/maita/.cache/huggingface/hub/models--Qwen--Qwen3-VL-2B-Instruct/snapshots/89644892e4d85e24eaac8bacfd4f463576704203
 
