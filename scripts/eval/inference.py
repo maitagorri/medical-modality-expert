@@ -29,11 +29,9 @@ BASE_MODEL = (
     "/snapshots/89644892e4d85e24eaac8bacfd4f463576704203"
 )
 
-# Fill in best checkpoint path after each SFT run completes.
-# Set to None until the adapter exists.
 ADAPTERS: dict[str, Path | None] = {
-    "xray": REPO / "outputs/cxr_sft/v1-20260628-064230/checkpoint-20",
-    "ecg":  REPO / "outputs/ecg_sft/v0-20260628-015306/checkpoint-30",
+    "xray": REPO / "models/cxr",
+    "ecg":  REPO / "models/ecg",
 }
 
 ROUTER_PROMPT = (
