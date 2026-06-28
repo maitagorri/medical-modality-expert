@@ -84,6 +84,39 @@ Stopped at 4 epochs (76 steps, resumed from the 2-epoch checkpoint) with eval lo
 
 ---
 
+## SFT checkpointing: always match eval_steps to save_steps
+
+During CXR SFT v0, `eval_steps: 25` and `save_steps: 10` caused the best checkpoint (step 25, eval_loss 0.070, token_acc 98.4%) to be deleted before the run ended — `save_total_limit: 3` pruned it while training continued past step 30. The checkpoint only existed between evaluations, and was deleted on the next save cycle.
+
+**Fix applied to all subsequent SFT configs:**
+- `eval_steps: 10` (matches `save_steps: 10`) — every saved checkpoint gets an eval score
+- `save_total_limit: 5` — wider window so early-peak checkpoints survive
+- `load_best_model_at_end: true` + `metric_for_best_model: eval_loss` — ms-swift copies the best checkpoint to `best_model_checkpoint` at the end of training
+
+**CXR SFT peak behaviour:** best checkpoint appears very early (~step 20, epoch 0.5) then eval loss climbs before partially recovering. Both v0 and v1 runs showed this pattern. Likely cause: small validation set (42 examples) + fast convergence from the pretrained initialisation. The SFT task (binary yes/no) is much simpler than pretrain, so the model reaches near-optimal in under one epoch.
+
+---
+
+## Inference stack: transformers + PEFT directly (not ms-swift TransformersEngine)
+
+ms-swift's `TransformersEngine` raises `ValueError: Mixed using with peft is not allowed now` when a second engine instance is created in the same process, even after the first is deleted and `gc.collect()` is called. Root cause: PEFT leaves global state in `peft.peft_model` that ms-swift's `SwiftModel.from_pretrained` checks.
+
+**Fix:** All inference scripts (`evaluate.py`, `generate_examples.py`, `inference.py`) now use `transformers.Qwen3VLForConditionalGeneration.from_pretrained` + `peft.PeftModel.from_pretrained` directly. This avoids ms-swift's adapter loading path entirely.
+
+**Adapter hot-swapping in inference.py:** PEFT's multi-adapter API (`model.load_adapter()` + `model.set_adapter()`) allows switching between the CXR and ECG adapters at zero cost after a single model load. Zero-shot routing uses `model.disable_adapter()` context. No second model load is ever needed.
+
+---
+
+## Evaluation sampling: stratified 10-per-label for CXR
+
+CXR test set has 420 examples across 14 binary pathology labels (~30 per label). Running the full set × 3 passes (zero-shot, pretrained, SFT) would take ~9h. A random subsample of N examples risks under-representing rare labels.
+
+**Decision:** Stratified sample of 10 examples per label (140 total, seed=42). Implemented via `--max-per-label 10` flag in `evaluate.py`. ECG test set (50 examples, 5 classes, 10 per class already) is used in full.
+
+**Trade-off:** AUC estimates at 10 samples per class are noisy; accuracy and F1 trends are reliable enough to show the zero-shot → pretrained → SFT improvement and are defensible for an assessment submission.
+
+---
+
 ## Training time estimates (CPU, Intel i7, 8 threads)
 
 | Stage | Samples | Steps (÷4 grad_accum) | Time/step | Total |
