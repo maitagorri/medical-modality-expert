@@ -97,7 +97,6 @@ def _generate(messages: list[dict], model, processor, max_new_tokens: int = 16) 
         text=[text],
         images=image_inputs if image_inputs else None,
         videos=video_inputs if video_inputs else None,
-        max_pixels=MAX_PIXELS,
         return_tensors="pt",
     )
     with torch.no_grad():
@@ -180,6 +179,7 @@ def main() -> None:
 
     print("\nLoading base model ...")
     processor = AutoProcessor.from_pretrained(BASE_MODEL)
+    processor.image_processor.max_pixels = MAX_PIXELS
     model = Qwen3VLForConditionalGeneration.from_pretrained(BASE_MODEL, torch_dtype=torch.float32)
 
     print("Loading CXR SFT adapter ...")
