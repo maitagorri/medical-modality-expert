@@ -4,13 +4,13 @@
 
 Before the plan begins, these choices are locked:
 
-- **Model:** Qwen3-VL-2B-Instruct (LoRA / QLoRA). ms-swift support confirmed. Qwen2.5-VL-2B as fallback if anything breaks.
+- **Model:** Qwen3-VL-2B-Instruct (LoRA, fp32, no quantization). ms-swift support confirmed. QLoRA/bitsandbytes excluded — no CPU backend. Qwen2.5-VL-2B as fallback if anything breaks.
 - **Primary modalities:** CXR (Röntgen), ECG, Text. Remaining 7 modalities documented as a roadmap, not trained.
 - **ECG representation:** Waveform plotted as a PNG image, fed into the VL model like any other image.
 - **Adapter architecture:** One LoRA adapter per modality (CXR adapter, ECG adapter), trained separately.
-- **Router:** No third training run. The base Qwen2.5-VL-2B, prompted appropriately, identifies the modality and Python code loads the correct adapter.
-- **Hardware strategy:** Training on Colab (free T4) or Kaggle (free P100). Local machine used for everything else — environment, data prep, evaluation, inference. This is stated transparently in the submission.
-- **Dataset size:** ~300 training / 50 validation / 50 test examples per modality. Enough to show meaningful fine-tuning on CPU-adjacent hardware; honest about scale.
+- **Router:** No third training run. The base Qwen3-VL-2B-Instruct, prompted appropriately, identifies the modality and Python code loads the correct adapter.
+- **Hardware strategy:** All training runs locally on the T470s (Intel i7, CPU-only). Dataset and sequence length are scoped to make this feasible. Training will be slow (hours per epoch) but completable overnight. This is stated in the submission as a deliberate scoping decision, not a limitation.
+- **Dataset size:** ~75 training / 25 validation examples per modality for training. PNG_valid (234 images) used as the CXR test set; a held-out PTB-XL split for ECG. Small enough to run on CPU within a reasonable overnight window.
 
 ---
 
@@ -31,7 +31,7 @@ A practical pattern: when you hit a problem in Claude Code, paste the error and 
 **Registrations (do these in parallel, they take time):**
 
 - PhysioNet credentialed access at physionet.org. Required for MIMIC-CXR and MIMIC-IV-ECG. Takes 2–5 days. The training module is straightforward but mandatory. Start this today.
-- CheXpert at stanfordmlgroup.github.io/competitions/chexpert. Registration is fast, usually same-day.
+- CheXpert Plus at stanfordaimi.azurewebsites.net/datasets. This is the 2024 version with both structured labels and paired radiology reports — the only CXR dataset you need. Registration is fast, usually same-day.
 - EchoNet-Dynamic at echonet.github.io/dynamic. Stanford, fast.
 
 **Do this yourself — dataset verification:**
@@ -40,7 +40,9 @@ While registrations are processing, navigate to each repository manually: Physio
 
 **Project skeleton — Claude Code prompt:**
 
-> Create a Python project skeleton for a medical AI fine-tuning project. Directory structure: /data (with subdirs /raw and /processed), /scripts (preprocessing, training, eval, inference), /configs (ms-swift YAML files), /outputs (checkpoints, logs, results), /notebooks, /docs. Generate a requirements.txt including: torch, transformers>=4.57, peft, ms-swift, wandb, matplotlib, numpy, pandas, scikit-learn, wfdb, Pillow, qwen_vl_utils>=0.0.14, decord. Also create a .gitignore that excludes /data/raw, /outputs/checkpoints, and .env files. Write a setup.sh that installs requirements and runs a smoke test: loads Qwen3-VL-2B-Instruct in 4-bit quantization and prints the model parameter count.
+> Create a Python project skeleton for a medical AI fine-tuning project using uv for dependency management. Directory structure: /data (with subdirs /raw and /processed), /scripts (preprocessing, training, eval, inference), /configs (ms-swift YAML files), /outputs (checkpoints, logs, results), /notebooks, /docs. Generate a pyproject.toml (not requirements.txt) with dependencies: torch, transformers>=4.57, peft, ms-swift, wandb, matplotlib, numpy, pandas, scikit-learn, wfdb, Pillow, qwen_vl_utils>=0.0.14, decord. Create a .gitignore that excludes: /data/raw/, /outputs/checkpoints/, .env files, and binary data formats by extension within /data/processed/: *.png, *.jpg, *.jpeg, *.dcm, *.npy, *.dat, *.hea, *.jsonl — but does NOT exclude /data/processed/ as a directory, so that CSV and TXT files within it are tracked by default. Commit uv.lock. Create placeholder .gitkeep files in each directory so the folder structure is committed. Create a docs/data_access.md stub explaining that data is not committed to the repo and documenting where to obtain each dataset (to be filled in). Write a setup.sh that installs dependencies via `uv sync` and runs a smoke test: loads Qwen3-VL-2B-Instruct in fp32 (no quantization — bitsandbytes has no CPU backend), checks available RAM and warns if below 16GB, runs a forward pass on a dummy image and text prompt, and prints peak memory usage.
+
+CSVs, TXTs, and other text files in /data/processed/ are tracked by default under this approach — no un-ignore rules needed, no warnings on commit.
 
 Commit the skeleton to a new GitHub repo immediately. An early commit history looks better than a single dump at the end.
 
@@ -83,19 +85,27 @@ Aim for about an hour of real reading. You don't need to understand every paper 
 
 ### Days 3–5 — CXR data and preprocessing specs
 
-CheXpert should arrive within 1–2 days of registration. It's 439 GB in full — **do not download the full dataset**. CheXpert-Small (11 GB, 224×224px downsampled) is sufficient and what most papers use. The label file (CSV) is a separate small download and gives you 14 binary labels per image.
+**Primary: CheXpert Plus.** Once access arrives (usually same-day), download CheXpert Plus from Stanford AIMI. Do not download the full image set immediately — start with the CSV metadata and the radiology reports, which are small. The images come in multiple resolutions; the 224×224 downsampled version is sufficient and what most papers use. CheXpert Plus gives you everything needed for both training stages in one place: 14 structured labels per image for the supervised stage, and paired free-text radiology reports for the self-supervised stage. This is your primary CXR dataset.
 
-**For the self-supervised stage, free-text reports are needed — here are the options in order of preference:**
+**Upgrade: MIMIC-CXR.** If PhysioNet credentialing comes through during Week 1, download the reports first (text files, a few GB) rather than the full image set. MIMIC reports are more clinically diverse than CheXpert Plus reports and will improve the self-supervised stage. Use them as a supplement to CheXpert Plus rather than a replacement — mixing both report corpora gives broader coverage.
 
-**ReXGradient-160K** is the best MIMIC-CXR substitute and requires no credentialing. It's a 2025 dataset from the Rajpurkar lab (Harvard) containing 160,000 chest X-ray studies with paired radiology reports across 79 medical sites, openly available on HuggingFace at `rajpurkarlab/ReXGradient-160K`. Download the reports first (small), then sample images as needed. Download this on Day 3 regardless of whether MIMIC access comes through.
+**Fallback: ReXGradient-160K.** If CheXpert Plus access is delayed for any reason, ReXGradient-160K is available immediately on HuggingFace at `rajpurkarlab/ReXGradient-160K` with no registration. It has 160,000 chest X-ray studies with paired reports. It's a 2025 dataset with less established benchmarking than CheXpert Plus, so it's better as a fallback than a primary source.
 
-**OpenI / IU-Xray** (Indiana University) is a smaller fully open alternative: 7,470 chest X-rays with 3,955 free-text radiology reports, available from the National Library of Medicine or as a clean Kaggle mirror at `raddar/chest-xrays-indiana-university`. At ~300MB it's fast to download and useful as a sanity-check corpus even if you use ReXGradient for training.
+**Secondary reference: OpenI / IU-Xray.** 7,470 chest X-rays with 3,955 free-text reports, fully open at `raddar/chest-xrays-indiana-university` on Kaggle. Too small to train on meaningfully, but fast to download (~300MB) and useful for validating your preprocessing pipeline before touching the larger datasets.
 
-**MIMIC-CXR** remains the gold standard if credentialing comes through — prioritize the reports (text files, small) over the images. But with ReXGradient available, MIMIC is now a nice-to-have rather than a dependency.
+**Note on CheXpert Plus label structure:** The main CSV (`df_chexpert_plus_240401`) contains report text and metadata but not the 14 binary labels. Those come from `findings_fixed.json` in the CheXpert Labels folder, which you've already downloaded. The script below joins them into a single enriched CSV that everything downstream uses.
+
+**Claude Code prompt for label join:**
+
+> Write a script scripts/join_chexpert_labels.py that: loads `df_chexpert_plus_240401.csv` into a dataframe; loads `findings_fixed.json` from the CheXpert Labels folder (consult the Stanford-AIMI/chexpert-plus GitHub README for the exact JSON structure and join key — it joins on `path_to_image`); merges the 14 binary label columns onto the main dataframe on `path_to_image`; prints how many rows successfully joined, how many had no match, and the positive rate for each of the 14 labels; saves the merged result as `/data/processed/chexpert_plus/df_enriched.csv`. This file becomes the single source of truth for all downstream scripts — EDA, sampling, and JSONL conversion all read from it instead of the original CSV.
+
+**Claude Code prompt for CheXpert Plus EDA:**
+
+> Write a Python script scripts/eda_cxr.py that loads `/data/processed/chexpert_plus/df_enriched.csv`. The script should: print all column names and dtypes; print row counts and missing value counts per column; print class distribution and positive rate for all 14 label columns, flagging any with fewer than 5% positives; for report text columns (section_findings, section_impression), print 5 random non-null examples and report text length distribution; print distribution of demographic columns if present (sex, age, race); display 4 example images from PNG_valid with label vectors overlaid as title and save to /notebooks/figures/chexpert_examples.png; fall back gracefully to text-only output if images are not yet present.
 
 **Claude Code prompt for data sampling:**
 
-> Write a script scripts/sample_datasets.py that: for CheXpert-Small, samples 400 examples stratified across the 14 label columns (300 train, 50 val, 50 test), saves the splits as CSV files in /data/processed/chexpert/; for PTB-XL, samples 400 examples stratified across the 5 superclass labels (same split), saves to /data/processed/ptbxl/. Ensure no patient appears in more than one split (use the patient_id column where available). Print a summary of class balance in each split.
+> Write a script scripts/sample_datasets.py that reads from `/data/processed/chexpert_plus/df_enriched.csv`. For CheXpert Plus: use all 234 images from PNG_valid as the test set; sample 100 examples from the train split stratified across the 14 label columns (75 train, 25 validation), saving all three splits as CSV files to /data/processed/chexpert_plus/; also output /data/processed/chexpert_plus/image_list.txt containing the exact path_to_image values needed from PNG_train for selective download from Redivis. For PTB-XL: sample 150 examples stratified across the 5 superclass labels (75 train, 25 val, 50 test), saving to /data/processed/ptbxl/. Ensure no patient appears in more than one split using patient_id where available. Print a class balance summary for each split.
 
 ---
 
@@ -103,13 +113,13 @@ CheXpert should arrive within 1–2 days of registration. It's 439 GB in full �
 
 **Data catalog — Claude Code prompt:**
 
-> Create docs/data_catalog.md with a structured table for each dataset: name, modality, source URL, access method (open / registration / credentialed), size, number of examples, label type (none / structured / free text), license, and notes on known preprocessing requirements. Fill in the following datasets: PTB-XL (open, ECG), CheXpert-Small (registration, CXR structured labels), ReXGradient-160K (open, CXR + free-text reports, HuggingFace rajpurkarlab/ReXGradient-160K), OpenI/IU-Xray (open, CXR + free-text reports, ~7k images), NIH ChestX-ray14 (open, CXR structured labels, 112k images, Kaggle), MIMIC-CXR (credentialed, CXR + free-text reports), EchoNet-Dynamic (registration, Echo), MIMIC-IV-ECG (credentialed, ECG). Add a role column indicating whether each dataset is used for: self-supervised pretraining, supervised fine-tuning, both, or documented only. Add a second section listing the remaining modalities (CT, MRI, Ultrasound, Coronary Angiography, General Time Series, Tables) with the best available public dataset for each and a brief note on why it was deferred.
+> Create docs/data_catalog.md with a structured table for each dataset: name, modality, source URL, access method (open / registration / credentialed), size, number of examples, label type (none / structured / free text), license, and notes on known preprocessing requirements. Fill in the following datasets: PTB-XL (open, ECG), CheXpert Plus (registration, CXR structured labels + free-text reports, Stanford AIMI), ReXGradient-160K (open, CXR + free-text reports, HuggingFace rajpurkarlab/ReXGradient-160K), OpenI/IU-Xray (open, CXR + free-text reports, ~7k images), NIH ChestX-ray14 (open, CXR structured labels, 112k images, Kaggle), MIMIC-CXR (credentialed, CXR + free-text reports), EchoNet-Dynamic (registration, Echo), MIMIC-IV-ECG (credentialed, ECG). Add a role column indicating whether each dataset is used for: self-supervised pretraining, supervised fine-tuning, both, or documented only. Add a second section listing the remaining modalities (CT, MRI, Ultrasound, Coronary Angiography, General Time Series, Tables) with the best available public dataset for each and a brief note on why it was deferred.
 
 For the "further acquisition strategies" section of your submission, the outline already covers the key approaches. Use this chat to draft a crisp German-language version — it should be 3–4 short paragraphs covering: weak supervision from paired reports, synthetic data for sparse modalities (Koronarangiographie is the example), federated learning as the path to institutional data under DSGVO, and existing pretrained models as proxies when data is inaccessible.
 
 **JSONL conversion pipeline — Claude Code prompt:**
 
-> Write a script scripts/make_jsonl.py that converts sampled datasets into ms-swift conversation format JSONL. For CXR: each example should be {"messages": [{"role": "user", "content": [{"type": "image", "image": "<path>"}, {"type": "text", "text": "Does this chest X-ray show <finding>?"}]}, {"role": "assistant", "content": "Yes" or "No"}]} for each of the 14 CheXpert labels. For ECG: first convert the waveform to a PNG image using matplotlib (all 12 leads stacked, clean axis labels, no title), then use the same conversation format with the PTB-XL superclass as the answer. Save outputs to /data/processed/chexpert/train.jsonl etc. and /data/processed/ptbxl/train.jsonl etc. Print 2 sample entries from each dataset to stdout for verification.
+> Write a script scripts/make_jsonl.py that converts sampled datasets into ms-swift conversation format JSONL. For CXR: each example should be {"messages": [{"role": "user", "content": [{"type": "image", "image": "<path>"}, {"type": "text", "text": "Does this chest X-ray show <finding>?"}]}, {"role": "assistant", "content": "Yes" or "No"}]} for each of the 14 CheXpert labels. For the self-supervised stage, format as report completion: user message contains the image + "Write the radiology report findings for this chest X-ray:", assistant message contains the findings text hard-truncated to 200 words (not tokens — word count is easier to reason about and stays safely within the 256-token limit). For ECG: first convert the waveform to a PNG image using matplotlib (all 12 leads stacked, clean axis labels, no title), then use the same conversation format with the PTB-XL superclass as the answer. All text fields must be hard-truncated at 256 tokens using the Qwen3 tokenizer before writing — raise a warning (not an error) if any field was truncated. Save outputs to /data/processed/chexpert_plus/train.jsonl etc. and /data/processed/ptbxl/train.jsonl etc. Print 2 sample entries from each dataset and a truncation summary to stdout.
 
 The ECG-to-image conversion function in this script is important — it becomes the shared utility used in both training and inference. Write it once, write it well, test it.
 
@@ -117,13 +127,13 @@ The ECG-to-image conversion function in this script is important — it becomes 
 
 ## Week 2: Training and Evaluation
 
-### Day 8 — Environment verification and cloud setup
+### Day 8 — Environment verification
 
-Run the smoke test from Day 1. If it passes locally, also set it up on Colab or Kaggle. The workflow is: all data prep runs locally, push processed JSONL files and the scripts to GitHub, pull them in the cloud notebook, run training there, pull checkpoints back locally for evaluation and inference.
+Run the smoke test from Day 1: confirm Qwen3-VL-2B-Instruct loads in fp32 on CPU, runs a forward pass, and prints peak RAM usage. This is your go/no-go check before investing training time.
 
 **ms-swift verification — Claude Code prompt:**
 
-> Write a script scripts/verify_swift.py that: loads Qwen3-VL-2B-Instruct in 4-bit quantization using ms-swift, runs a forward pass on a test image and text prompt, prints the output, and prints peak memory usage. If this fails, also try loading Qwen2.5-VL-2B as a fallback and report which one works.
+> Write a script scripts/verify_swift.py that: checks available system RAM and prints a warning if below 16GB; loads Qwen3-VL-2B-Instruct in fp32 (no quantization — do not use bitsandbytes or load_in_4bit, these have no CPU backend); runs a forward pass on a test image and text prompt; prints the model output and peak RAM usage; times the forward pass. If loading fails due to memory, try Qwen2.5-VL-2B as a fallback and report which one works.
 
 This is your go/no-go check before investing any training time.
 
@@ -133,22 +143,43 @@ This is your go/no-go check before investing any training time.
 
 This is what the task calls "unsupervised fine-tuning." Concretely: train the model to predict radiology report text given a CXR image, and to predict ECG diagnostic descriptions given an ECG image. No structured labels required — the free text is the supervision signal.
 
-For CXR: use ReXGradient-160K or OpenI reports as the primary text source — sample 300 image+report pairs and format them as report completion tasks ("Given this chest X-ray, write the radiology report findings:"). If MIMIC-CXR access comes through, substitute or supplement with MIMIC reports, which are more clinically diverse. Do not fall back to synthetic prompts if any of these three datasets are available.
+For CXR: use CheXpert Plus reports as the primary text source — sample 75 image+report pairs and format them as report completion tasks ("Given this chest X-ray, write the radiology report findings:"). If MIMIC-CXR access came through during Week 1, mix in MIMIC reports to increase clinical diversity. If CheXpert Plus access was delayed, use ReXGradient-160K from HuggingFace as a direct substitute. Do not fall back to synthetic prompts under any circumstances.
+
 **ms-swift config — Claude Code prompt:**
 
-> Generate a ms-swift training YAML config file configs/pretrain_cxr.yaml for continual pre-training (next-token prediction on the text, given image) of Qwen3-VL-2B-Instruct with LoRA. Settings: lora_rank=16, lora_alpha=32, target modules = all linear layers in the language model, learning_rate=2e-4, batch_size=1, gradient_accumulation_steps=8, num_epochs=2, fp16=True, dataset path = data/processed/chexpert/train.jsonl, output_dir=outputs/cxr_pretrain. Also generate a corresponding configs/pretrain_ecg.yaml for the ECG dataset.
+> Generate a ms-swift training YAML config file configs/pretrain_cxr.yaml for continual pre-training (next-token prediction on the text, given image) of Qwen3-VL-2B-Instruct with LoRA for CPU-only training. Settings: lora_rank=8, lora_alpha=16, target modules = all linear layers in the language model, learning_rate=2e-4, batch_size=1, gradient_accumulation_steps=4, num_epochs=2, use_cpu=True, fp16=False, bf16=False (fp32 for CPU — bitsandbytes has no CPU backend so no quantization), max_length=256, gradient_checkpointing=True (required to keep activations off RAM during backprop), dataloader_num_workers=0 (prevents subprocesses from each loading the model into memory), dataset path = data/processed/chexpert_plus/train.jsonl, output_dir=outputs/cxr_pretrain, save_steps=10. Also generate a corresponding configs/pretrain_ecg.yaml for the ECG dataset.
 
 Run the CXR pre-training first. Watch the loss for the first 20 steps to confirm it's decreasing before leaving it to run.
+
+**✓ COMPLETED** — both CXR and ECG pretraining runs finished with decreasing training and eval loss. CXR eval loss continued decreasing through 4 epochs (model had not converged — note this in research_log.md and the submission roadmap). ECG tapered off around 2 epochs.
+
+---
+
+### Between pretraining and SFT — Preserve checkpoints and capture generation examples
+
+Before starting supervised fine-tuning, do two things. SFT will push the model toward classification outputs and may reduce the generative capability trained in the pretraining stage, so both steps need to happen while the pretrained checkpoints are current.
+
+**Step 1 — Preserve pretrained checkpoints:**
+
+Copy outputs/cxr_pretrain/ and outputs/ecg_pretrain/ to outputs/cxr_pretrain_preserved/ and outputs/ecg_pretrain_preserved/ before running SFT. This gives you three comparison points for the submission: zero-shot baseline → pretrained → SFT fine-tuned.
+
+**Step 2 — Generate report examples from pretrained CXR checkpoint:**
+
+**Claude Code prompt:**
+
+> Write a script scripts/generate_examples.py that: loads the pretrained CXR LoRA checkpoint from outputs/cxr_pretrain/ in fp32; runs inference on 5 images from the CXR test set (PNG_valid) using the report completion prompt "Write the radiology report findings for this chest X-ray:"; saves a markdown file to outputs/results/generation_examples.md showing for each example: the image filename, the ground truth findings from df_enriched.csv, and the model's generated output side by side. Also run the same 5 images through the base model with no adapter and include that output as a third column, so the effect of pretraining is directly visible.
+
+This output becomes the qualitative section of the submission alongside the quantitative results table.
 
 ---
 
 ### Days 10–11 — Supervised fine-tuning stage
 
-Starting from the pre-trained LoRA checkpoint (not from scratch), continue training on the labeled data — CheXpert binary labels for CXR, PTB-XL superclass labels for ECG. The conversation format is VQA: question about a specific finding, yes/no or class-name answer.
+Starting from the pre-trained LoRA checkpoint (not from scratch), continue training on the labeled data — CheXpert Plus 14-label structured labels for CXR (the same labels as the original CheXpert, already included in CheXpert Plus), PTB-XL superclass labels for ECG. The conversation format is VQA: question about a specific finding, yes/no or class-name answer.
 
 **Claude Code prompt:**
 
-> Generate configs/sft_cxr.yaml for supervised fine-tuning, starting from the checkpoint at outputs/cxr_pretrain/. Same LoRA settings, but lower learning rate (5e-5), 3 epochs, dataset = data/processed/chexpert/train.jsonl (the labeled split). Also generate configs/sft_ecg.yaml. Both configs should log to Weights & Biases with project name "ikim-assessment".
+> Generate configs/sft_cxr.yaml for supervised fine-tuning on CPU, starting from the checkpoint at outputs/cxr_pretrain/. Same CPU settings as pretrain config (fp32, max_length=256, batch_size=1, gradient_checkpointing=True, dataloader_num_workers=0), but lower learning rate (5e-5), 2 epochs, dataset = data/processed/chexpert_plus/train.jsonl (the labeled split), save_steps=10. Also generate configs/sft_ecg.yaml with the same settings. Both configs should log to Weights & Biases with project name "ikim-assessment".
 
 The output of this stage is your two adapter files: outputs/cxr_sft/adapter_model.bin and outputs/ecg_sft/adapter_model.bin.
 
@@ -158,9 +189,9 @@ The output of this stage is your two adapter files: outputs/cxr_sft/adapter_mode
 
 **Claude Code prompt:**
 
-> Write a script scripts/evaluate.py that: takes a model adapter path and a test JSONL file as arguments, loads Qwen3-VL-2B-Instruct in 4-bit + the specified LoRA adapter, runs inference on each test example, parses yes/no answers for CXR (14 labels) and class names for ECG (5 superclasses), and computes: accuracy, macro F1, and per-class AUC where applicable. Run it twice per modality: once with adapter=None (zero-shot baseline), once with the fine-tuned adapter. Save results as JSON to outputs/results/. Also generate a results summary table in Markdown.
+> Write a script scripts/evaluate.py that: takes a model adapter path and a test JSONL file as arguments, loads Qwen3-VL-2B-Instruct in fp32 (no quantization) with the specified LoRA adapter, runs inference on each test example, parses yes/no answers for CXR (14 labels) and class names for ECG (5 superclasses), and computes: accuracy, macro F1, and per-class AUC where applicable. Run it three times per modality: adapter=None (zero-shot baseline), the pretrained checkpoint from outputs/cxr_pretrain_preserved/ (domain-adapted, pre-SFT), and the SFT checkpoint (task fine-tuned). Save all three result sets as JSON to outputs/results/ and generate a three-column results summary table in Markdown showing what each training stage contributed.
 
-This gives you the central result of the project: a before/after table showing what fine-tuning gained. Even a 5–10% improvement on a small test set is a real finding.
+This gives you the central quantitative result: a three-stage table showing zero-shot → pretrained → SFT. Even modest gains at each stage tell a coherent story about what the training pipeline did.
 
 ---
 
@@ -178,15 +209,17 @@ Test this end-to-end with a few examples from your held-out test set. The demo o
 
 **Git repository checklist:**
 - README.md explaining the project, architecture, and how to reproduce training
-- /docs/data_catalog.md
+- /docs/data_catalog.md and /docs/data_access.md (dataset locations and access instructions)
 - All scripts (eda, preprocessing, training configs, evaluation, inference)
-- /outputs/results/ (JSON + Markdown table)
-- Sample ECG-to-image conversion outputs in /notebooks/figures/
-- Requirements and setup script
-- No raw data, no model weights (too large — reference the HuggingFace model ID instead)
+- /configs/ (all ms-swift YAML files)
+- /data/processed/**/*.csv and /**/*.txt (split CSVs and image_list.txt — filenames and labels only, no binary data)
+- /outputs/results/ (JSON + Markdown results table)
+- /notebooks/figures/ (EDA plots — these are generated PNGs from your scripts, not source data)
+- pyproject.toml, setup.sh
+- No raw data, no processed images, no model weights (reference HuggingFace model ID in README instead)
 
 **README — Claude Code prompt:**
-> Write a README.md for this project. Sections: Project Overview (2 sentences), Architecture (describe the modality-expert system with base router + specialist adapters), Repository Structure, Setup Instructions (setup.sh + Colab link), Data (reference data_catalog.md, note which datasets require credentialing), Training (how to run each config), Evaluation (how to run evaluate.py and interpret results), Results (embed the results table from outputs/results/), Known Limitations (dataset scale, CPU constraint, 3-modality scope), and Roadmap (how to extend to the remaining 7 modalities). Base model throughout is Qwen3-VL-2B-Instruct; note Qwen2.5-VL-2B as the tested fallback.
+> Write a README.md for this project. Sections: Project Overview (2 sentences), Architecture (describe the modality-expert system with base router + specialist adapters), Repository Structure, Setup Instructions (setup.sh, note that training is designed for CPU and tested on an Intel i7 — no GPU required), Data (reference data_catalog.md, note which datasets require credentialing), Training (how to run each config), Evaluation (how to run evaluate.py and interpret results), Results (embed the results table from outputs/results/), Known Limitations (dataset scale scoped for local CPU training, 3-modality scope), and Roadmap (how to extend to the remaining 7 modalities and scale with GPU). Base model throughout is Qwen3-VL-2B-Instruct; note Qwen2.5-VL-2B as the tested fallback.
 
 **Word summary — use this chat:** Paste your results table, the data catalog section headers, and the training approach, and ask Claude to draft a tight one-page German summary covering: Suchstrategie, verwendete Daten, Vorgehen beim Training, wichtigste Ergebnisse. The constraint is one page, so every sentence has to earn its place.
 
@@ -198,9 +231,9 @@ Test this end-to-end with a few examples from your held-out test set. The demo o
 |-----|-------|-----------|
 | 1 | Registrations, project skeleton | GitHub repo, smoke test |
 | 2–3 | PTB-XL download, ECG EDA, literature | EDA plots, ECG→image pipeline |
-| 3–5 | CheXpert + ReXGradient-160K + OpenI download, data sampling | Stratified CSV splits, report corpus ready |
+| 3–5 | CheXpert Plus download, data sampling; MIMIC/ReXGradient as upgrade/fallback | Stratified CSV splits, report corpus ready |
 | 5–7 | Data catalog, JSONL pipeline | docs/data_catalog.md, train/val/test JSONL |
-| 8 | Cloud setup, ms-swift verify | Confirmed training environment |
+| 8 | Local environment verify, ms-swift smoke test | Confirmed CPU training environment |
 | 8–9 | Self-supervised pre-training (CXR + ECG) | Two pre-trained LoRA checkpoints |
 | 10–11 | Supervised fine-tuning (CXR + ECG) | Two SFT LoRA checkpoints |
 | 12 | Evaluation | Results table: baseline vs. fine-tuned |
@@ -213,8 +246,9 @@ Test this end-to-end with a few examples from your held-out test set. The demo o
 
 | Risk | Likelihood | Mitigation |
 |------|-----------|-----------|
-| PhysioNet approval delayed or denied | Medium | No longer a blocking risk. ReXGradient-160K (open, HuggingFace) covers the self-supervised CXR stage; CheXpert + PTB-XL cover supervised training. Document MIMIC in the catalog as the production-scale resource. |
+| PhysioNet approval delayed or denied | Medium | Not a blocking risk. CheXpert Plus covers both training stages independently. ReXGradient-160K (open, HuggingFace) is the immediate fallback if CheXpert Plus access is also delayed. Document MIMIC in the catalog as the production-scale upgrade. |
 | ms-swift incompatible with Qwen3-VL-2B-Instruct | Very low (confirmed) | Fall back to Qwen2.5-VL-2B; document the version issue |
-| Colab session timeout during training | Medium | Use Kaggle (persistent sessions up to 12h); checkpoint every epoch |
+| CPU training takes longer than expected | Medium | Reduce dataset to 50 examples; reduce max_length to 128; run overnight. gradient_checkpointing=True and save_steps=10 are already set. Close browser and heavy apps before starting to maximise available RAM. |
+| RAM OOM during training | Low-medium | gradient_checkpointing=True already set. If still OOM: reduce max_length to 128, then to 64. If still failing, drop to Qwen2.5-VL-0.5B. |
 | Loss doesn't decrease (training is broken) | Low | Verify on 10 examples first; paste error + config into Claude Code |
 | Evaluation shows no improvement over baseline | Low-medium | Report honestly; a flat result on 50 test examples is still a valid finding and shows evaluation rigor |

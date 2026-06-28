@@ -1,13 +1,27 @@
-# Data — raw files are never committed
+# Data — raw files are never committed; processed only text
 data/raw/
+data/processed/**/*.png
+data/processed/**/*.jpg
+data/processed/**/*.jpeg
+data/processed/**/*.dcm
+data/processed/**/*.npy
+data/processed/**/*.dat
+data/processed/**/*.hea
+data/processed/**/*.jsonl
+# Enriched CSV is 400MB — regenerate with scripts/join_chexpert_labels.py
+data/processed/chexpert_plus/df_enriched.csv
 
-# Model checkpoints can be large; store externally
-outputs/checkpoints/
+# Training outputs — volatile, never versioned; copy final adapters into models/
+# (use outputs/* not outputs/ so git still descends and the negation below works)
+outputs/*
+# ...except final evaluation artifacts
+!outputs/results/
 
 # Secrets
 .env
 .env.*
 !.env.example
+github-access-token
 
 # Python
 __pycache__/
@@ -43,6 +57,10 @@ Thumbs.db
 *.swp
 *.swo
 
-# Logs and outputs that shouldn't be versioned
-outputs/logs/
+# Experiment trackers
 wandb/
+
+# Final trained adapters live in models/ and ARE versioned, except large optimizer artifacts
+models/**/*.pt
+models/**/rng_state.pth
+models/**/training_args.bin

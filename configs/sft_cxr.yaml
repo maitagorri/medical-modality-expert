@@ -1,0 +1,56 @@
+# ms-swift supervised fine-tuning config — CXR (binary-label VQA)
+# Stage 2: starting from cxr_pretrain checkpoint, train on 14-label yes/no QA.
+# CPU-only, fp32 for stability. Run with: swift sft configs/sft_cxr.yaml
+
+model: /home/maita/.cache/huggingface/hub/models--Qwen--Qwen3-VL-2B-Instruct/snapshots/89644892e4d85e24eaac8bacfd4f463576704203
+
+# Initialise from pretrained CXR LoRA weights (fresh optimizer — new task/LR)
+adapters:
+  - outputs/cxr_pretrain_preserved/checkpoint-76
+
+# LoRA — same rank as pretrain to allow weight loading
+tuner_type: lora
+lora_rank: 8
+lora_alpha: 16
+target_modules: all-linear
+lora_dropout: 0.05
+
+# Dataset
+dataset:
+  - data/processed/chexpert_plus/train_sft.jsonl
+val_dataset:
+  - data/processed/chexpert_plus/val_sft.jsonl
+
+# Output
+output_dir: outputs/cxr_sft
+run_name: cxr-sft
+
+# Hyperparameters — lower LR for fine-tuning from pretrained checkpoint
+num_train_epochs: 2
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 4
+learning_rate: 5.0e-5
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+max_length: 512
+max_pixels: 200704
+
+# CPU / precision — no GPU, fp32 for numerical stability. No quantization —
+# bitsandbytes has no CPU backend.
+fp16: false
+bf16: false
+
+# Memory management for CPU training
+gradient_checkpointing: true
+dataloader_num_workers: 0
+
+# Checkpointing — eval_steps matches save_steps so best checkpoint is never pruned before eval
+save_steps: 10
+logging_steps: 5
+eval_steps: 10
+save_total_limit: 5
+load_best_model_at_end: true
+metric_for_best_model: eval_loss
+
+# Logging
+report_to: none

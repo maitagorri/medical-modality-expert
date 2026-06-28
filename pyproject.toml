@@ -8,7 +8,8 @@ version = "0.1.0"
 description = "Medical AI fine-tuning with Qwen3-VL using ms-swift"
 requires-python = ">=3.10"
 dependencies = [
-    "torch>=2.3",
+    "torch>=2.3,<2.7",
+    "torchvision",
     "transformers>=4.57",
     "peft>=0.11",
     "ms-swift>=3.0",
@@ -22,7 +23,6 @@ dependencies = [
     "qwen_vl_utils>=0.0.14",
     "decord",
     "accelerate>=0.30",
-    "bitsandbytes>=0.43",
 ]
 
 [project.optional-dependencies]
@@ -35,6 +35,15 @@ dev = [
 
 [tool.hatch.build.targets.wheel]
 packages = ["scripts"]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+torchvision = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
 
 [tool.ruff]
 line-length = 100
