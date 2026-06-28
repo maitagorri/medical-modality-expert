@@ -32,7 +32,7 @@ BASE_MODEL = (
 # Fill in best checkpoint path after each SFT run completes.
 # Set to None until the adapter exists.
 ADAPTERS: dict[str, Path | None] = {
-    "xray": REPO / "outputs/cxr_sft/v0-20260627-221625/checkpoint-78",
+    "xray": REPO / "outputs/cxr_sft/v1-20260628-064230/checkpoint-20",
     "ecg":  REPO / "outputs/ecg_sft/v0-20260628-015306/checkpoint-30",
 }
 
