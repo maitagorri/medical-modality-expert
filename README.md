@@ -151,18 +151,21 @@ Both load the model once and never hold two model copies in memory; run them seq
 
 ## Results
 
-Token accuracy on the held-out **validation** set (CXR: 42 examples from CheXpert Plus; ECG: 25 examples from PTB-XL). Pretrain and SFT figures are the best checkpoint from each stage's training log; the zero-shot row is produced by `evaluate.py`.
+Held-out **validation** set (CXR: 42 examples from CheXpert Plus; ECG: 25 examples from PTB-XL). Two metrics are reported, because they tell different stories:
 
-| Modality | Stage | Token Accuracy | Eval Loss |
-|----------|-------|----------------|-----------|
-| CXR | Zero-shot (base model) | 21.4% | — |
-| CXR | Pretrain | 59.1% | 1.898 |
-| CXR | **SFT** | **97.6%** | **0.061** |
-| ECG | Zero-shot (base model) | 20.0% | — |
-| ECG | Pretrain | 77.8% | 0.459 |
-| ECG | **SFT** | **80.0%** | **0.462** |
+- **Token accuracy (teacher-forced)** — the standard ms-swift training metric, read from each stage's best checkpoint log. It conditions on the gold answer tokens, so it can overstate end-to-end performance.
+- **Free-gen accuracy** — the honest end-to-end measure: the model generates its answer autoregressively and is scored against ground truth (same method as the zero-shot baseline and `generate_examples.py`).
 
-Supervised fine-tuning lifts CXR from 59% → 98% token accuracy. For ECG, most of the signal is already captured in pretraining (78%), with SFT adding a smaller gain to 80%.
+| Modality | Stage | Token Acc (teacher-forced) | Free-gen Acc | Eval Loss |
+|----------|-------|----------------------------|--------------|-----------|
+| CXR | Zero-shot (base model) | — | 21.4% | — |
+| CXR | Pretrain | 59.1% | — | 1.898 |
+| CXR | **SFT** | **97.6%** | **92.9%** | **0.061** |
+| ECG | Zero-shot (base model) | — | 20.0% | — |
+| ECG | Pretrain | 77.8% | — | 0.459 |
+| ECG | **SFT** | **80.0%** | **28.0%** | **0.462** |
+
+The two metrics **agree for CXR** (98% vs 93%) because the Yes/No answer is a single token, leaving teacher-forcing little to inflate — the CXR specialist genuinely works. They **diverge sharply for ECG** (80% vs 28%): the multi-token class names (`ST`+`TC`, …) let teacher-forcing score the easy continuation tokens, while free generation reveals that the model collapsed onto the two most frequent classes (CD/STTC) and never predicts MI or HYP — a direct consequence of only ~15 training examples per class. Honest read: **the CXR expert is solid; the ECG expert is data-limited, not method-limited.**
 
 Qualitative end-to-end examples (router decision + specialist answer over a mixed CXR/ECG stream) are written to [outputs/results/examples.md](outputs/results/examples.md) by `generate_examples.py`.
 

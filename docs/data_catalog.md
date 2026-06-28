@@ -30,8 +30,11 @@ Datasets surveyed during Week 1, with the two used for training marked. Access m
 | ReXGradient-160K | CXR | [HF `rajpurkarlab/ReXGradient-160K`](https://huggingface.co/datasets/rajpurkarlab/ReXGradient-160K) | open | large | 160,000 studies + reports | free-text reports | research-use (per dataset card) | documented only (open fallback) |
 | OpenI / IU-Xray | CXR | [Kaggle `raddar/chest-xrays-indiana-university`](https://www.kaggle.com/datasets/raddar/chest-xrays-indiana-university) | open | ~300 MB | 7,470 images / 3,955 reports | free-text reports | open (educational/research) | documented only (pipeline validation) |
 | NIH ChestX-ray14 | CXR | [NIH / Kaggle](https://www.kaggle.com/datasets/nih-chest-xrays/data) | open | ~45 GB | 112,120 images / 30,805 patients | 14 structured labels | CC0 / public domain | documented only |
+| PadChest | CXR | [BIMCV / Univ. Alicante](https://bimcv.cipf.es/bimcv-projects/padchest/) | registration | ~1 TB | 160,861 images / 67,625 patients | free-text reports (Spanish) + 174 findings | research-use (DUA) | documented only (multilingual robustness) |
 | MIMIC-IV-ECG | ECG | [PhysioNet](https://physionet.org/content/mimic-iv-ecg/) | credentialed | ~90 GB | ~800,000 ECGs | diagnostic (linked to MIMIC-IV) | PhysioNet Credentialed Health Data License 1.5.0 | documented only (production upgrade) |
+| Georgia 12-Lead ECG | ECG | [PhysioNet Challenge 2020](https://physionet.org/content/challenge-2020/) | open | small | ~10,000 12-lead ECGs | diagnostic labels (SNOMED-CT) | open (PhysioNet) | documented only |
 | EchoNet-Dynamic | Echo (video) | [Stanford AIMI](https://echonet.github.io/dynamic/) | registration | ~7 GB | 10,030 echo videos | ejection fraction / tracings | Stanford Research Use Agreement | documented only |
+| EchoNet-Pediatric | Echo (video) | [Stanford AIMI](https://echonet.github.io/pediatric/) | registration | small | pediatric echo videos | ejection fraction | Stanford Research Use Agreement | documented only |
 | UniMed | X-ray, CT, MRI, US, Pathology, Fundus | [GitHub `mbzuai-oryx/UniMed-CLIP`](https://github.com/mbzuai-oryx/UniMed-CLIP) · arXiv:2412.10372 | open | large | 5.3M image-text pairs | image-text | Attribution-NonCommercial 4.0 International | documented only (multi-modality scaling) |
 
 ---
@@ -40,14 +43,15 @@ Datasets surveyed during Week 1, with the two used for training marked. Access m
 
 The assessment targets a broader set of modalities than two. For each not yet implemented, the most practical open dataset to start from is recorded below, so extension is a data-acquisition step, not a research-from-scratch step. (All `documented only`.)
 
-| Modality | Candidate dataset | Source | Access | Notes |
-|----------|-------------------|--------|--------|-------|
-| CT | LIDC-IDRI (lung nodules) / DeepLesion | [TCIA](https://www.cancerimagingarchive.net/) / NIH | open / registration | TCIA is the central hub for open CT/MRI oncology data |
-| MRI | fastMRI (knee/brain) / BraTS (brain tumor) | [fastMRI](https://fastmri.med.nyu.edu/) / [Synapse BraTS](https://www.synapse.org/) | registration | BraTS has well-defined segmentation labels |
-| Ultrasound | BUSI (breast ultrasound) | [public](https://scholar.cu.edu.eg/?q=afahmy/pages/dataset) | open | small, clean, benign/malignant/normal labels |
-| Coronary Angiography | ARCADE / CADICA | [Grand Challenge](https://grand-challenge.org/) | registration | stenosis / vessel segmentation challenges |
+| Modality | Candidate dataset(s) | Source | Access | Notes |
+|----------|----------------------|--------|--------|-------|
+| CT | LIDC-IDRI (lung nodules) / NLST (lung screening, ~75k) / DeepLesion | [TCIA](https://www.cancerimagingarchive.net/) / NIH | open / DUA | TCIA is the central hub for open CT/MRI oncology data; NLST needs an NIH data-use agreement |
+| MRI | fastMRI (knee/brain) / BraTS (brain tumor) / UK Biobank (population brain + cardiac) | [fastMRI](https://fastmri.med.nyu.edu/) / [Synapse BraTS](https://www.synapse.org/) / [UK Biobank](https://www.ukbiobank.ac.uk/) | registration / application | BraTS has clean segmentation labels; UK Biobank is the most comprehensive but application is non-trivial |
+| Ultrasound | BUSI (breast) / thyroid (Kaggle, Zenodo) / Butterfly IQ / GIST (GI) | [BUSI](https://scholar.cu.edu.eg/?q=afahmy/pages/dataset) / [Grand Challenge](https://grand-challenge.org/) | open / registration | data-sparse, operator-dependent; no single dominant public set |
+| Coronary Angiography | ARCADE / CADICA | [Grand Challenge](https://grand-challenge.org/) | registration | sparsest modality; most data is institutional (needs DUA) — flagged as a gap |
 | General time series | MIMIC-IV waveform / vital signs | [PhysioNet](https://physionet.org/) | credentialed | bedside monitor waveforms beyond ECG |
 | Tables (structured EHR) | MIMIC-IV / eICU-CRD | [PhysioNet](https://physionet.org/content/mimiciv/) | credentialed | structured labs/vitals/diagnoses; pairs with the imaging modalities |
+| Text (clinical notes) | MIMIC-IV-Note / i2b2–n2c2 | [PhysioNet](https://physionet.org/content/mimic-iv-note/) / [n2c2](https://n2c2.dbmi.hms.harvard.edu/) | credentialed / DUA | discharge summaries, radiology + nursing notes; natural pairing partner for every imaging modality from the same record |
 
 *Fields marked with "~" or "per dataset card" should be re-confirmed against the live source before any production use; licenses on credentialed sets in particular are version-specific.*
 

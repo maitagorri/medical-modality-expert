@@ -1,14 +1,21 @@
 """
 Evaluation script — assembles the full metrics table for the PoC.
 
-Computes zeroshot token_acc by running the base model (no adapter) on the
-val sets. Pretrain and SFT metrics are read directly from training logs.
-Single model load; no OOM risk.
+Two metrics are reported, because they differ:
+  - Free-gen accuracy: the model generates its answer autoregressively and is
+    scored against ground truth. Computed here for the zero-shot base model
+    and for the two SFT adapters, all on the val sets. This is the honest
+    end-to-end measure.
+  - Token accuracy (teacher-forced): the standard ms-swift training metric,
+    read from each stage's best checkpoint log. Conditions on gold tokens, so
+    it can overstate performance (notably for multi-token answers like ECG).
+
+Single base-model load; SFT adapters are layered on top via PEFT. No OOM risk.
 
 Outputs: outputs/results/metrics.{json,md}
 
 Usage:
-  uv run python scripts/evaluate.py
+  uv run python scripts/eval/evaluate.py
 """
 
 import json
@@ -28,6 +35,9 @@ BASE_MODEL = (
 
 CXR_VAL_JSONL = REPO / "data/processed/chexpert_plus/val_sft.jsonl"
 ECG_VAL_JSONL = REPO / "data/processed/ptbxl/val.jsonl"
+
+CXR_SFT_ADAPTER = REPO / "outputs/cxr_sft/v1-20260628-064230/checkpoint-20"
+ECG_SFT_ADAPTER = REPO / "outputs/ecg_sft/v0-20260628-015306/checkpoint-30"
 
 TRAINING_LOGS = {
     "cxr_pretrain": REPO / "outputs/cxr_pretrain_preserved/logging.jsonl",
@@ -91,7 +101,8 @@ def load_jsonl(path: Path) -> list[dict]:
     return [json.loads(l) for l in path.read_text().splitlines() if l.strip()]
 
 
-def token_acc_cxr(entries: list[dict], model, processor) -> float:
+def freegen_acc_cxr(entries: list[dict], model, processor) -> float:
+    """Free-generation accuracy: generate the Yes/No answer, compare to GT."""
     correct = 0
     for i, entry in enumerate(entries):
         messages = entry["messages"][:-1]
@@ -106,7 +117,8 @@ def token_acc_cxr(entries: list[dict], model, processor) -> float:
 
 ECG_LABELS = ["NORM", "MI", "STTC", "CD", "HYP"]
 
-def token_acc_ecg(entries: list[dict], model, processor) -> float:
+def freegen_acc_ecg(entries: list[dict], model, processor) -> float:
+    """Free-generation accuracy: generate the class name, compare to GT."""
     correct = 0
     for i, entry in enumerate(entries):
         messages = entry["messages"][:-1]
@@ -131,30 +143,32 @@ def save_results(metrics: dict) -> None:
     ecg = metrics["ecg"]
 
     def pct(v) -> str:
-        return f"{v:.1%}" if isinstance(v, float) else "—"
+        return f"{v:.1%}" if isinstance(v, (int, float)) and v == v else "—"
+
+    def block(name: str, title: str, m: dict) -> list[str]:
+        return [
+            f"## {name} — {title}",
+            "",
+            "| Stage | Token Acc (teacher-forced) | Free-gen Acc | Eval Loss |",
+            "|-------|----------------------------|--------------|-----------|",
+            f"| Zeroshot   | — | {pct(m['zeroshot'].get('free_gen_acc'))} | — |",
+            f"| Pretrain   | {pct(m['pretrain'].get('eval_token_acc'))} | — | {m['pretrain'].get('eval_loss')} |",
+            f"| SFT (best) | {pct(m['sft'].get('eval_token_acc'))} | {pct(m['sft'].get('free_gen_acc'))} | {m['sft'].get('eval_loss')} |",
+            "",
+        ]
 
     lines = [
         "# Evaluation Metrics",
         "",
         "Val set: CheXpert Plus (CXR, 42 examples) · PTB-XL (ECG, 25 examples).  ",
-        "Zeroshot = base Qwen3-VL-2B-Instruct, no adapter.  ",
-        "Pretrain/SFT = best checkpoint from training logs (same val set).",
+        "**Free-gen Acc** = answer generated autoregressively, scored vs. ground truth ",
+        "(zero-shot base model, no adapter; and the SFT adapters). **Token Acc** = ",
+        "teacher-forced metric from the training logs (best checkpoint, same val set).  ",
+        "The two agree for CXR (single-token Yes/No) but diverge for ECG, where ",
+        "teacher-forcing inflates multi-token class names.",
         "",
-        "## CXR — Binary Label Classification (token accuracy)",
-        "",
-        "| Stage | Token Acc | Eval Loss |",
-        "|-------|-----------|-----------|",
-        f"| Zeroshot   | {pct(cxr['zeroshot']['eval_token_acc'])} | — |",
-        f"| Pretrain   | {pct(cxr['pretrain']['eval_token_acc'])} | {cxr['pretrain']['eval_loss']} |",
-        f"| SFT (best) | {pct(cxr['sft']['eval_token_acc'])} | {cxr['sft']['eval_loss']} |",
-        "",
-        "## ECG — Cardiac Diagnosis Classification (token accuracy)",
-        "",
-        "| Stage | Token Acc | Eval Loss |",
-        "|-------|-----------|-----------|",
-        f"| Zeroshot   | {pct(ecg['zeroshot']['eval_token_acc'])} | — |",
-        f"| Pretrain   | {pct(ecg['pretrain']['eval_token_acc'])} | {ecg['pretrain']['eval_loss']} |",
-        f"| SFT (best) | {pct(ecg['sft']['eval_token_acc'])} | {ecg['sft']['eval_loss']} |",
+        *block("CXR", "Binary Label Classification", cxr),
+        *block("ECG", "Cardiac Diagnosis Classification", ecg),
     ]
 
     md_path = OUT_DIR / "metrics.md"
@@ -166,6 +180,7 @@ def save_results(metrics: dict) -> None:
 
 def main() -> None:
     from transformers import AutoProcessor, Qwen3VLForConditionalGeneration
+    from peft import PeftModel
 
     cxr_val = load_jsonl(CXR_VAL_JSONL)
     ecg_val = load_jsonl(ECG_VAL_JSONL)
@@ -177,15 +192,31 @@ def main() -> None:
     model = Qwen3VLForConditionalGeneration.from_pretrained(BASE_MODEL, torch_dtype=torch.float32)
     model.eval()
 
-    print("\nZeroshot CXR ...")
-    zs_cxr = token_acc_cxr(cxr_val, model, processor)
+    print("\nZeroshot free-gen CXR ...")
+    zs_cxr = freegen_acc_cxr(cxr_val, model, processor)
     print(f"  → {zs_cxr:.1%}")
 
-    print("\nZeroshot ECG ...")
-    zs_ecg = token_acc_ecg(ecg_val, model, processor)
+    print("\nZeroshot free-gen ECG ...")
+    zs_ecg = freegen_acc_ecg(ecg_val, model, processor)
     print(f"  → {zs_ecg:.1%}")
 
-    print("\nReading pretrain/SFT metrics from training logs ...")
+    # Layer the SFT adapters on top of the same base model (no second load).
+    print("\nLoading SFT adapters ...")
+    model = PeftModel.from_pretrained(model, str(CXR_SFT_ADAPTER), adapter_name="cxr")
+    model.load_adapter(str(ECG_SFT_ADAPTER), adapter_name="ecg")
+    model.eval()
+
+    print("\nSFT free-gen CXR ...")
+    model.set_adapter("cxr")
+    fg_cxr_sft = freegen_acc_cxr(cxr_val, model, processor)
+    print(f"  → {fg_cxr_sft:.1%}")
+
+    print("\nSFT free-gen ECG ...")
+    model.set_adapter("ecg")
+    fg_ecg_sft = freegen_acc_ecg(ecg_val, model, processor)
+    print(f"  → {fg_ecg_sft:.1%}")
+
+    print("\nReading pretrain/SFT token-acc + loss from training logs ...")
     cxr_pretrain = best_eval_from_log(TRAINING_LOGS["cxr_pretrain"])
     ecg_pretrain = best_eval_from_log(TRAINING_LOGS["ecg_pretrain"])
     cxr_sft      = best_eval_from_log(TRAINING_LOGS["cxr_sft"])
@@ -193,14 +224,14 @@ def main() -> None:
 
     metrics = {
         "cxr": {
-            "zeroshot": {"eval_token_acc": zs_cxr},
+            "zeroshot": {"free_gen_acc": zs_cxr},
             "pretrain": cxr_pretrain,
-            "sft":      cxr_sft,
+            "sft":      {**cxr_sft, "free_gen_acc": fg_cxr_sft},
         },
         "ecg": {
-            "zeroshot": {"eval_token_acc": zs_ecg},
+            "zeroshot": {"free_gen_acc": zs_ecg},
             "pretrain": ecg_pretrain,
-            "sft":      ecg_sft,
+            "sft":      {**ecg_sft, "free_gen_acc": fg_ecg_sft},
         },
     }
 
