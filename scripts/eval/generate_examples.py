@@ -45,9 +45,9 @@ def load_jsonl(path: Path) -> list[dict]:
     return [json.loads(l) for l in path.read_text().splitlines() if l.strip()]
 
 
-def sample_cxr(entries: list[dict], n: int) -> list[dict]:
+def sample_cxr(entries: list[dict], n: int, seed: int = 42) -> list[dict]:
     """One example per label, alternating Yes/No answers, tagged with true modality."""
-    random.seed(42)
+    random.seed(seed)
     by_label: dict[str, list[dict]] = {}
     for e in entries:
         text = next(c["text"] for c in e["messages"][0]["content"] if c["type"] == "text")
@@ -70,9 +70,9 @@ def sample_cxr(entries: list[dict], n: int) -> list[dict]:
     return selected
 
 
-def sample_ecg(entries: list[dict]) -> list[dict]:
+def sample_ecg(entries: list[dict], seed: int = 42) -> list[dict]:
     """One example per ECG class, tagged with true modality."""
-    random.seed(42)
+    random.seed(seed)
     by_class: dict[str, list[dict]] = {}
     for e in entries:
         gt = e["messages"][-1]["content"].strip()
@@ -181,8 +181,10 @@ def main() -> None:
     from transformers import AutoProcessor, Qwen3VLForConditionalGeneration
     from peft import PeftModel
 
-    cxr_entries = sample_cxr(load_jsonl(CXR_TEST_JSONL), N_CXR)
-    ecg_entries = sample_ecg(load_jsonl(ECG_TEST_JSONL))
+    import sys
+    seed = int(sys.argv[1]) if len(sys.argv) > 1 else 42
+    cxr_entries = sample_cxr(load_jsonl(CXR_TEST_JSONL), N_CXR, seed=seed)
+    ecg_entries = sample_ecg(load_jsonl(ECG_TEST_JSONL), seed=seed)
 
     # Shuffle into a mixed stream
     all_entries = cxr_entries + ecg_entries
