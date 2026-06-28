@@ -56,6 +56,8 @@ def best_eval_from_log(path: Path) -> dict:
 
 # ── Inference ─────────────────────────────────────────────────────────────────
 
+MAX_PIXELS = 200704  # match training configs — limits CXR images to ~250 tokens
+
 def _generate(messages: list[dict], model, processor) -> str:
     from qwen_vl_utils import process_vision_info
     text = processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
@@ -64,6 +66,7 @@ def _generate(messages: list[dict], model, processor) -> str:
         text=[text],
         images=image_inputs if image_inputs else None,
         videos=video_inputs if video_inputs else None,
+        max_pixels=MAX_PIXELS,
         return_tensors="pt",
     )
     with torch.no_grad():

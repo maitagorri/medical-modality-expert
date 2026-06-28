@@ -87,6 +87,8 @@ def sample_ecg(entries: list[dict]) -> list[dict]:
 
 # ── Inference ─────────────────────────────────────────────────────────────────
 
+MAX_PIXELS = 200704  # match training configs — limits CXR images to ~250 tokens
+
 def _generate(messages: list[dict], model, processor, max_new_tokens: int = 16) -> str:
     from qwen_vl_utils import process_vision_info
     text = processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
@@ -95,6 +97,7 @@ def _generate(messages: list[dict], model, processor, max_new_tokens: int = 16) 
         text=[text],
         images=image_inputs if image_inputs else None,
         videos=video_inputs if video_inputs else None,
+        max_pixels=MAX_PIXELS,
         return_tensors="pt",
     )
     with torch.no_grad():
